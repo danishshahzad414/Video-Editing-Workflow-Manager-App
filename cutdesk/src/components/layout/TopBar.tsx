@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { Bell, Search } from 'lucide-react'
+import { Bell, Search, Menu } from 'lucide-react'
 import { useNotifications } from '../../hooks/useNotifications'
 import NotificationPanel from './NotificationPanel'
 import { useAuth } from '../../context/AuthContext'
 
 interface Props {
   title?: string
+  onMenuClick?: () => void
 }
 
-export default function TopBar({ title }: Props) {
+export default function TopBar({ title, onMenuClick }: Props) {
   const { data: notifications = [] } = useNotifications()
   const { profile } = useAuth()
   const [showNotif, setShowNotif] = useState(false)
@@ -23,7 +24,16 @@ export default function TopBar({ title }: Props) {
 
   return (
     <>
-      <header className="h-16 flex items-center justify-between px-6 lg:px-8" style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+      <header className="h-16 flex items-center justify-between px-4 md:px-6 lg:px-8" style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+        <div className="flex items-center gap-3">
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-slate-50 flex-shrink-0"
+            style={{ border: '1.5px solid #E2E8F0' }}
+          >
+            <Menu size={18} className="text-slate-500" />
+          </button>
         <div className="flex flex-col">
           {title ? (
             <h1 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 20, color: '#0F172A', margin: 0 }}>{title}</h1>
@@ -38,8 +48,9 @@ export default function TopBar({ title }: Props) {
             </div>
           )}
         </div>
+        </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           {/* Search bar */}
           <div className="hidden md:flex items-center gap-2 px-3 h-9 rounded-lg" style={{ background: '#F8FAFC', border: '1.5px solid #E2E8F0' }}>
             <Search size={14} className="text-slate-400" />

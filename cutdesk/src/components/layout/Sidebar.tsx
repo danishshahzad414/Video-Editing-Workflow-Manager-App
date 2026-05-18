@@ -1,10 +1,10 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard, Video, Upload, BookOpen, BarChart2,
   Inbox, List, PlayCircle, CalendarDays, Film, ScrollText,
   LayoutGrid, Send, FileEdit, Calendar, CheckCircle, TrendingUp,
-  Users, LogOut, ChevronLeft, ChevronRight, Scissors, Settings
+  Users, LogOut, ChevronLeft, ChevronRight, Scissors, Settings, X
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import SettingsModal from '../shared/SettingsModal'
@@ -51,7 +51,11 @@ const ROLE_COLORS: Record<string, string> = {
   counselor: '#34D399',
 }
 
-export default function Sidebar() {
+interface Props {
+  onClose?: () => void
+}
+
+export default function Sidebar({ onClose }: Props) {
   const { profile, signOut } = useAuth()
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
@@ -81,20 +85,26 @@ export default function Sidebar() {
           background: '#0F172A',
           flexShrink: 0,
           transition: 'width 250ms cubic-bezier(0.34,1.1,0.64,1)',
+          height: '100vh',
         }}
       >
-        {/* Logo */}
+        {/* Logo + mobile close */}
         <div className="flex items-center gap-3 px-4 py-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)', boxShadow: '0 4px 12px rgba(2,132,199,0.4)' }}>
             <Scissors size={17} className="text-white" />
           </div>
           {!collapsed && (
-            <div>
+            <div className="flex-1 min-w-0">
               <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 17, color: '#FFFFFF', whiteSpace: 'nowrap', letterSpacing: '-0.3px' }}>
                 CutDesk
               </span>
               <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.35)', marginTop: 1, whiteSpace: 'nowrap' }}>Video Workflow OS</p>
             </div>
+          )}
+          {onClose && !collapsed && (
+            <button onClick={onClose} className="lg:hidden text-white/40 hover:text-white ml-auto flex-shrink-0 transition-colors p-1">
+              <X size={18} />
+            </button>
           )}
         </div>
 
@@ -116,11 +126,10 @@ export default function Sidebar() {
             <NavLink
               key={to}
               to={to}
+              onClick={onClose}
               className={({ isActive }) =>
-                `relative flex items-center gap-3 mx-2 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-200 group ${
-                  isActive
-                    ? 'text-white'
-                    : 'text-white/40 hover:text-white/80 hover:bg-white/5'
+                `relative flex items-center gap-3 mx-2 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-200 ${
+                  isActive ? 'text-white' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
                 }`
               }
               style={({ isActive }) => isActive ? { background: 'rgba(2,132,199,0.2)' } : {}}
@@ -146,7 +155,7 @@ export default function Sidebar() {
           ))}
         </nav>
 
-        {/* Bottom: user + settings + logout */}
+        {/* Bottom: user + logout */}
         <div className="p-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <button
             onClick={() => setShowSettings(true)}
@@ -166,7 +175,6 @@ export default function Sidebar() {
               </div>
             )}
           </button>
-
           <button
             onClick={handleSignOut}
             className="flex items-center gap-3 w-full rounded-xl p-2.5 transition-all duration-200 hover:bg-red-500/10 group"
@@ -177,10 +185,10 @@ export default function Sidebar() {
           </button>
         </div>
 
-        {/* Collapse toggle */}
+        {/* Desktop collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-16 w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-200 hover:scale-110"
+          className="hidden lg:flex absolute -right-3 top-16 w-6 h-6 rounded-full items-center justify-center z-10 transition-all duration-200 hover:scale-110"
           style={{ background: '#1E293B', border: '1.5px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.5)', boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
         >
           {collapsed ? <ChevronRight size={11} /> : <ChevronLeft size={11} />}

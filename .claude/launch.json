@@ -1,0 +1,31 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Remotion Studio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "remotion-logos"],
+      "autoPort": true
+    },
+    {
+      "name": "AustralianPR Studio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start", "--prefix", "australian-pr-video", "--", "--port", "3002"],
+      "port": 3002
+    }
+  ,
+    {
+      "name": "Motion Studio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "motion-studio/frontend"],
+      "port": 5173
+    }
+  ,
+    {
+      "name": "CutDesk",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "cutdesk"],
+      "port": 5174
+    }
+  ]
+}

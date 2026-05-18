@@ -89,12 +89,12 @@ export default function EditorQueue() {
                             opacity: snapshot.isDragging ? 0.9 : 1,
                           }}
                         >
-                          <div {...provided.dragHandleProps} className="text-white/30 hover:text-white/60 drag-handle flex-shrink-0">
+                          <div {...provided.dragHandleProps} className="text-slate-300 hover:text-slate-500 drag-handle flex-shrink-0">
                             <GripVertical size={18} />
                           </div>
                           <div className="flex-1 min-w-0 cursor-pointer" onClick={() => setDetailVideo(video)}>
-                            <p className="text-white text-sm font-bold truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>{video.title}</p>
-                            <p className="text-white/50 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>
+                            <p className="text-sm font-bold truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{video.title}</p>
+                            <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>
                               {(video.counselor as any)?.full_name} · {timeAgo(video.created_at)}
                             </p>
                             <div className="flex items-center gap-2 mt-1">
@@ -106,7 +106,7 @@ export default function EditorQueue() {
                             <button className="btn-primary text-xs py-2 px-3" onClick={() => startEditing(video)}>Start Editing</button>
                             <button
                               className="text-xs py-2 px-3 rounded-lg"
-                              style={{ background: 'rgba(239,68,68,0.15)', color: '#EF4444', fontFamily: 'Poppins', fontWeight: 700, border: 'none', cursor: 'pointer' }}
+                              style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Poppins', fontWeight: 700, border: 'none', cursor: 'pointer' }}
                               onClick={() => { setRevisionVideo(video); setRevisionNote('') }}
                             >
                               Request Revision
@@ -127,10 +127,10 @@ export default function EditorQueue() {
       {/* Revision modal */}
       {revisionVideo && (
         <div className="modal-overlay" onClick={() => setRevisionVideo(null)}>
-          <div className="rounded-xl overflow-hidden w-full max-w-lg" style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }} onClick={e => e.stopPropagation()}>
-            <div className="px-6 py-4" style={{ background: '#006386' }}>
-              <h2 className="text-white text-lg" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Request Revision</h2>
-              <p className="text-white/60 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>{revisionVideo.title}</p>
+          <div className="rounded-2xl overflow-hidden w-full max-w-lg scale-in" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }} onClick={e => e.stopPropagation()}>
+            <div className="px-6 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>Request Revision</h2>
+              <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{revisionVideo.title}</p>
             </div>
             <div className="p-6">
               {templates.length > 0 && (

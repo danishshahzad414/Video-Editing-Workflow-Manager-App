@@ -61,11 +61,11 @@ export default function EditorDashboard() {
     <Layout title="Editor Dashboard">
       <div className="fade-in">
         {/* KPI row */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6 stagger-children">
           {kpis.map(k => (
-            <div key={k.label} className="cd-card p-4 text-center">
-              <p className="text-[#00A2CF] font-bold mb-1 truncate" style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: k.label === 'Oldest Pending' ? 12 : 22 }}>{k.value}</p>
-              <p className="text-white/50 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{k.label}</p>
+            <div key={k.label} className="stat-card p-4 text-center fade-in">
+              <p className="font-bold mb-1 truncate" style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: k.label === 'Oldest Pending' ? 12 : 22, color: '#0284C7' }}>{k.value}</p>
+              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#475569' }}>{k.label}</p>
             </div>
           ))}
         </div>
@@ -74,17 +74,17 @@ export default function EditorDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
           {/* Left 60% */}
           <div className="lg:col-span-3 cd-card overflow-hidden">
-            <div className="flex border-b border-[rgba(0,162,207,0.15)]">
+            <div className="flex" style={{ borderBottom: '1px solid #E2E8F0' }}>
               {(['Inbox', 'My Queue', 'In Progress'] as Tab[]).map(t => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
                   className="flex-1 py-3 text-xs border-b-2 transition-colors relative"
-                  style={{ fontFamily: 'Poppins', fontWeight: 600, borderColor: tab === t ? '#00A2CF' : 'transparent', color: tab === t ? '#00A2CF' : 'rgba(245,248,250,0.4)' }}
+                  style={{ fontFamily: 'Poppins', fontWeight: 600, borderColor: tab === t ? '#0284C7' : 'transparent', color: tab === t ? '#0284C7' : '#94A3B8' }}
                 >
                   {t}
                   {tabVideos[t].length > 0 && (
-                    <span className="absolute top-2 right-2 w-4 h-4 rounded-full text-[9px] flex items-center justify-center" style={{ background: '#00A2CF', color: '#fff', fontFamily: 'Poppins', fontWeight: 700 }}>
+                    <span className="absolute top-2 right-2 w-4 h-4 rounded-full text-[9px] flex items-center justify-center" style={{ background: '#0284C7', color: '#fff', fontFamily: 'Poppins', fontWeight: 700 }}>
                       {tabVideos[t].length}
                     </span>
                   )}
@@ -93,7 +93,7 @@ export default function EditorDashboard() {
             </div>
             <div className="p-4 space-y-2 max-h-96 overflow-y-auto">
               {tabVideos[tab].length === 0 ? (
-                <p className="text-white/30 text-sm text-center py-8" style={{ fontFamily: 'Poppins' }}>Nothing here</p>
+                <p className="text-sm text-center py-8" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Nothing here</p>
               ) : (
                 tabVideos[tab].slice(0, 8).map(v => (
                   <VideoCard key={v.id} video={v} onClick={() => setSelectedVideo(v)} />
@@ -105,23 +105,23 @@ export default function EditorDashboard() {
           {/* Right 40% */}
           <div className="lg:col-span-2 space-y-4">
             <div className="cd-card p-4">
-              <h3 className="text-white text-sm mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Completions Per Week</h3>
+              <h3 className="text-sm mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Completions Per Week</h3>
               <ResponsiveContainer width="100%" height={150}>
                 <BarChart data={weeklyCompletions}>
-                  <XAxis dataKey="week" stroke="transparent" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: 'rgba(245,248,250,0.3)' }} />
+                  <XAxis dataKey="week" stroke="transparent" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} />
                   <YAxis hide allowDecimals={false} />
-                  <Tooltip contentStyle={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.2)', borderRadius: 8, fontFamily: 'Poppins', fontSize: 12 }} />
-                  <Bar dataKey="count" fill="#00A2CF" radius={[3, 3, 0, 0]} />
+                  <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Poppins', fontSize: 12 }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
+                  <Bar dataKey="count" fill="#0284C7" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
             <div className="cd-card p-4">
-              <h3 className="text-white text-sm mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Recent Activity</h3>
+              <h3 className="text-sm mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Recent Activity</h3>
               <div className="space-y-2">
                 {activityLog.slice(0, 5).map(entry => (
                   <div key={entry.id} className="flex justify-between gap-2">
-                    <p className="text-white/60 text-xs truncate" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{entry.action}</p>
-                    <p className="text-white/30 text-xs flex-shrink-0" style={{ fontFamily: 'Poppins' }}>{timeAgo(entry.created_at)}</p>
+                    <p className="text-xs truncate" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{entry.action}</p>
+                    <p className="text-xs flex-shrink-0" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{timeAgo(entry.created_at)}</p>
                   </div>
                 ))}
               </div>

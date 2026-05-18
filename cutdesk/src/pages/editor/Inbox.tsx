@@ -67,11 +67,11 @@ export default function EditorInbox() {
       <div className="max-w-4xl mx-auto fade-in">
         {/* Sort bar */}
         <div className="flex items-center justify-between mb-4">
-          <p className="text-white/50 text-sm" style={{ fontFamily: 'Poppins' }}>{rawVideos.length} videos waiting</p>
+          <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>{rawVideos.length} videos waiting</p>
           <div className="flex gap-2 items-center">
             <span className="section-label">Sort:</span>
             {(['date', 'priority', 'counselor'] as const).map(s => (
-              <button key={s} onClick={() => setSort(s)} className="text-xs px-3 py-1.5 rounded-lg transition-colors capitalize" style={{ background: sort === s ? '#00A2CF' : 'rgba(255,255,255,0.08)', color: sort === s ? '#fff' : 'rgba(245,248,250,0.5)', fontFamily: 'Poppins', fontWeight: 600 }}>
+              <button key={s} onClick={() => setSort(s)} className="text-xs px-3 py-1.5 rounded-lg transition-colors capitalize" style={{ background: sort === s ? '#0284C7' : '#F1F5F9', color: sort === s ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #E2E8F0' }}>
                 {s === 'date' ? 'Upload Date' : s === 'priority' ? 'Priority' : 'Counselor'}
               </button>
             ))}
@@ -81,8 +81,8 @@ export default function EditorInbox() {
         {/* Select all */}
         {rawVideos.length > 0 && (
           <div className="flex items-center gap-3 mb-3">
-            <input type="checkbox" checked={selected.length === rawVideos.length && rawVideos.length > 0} onChange={e => e.target.checked ? selectAll() : setSelected([])} className="w-4 h-4 accent-[#00A2CF]" />
-            <span className="text-white/50 text-xs" style={{ fontFamily: 'Poppins' }}>Select All</span>
+            <input type="checkbox" checked={selected.length === rawVideos.length && rawVideos.length > 0} onChange={e => e.target.checked ? selectAll() : setSelected([])} className="w-4 h-4 accent-[#0284C7]" />
+            <span className="text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>Select All</span>
           </div>
         )}
 
@@ -97,7 +97,7 @@ export default function EditorInbox() {
                   checked={selected.includes(video.id)}
                   onChange={() => toggleSelect(video.id)}
                   onClick={e => e.stopPropagation()}
-                  className="w-4 h-4 accent-[#00A2CF] flex-shrink-0"
+                  className="w-4 h-4 accent-[#0284C7] flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">
                   <VideoCard
@@ -126,7 +126,7 @@ export default function EditorInbox() {
 
         {/* Floating action bar */}
         {selected.length > 0 && (
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl z-50" style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.3)' }}>
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-3 rounded-xl z-50" style={{ background: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}>
             <span className="text-white text-sm font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{selected.length} selected</span>
             <div className="w-px h-5 bg-white/20" />
             <button className="btn-primary text-xs py-2 px-3" onClick={bulkAddToQueue}>Add to Queue</button>

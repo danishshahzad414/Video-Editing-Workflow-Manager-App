@@ -9,7 +9,7 @@ export default function Upload() {
 
   return (
     <Layout title="Upload Video">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto fade-in">
         {showChecklist && !showUpload && (
           <PreUploadChecklist
             onProceed={() => { setShowChecklist(false); setShowUpload(true) }}

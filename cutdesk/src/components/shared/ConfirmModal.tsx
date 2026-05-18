@@ -18,27 +18,28 @@ export default function ConfirmModal({
   return (
     <div className="modal-overlay" onClick={onCancel}>
       <div
-        className="rounded-xl p-8 w-full max-w-md"
-        style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }}
+        className="rounded-2xl p-8 w-full max-w-md scale-in"
+        style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: danger ? 'rgba(239,68,68,0.15)' : 'rgba(0,162,207,0.15)' }}>
-            <AlertTriangle size={20} style={{ color: danger ? '#EF4444' : '#00A2CF' }} />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: danger ? '#FEE2E2' : '#EFF6FF' }}>
+            <AlertTriangle size={20} style={{ color: danger ? '#EF4444' : '#0284C7' }} />
           </div>
-          <h2 className="text-white text-lg" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>{title}</h2>
+          <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>{title}</h2>
         </div>
-        <p className="text-white/70 mb-6" style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 14 }}>{message}</p>
+        <p className="mb-6" style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 14, color: '#475569' }}>{message}</p>
         <div className="flex justify-end gap-3">
           <button className="btn-secondary" onClick={onCancel} disabled={loading}>{cancelLabel}</button>
           <button
             onClick={onConfirm}
             disabled={loading}
             style={{
-              background: danger ? '#EF4444' : '#00A2CF',
-              color: '#fff', padding: '12px 20px', borderRadius: 8,
-              fontFamily: 'Montserrat', fontWeight: 700, fontSize: 14,
+              background: danger ? 'linear-gradient(135deg, #EF4444, #F87171)' : 'linear-gradient(135deg, #0284C7, #0EA5E9)',
+              color: '#fff', padding: '11px 20px', borderRadius: 10,
+              fontFamily: 'Poppins', fontWeight: 600, fontSize: 14,
               border: 'none', cursor: 'pointer', opacity: loading ? 0.5 : 1,
+              boxShadow: danger ? '0 2px 8px rgba(239,68,68,0.25)' : '0 2px 8px rgba(2,132,199,0.3)',
             }}
           >
             {loading ? 'Processing...' : confirmLabel}

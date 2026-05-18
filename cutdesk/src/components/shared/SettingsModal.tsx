@@ -60,13 +60,13 @@ export default function SettingsModal({ onClose }: Props) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="rounded-xl overflow-hidden w-full max-w-md" style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }} onClick={e => e.stopPropagation()}>
-        <div className="flex items-center justify-between px-6 py-4" style={{ background: '#006386' }}>
+      <div className="rounded-2xl overflow-hidden w-full max-w-md scale-in" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }} onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-6 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
           <div className="flex items-center gap-2">
-            <Settings size={18} className="text-white" />
-            <h2 className="text-white text-lg" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Notification Preferences</h2>
+            <Settings size={18} className="text-slate-600" />
+            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#0F172A', margin: 0 }}>Notification Preferences</h2>
           </div>
-          <button onClick={onClose} className="text-white/60 hover:text-white"><X size={18} /></button>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors"><X size={18} /></button>
         </div>
         <div className="p-6 space-y-5">
           <div>
@@ -81,15 +81,15 @@ export default function SettingsModal({ onClose }: Props) {
               { key: 'email_editor_comment', label: 'Editor comments' },
               { key: 'email_published', label: 'Video published' },
             ].map(({ key, label }) => (
-              <label key={key} className="flex items-center gap-3 mb-2 cursor-pointer">
+              <label key={key} className="flex items-center gap-3 mb-3 cursor-pointer">
                 <div
                   className="w-10 h-6 rounded-full relative transition-colors"
-                  style={{ background: (prefs as any)[key] ? '#00A2CF' : 'rgba(255,255,255,0.15)', cursor: 'pointer' }}
+                  style={{ background: (prefs as any)[key] ? '#0284C7' : '#E2E8F0', cursor: 'pointer' }}
                   onClick={() => setPrefs(p => ({ ...p, [key]: !(p as any)[key] }))}
                 >
-                  <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all" style={{ left: (prefs as any)[key] ? 22 : 4 }} />
+                  <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all shadow-sm" style={{ left: (prefs as any)[key] ? 22 : 4 }} />
                 </div>
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#fff' }}>{label}</span>
+                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#475569' }}>{label}</span>
               </label>
             ))}
           </div>
@@ -98,12 +98,12 @@ export default function SettingsModal({ onClose }: Props) {
             <label className="flex items-center gap-3 cursor-pointer">
               <div
                 className="w-10 h-6 rounded-full relative transition-colors"
-                style={{ background: prefs.whatsapp_revision ? '#00A2CF' : 'rgba(255,255,255,0.15)', cursor: 'pointer' }}
+                style={{ background: prefs.whatsapp_revision ? '#0284C7' : '#E2E8F0', cursor: 'pointer' }}
                 onClick={() => setPrefs(p => ({ ...p, whatsapp_revision: !p.whatsapp_revision }))}
               >
-                <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all" style={{ left: prefs.whatsapp_revision ? 22 : 4 }} />
+                <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all shadow-sm" style={{ left: prefs.whatsapp_revision ? 22 : 4 }} />
               </div>
-              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#fff' }}>Revision requested</span>
+              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#475569' }}>Revision requested</span>
             </label>
           </div>
         </div>

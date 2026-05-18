@@ -4,7 +4,7 @@ import {
   LayoutDashboard, Video, Upload, BookOpen, BarChart2,
   Inbox, List, PlayCircle, CalendarDays, Film, ScrollText,
   LayoutGrid, Send, FileEdit, Calendar, CheckCircle, TrendingUp,
-  Users, LogOut, ChevronLeft, ChevronRight, Scissors
+  Users, LogOut, ChevronLeft, ChevronRight, Scissors, Settings
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import SettingsModal from '../shared/SettingsModal'
@@ -44,6 +44,13 @@ const ceoNav = [
   { to: '/ceo/activity', icon: ScrollText, label: 'Activity Log' },
 ]
 
+const ROLE_COLORS: Record<string, string> = {
+  ceo: '#F59E0B',
+  editor: '#0EA5E9',
+  social_manager: '#A78BFA',
+  counselor: '#34D399',
+}
+
 export default function Sidebar() {
   const { profile, signOut } = useAuth()
   const navigate = useNavigate()
@@ -58,6 +65,7 @@ export default function Sidebar() {
   }[profile?.role || 'counselor'] || []
 
   const initials = profile?.full_name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '?'
+  const roleColor = ROLE_COLORS[profile?.role || 'counselor'] || '#0EA5E9'
 
   async function handleSignOut() {
     await signOut()
@@ -67,84 +75,115 @@ export default function Sidebar() {
   return (
     <>
       <aside
-        className="flex flex-col h-full border-r border-[rgba(0,162,207,0.15)] transition-all duration-200"
+        className="flex flex-col h-full relative"
         style={{
-          width: collapsed ? 64 : 220,
-          background: '#006386',
+          width: collapsed ? 68 : 230,
+          background: '#0F172A',
           flexShrink: 0,
+          transition: 'width 250ms cubic-bezier(0.34,1.1,0.64,1)',
         }}
       >
         {/* Logo */}
-        <div className="flex items-center gap-2 px-4 py-4 border-b border-[rgba(0,0,0,0.15)]">
-          <div className="w-8 h-8 rounded-lg bg-[#00A2CF] flex items-center justify-center flex-shrink-0">
-            <Scissors size={16} className="text-white" />
+        <div className="flex items-center gap-3 px-4 py-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)', boxShadow: '0 4px 12px rgba(2,132,199,0.4)' }}>
+            <Scissors size={17} className="text-white" />
           </div>
           {!collapsed && (
-            <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#fff', whiteSpace: 'nowrap' }}>
-              CutDesk
-            </span>
+            <div>
+              <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 17, color: '#FFFFFF', whiteSpace: 'nowrap', letterSpacing: '-0.3px' }}>
+                CutDesk
+              </span>
+              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.35)', marginTop: 1, whiteSpace: 'nowrap' }}>Video Workflow OS</p>
+            </div>
           )}
         </div>
 
+        {/* Role badge */}
+        {!collapsed && (
+          <div className="px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
+              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: roleColor, boxShadow: `0 0 6px ${roleColor}` }} />
+              <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11, color: roleColor, textTransform: 'capitalize', whiteSpace: 'nowrap' }}>
+                {profile?.role?.replace('_', ' ')}
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Nav items */}
-        <nav className="flex-1 py-4 overflow-y-auto overflow-x-hidden">
+        <nav className="flex-1 py-3 overflow-y-auto overflow-x-hidden">
           {navItems.map(({ to, icon: Icon, label }) => (
             <NavLink
               key={to}
               to={to}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-2.5 mx-2 rounded-lg transition-all duration-200 mb-0.5 ${
+                `relative flex items-center gap-3 mx-2 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-200 group ${
                   isActive
-                    ? 'bg-[#00A2CF] text-white'
-                    : 'text-white/70 hover:text-white hover:bg-[rgba(0,0,0,0.15)]'
+                    ? 'text-white'
+                    : 'text-white/40 hover:text-white/80 hover:bg-white/5'
                 }`
               }
+              style={({ isActive }) => isActive ? { background: 'rgba(2,132,199,0.2)' } : {}}
               title={collapsed ? label : undefined}
             >
-              <Icon size={18} className="flex-shrink-0" />
-              {!collapsed && (
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, whiteSpace: 'nowrap' }}>
-                  {label}
-                </span>
+              {({ isActive }) => (
+                <>
+                  {isActive && <div className="nav-active-dot" />}
+                  <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                    <Icon size={17} className={isActive ? 'text-sky-400' : ''} />
+                  </div>
+                  {!collapsed && (
+                    <span style={{ fontFamily: 'Poppins', fontWeight: isActive ? 600 : 500, fontSize: 13, whiteSpace: 'nowrap', color: isActive ? '#FFFFFF' : undefined }}>
+                      {label}
+                    </span>
+                  )}
+                  {isActive && !collapsed && (
+                    <div className="ml-auto w-1.5 h-1.5 rounded-full bg-sky-400" />
+                  )}
+                </>
               )}
             </NavLink>
           ))}
         </nav>
 
-        {/* Bottom: user + logout */}
-        <div className="border-t border-[rgba(0,0,0,0.15)] p-3">
+        {/* Bottom: user + settings + logout */}
+        <div className="p-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <button
             onClick={() => setShowSettings(true)}
-            className="flex items-center gap-2 w-full rounded-lg p-2 hover:bg-[rgba(0,0,0,0.15)] transition-colors text-left"
+            className="flex items-center gap-3 w-full rounded-xl p-2.5 transition-all duration-200 hover:bg-white/5 text-left mb-1"
             title={collapsed ? profile?.full_name : undefined}
           >
-            <div className="w-8 h-8 rounded-full bg-[#00A2CF] flex items-center justify-center flex-shrink-0">
-              <span style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: 12, color: '#fff' }}>{initials}</span>
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: roleColor + '22', border: `1px solid ${roleColor}44` }}>
+              <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 12, color: roleColor }}>{initials}</span>
             </div>
             {!collapsed && (
               <div className="min-w-0 flex-1">
-                <p className="text-white text-xs font-semibold truncate" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{profile?.full_name}</p>
-                <p className="text-white/50 text-[10px] truncate capitalize" style={{ fontFamily: 'Poppins' }}>{profile?.role?.replace('_', ' ')}</p>
+                <p className="text-xs font-semibold truncate" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#FFFFFF' }}>{profile?.full_name}</p>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <Settings size={9} className="text-white/30" />
+                  <p className="text-[10px] truncate" style={{ fontFamily: 'Poppins', color: 'rgba(255,255,255,0.35)' }}>Settings</p>
+                </div>
               </div>
             )}
           </button>
+
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-2 w-full rounded-lg p-2 text-white/60 hover:text-white hover:bg-[rgba(0,0,0,0.15)] transition-colors mt-1"
+            className="flex items-center gap-3 w-full rounded-xl p-2.5 transition-all duration-200 hover:bg-red-500/10 group"
             title={collapsed ? 'Logout' : undefined}
           >
-            <LogOut size={16} className="flex-shrink-0" />
-            {!collapsed && <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12 }}>Logout</span>}
+            <LogOut size={16} className="text-white/30 group-hover:text-red-400 flex-shrink-0 transition-colors" />
+            {!collapsed && <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.35)' }} className="group-hover:text-red-400 transition-colors">Logout</span>}
           </button>
         </div>
 
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-20 w-6 h-6 rounded-full bg-[#006386] border border-[rgba(0,162,207,0.3)] flex items-center justify-center text-white/70 hover:text-white z-10"
-          style={{ position: 'relative', alignSelf: 'flex-end', margin: '4px 8px 8px' }}
+          className="absolute -right-3 top-16 w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-200 hover:scale-110"
+          style={{ background: '#1E293B', border: '1.5px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.5)', boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
         >
-          {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
+          {collapsed ? <ChevronRight size={11} /> : <ChevronLeft size={11} />}
         </button>
       </aside>
 

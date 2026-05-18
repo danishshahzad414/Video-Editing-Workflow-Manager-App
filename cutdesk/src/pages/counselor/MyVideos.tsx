@@ -28,15 +28,15 @@ export default function MyVideos() {
     <Layout title="My Videos">
       <div className="max-w-3xl mx-auto fade-in">
         {/* Filter tabs */}
-        <div className="flex gap-1 mb-5 p-1 rounded-xl w-fit" style={{ background: '#003D52' }}>
+        <div className="flex gap-1 mb-5 p-1 rounded-xl w-fit" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>
           {FILTERS.map(f => (
             <button
               key={f}
               onClick={() => setFilter(f)}
               className="px-4 py-2 rounded-lg text-xs transition-all"
               style={{
-                background: filter === f ? '#00A2CF' : 'transparent',
-                color: filter === f ? '#fff' : 'rgba(245,248,250,0.5)',
+                background: filter === f ? '#0284C7' : 'transparent',
+                color: filter === f ? '#fff' : '#475569',
                 fontFamily: 'Poppins', fontWeight: 600,
               }}
             >
@@ -46,7 +46,7 @@ export default function MyVideos() {
         </div>
 
         {isLoading ? (
-          <div className="text-white/40 text-sm text-center py-12" style={{ fontFamily: 'Poppins' }}>Loading...</div>
+          <div className="text-sm text-center py-12" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Loading...</div>
         ) : filtered.length === 0 ? (
           <EmptyState icon={Video} title="No videos here" description="Videos will appear here once you upload them" />
         ) : (

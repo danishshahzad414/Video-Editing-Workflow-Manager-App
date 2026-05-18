@@ -27,10 +27,10 @@ export default function MyStats() {
   })
 
   const kpis = [
-    { label: 'Total Uploaded', value: totalUploaded },
-    { label: 'In Editing', value: inEditing },
-    { label: 'Published', value: published },
-    { label: 'Revision Rate', value: `${revisionRate}%` },
+    { label: 'Total Uploaded', value: totalUploaded, color: '#0284C7' },
+    { label: 'In Editing', value: inEditing, color: '#6366F1' },
+    { label: 'Published', value: published, color: '#10B981' },
+    { label: 'Revision Rate', value: `${revisionRate}%`, color: '#F59E0B' },
   ]
 
   const recent = [...videos].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).slice(0, 10)
@@ -39,36 +39,36 @@ export default function MyStats() {
     <Layout title="My Stats">
       <div className="max-w-3xl mx-auto fade-in space-y-6">
         {/* KPIs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
           {kpis.map(k => (
-            <div key={k.label} className="cd-card p-4 text-center">
-              <p className="text-[#00A2CF] text-2xl mb-1" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>{k.value}</p>
-              <p className="text-white/50 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{k.label}</p>
+            <div key={k.label} className="stat-card p-4 text-center fade-in">
+              <p className="text-2xl mb-1" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: k.color }}>{k.value}</p>
+              <p className="text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{k.label}</p>
             </div>
           ))}
         </div>
 
         {/* Monthly chart */}
         <div className="cd-card p-5">
-          <h2 className="text-white text-base mb-4" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Monthly Upload Volume</h2>
+          <h2 className="text-base mb-4" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Monthly Upload Volume</h2>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={months}>
-              <XAxis dataKey="month" stroke="rgba(245,248,250,0.3)" tick={{ fontFamily: 'Poppins', fontSize: 12, fill: 'rgba(245,248,250,0.5)' }} />
-              <YAxis stroke="rgba(245,248,250,0.3)" tick={{ fontFamily: 'Poppins', fontSize: 12, fill: 'rgba(245,248,250,0.5)' }} allowDecimals={false} />
-              <Tooltip contentStyle={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.2)', borderRadius: 8, fontFamily: 'Poppins' }} cursor={{ fill: 'rgba(0,162,207,0.05)' }} />
-              <Bar dataKey="count" fill="#00A2CF" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="month" stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 12, fill: '#94A3B8' }} />
+              <YAxis stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 12, fill: '#94A3B8' }} allowDecimals={false} />
+              <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Poppins' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} cursor={{ fill: 'rgba(2,132,199,0.05)' }} />
+              <Bar dataKey="count" fill="#0284C7" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Video history table */}
         <div className="cd-card overflow-hidden">
-          <div className="px-5 py-4 border-b border-[rgba(0,162,207,0.15)]">
-            <h2 className="text-white text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Video History</h2>
+          <div className="px-5 py-4" style={{ borderBottom: '1px solid #E2E8F0' }}>
+            <h2 className="text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Video History</h2>
           </div>
           <table className="w-full">
             <thead>
-              <tr style={{ background: 'rgba(0,162,207,0.05)' }}>
+              <tr style={{ background: '#F8FAFC' }}>
                 {['Title', 'Category', 'Uploaded', 'Status', 'Days'].map(h => (
                   <th key={h} className="px-4 py-2.5 text-left section-label">{h}</th>
                 ))}
@@ -76,12 +76,12 @@ export default function MyStats() {
             </thead>
             <tbody>
               {recent.map((v, i) => (
-                <tr key={v.id} style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(0,61,82,0.4)' }}>
-                  <td className="px-4 py-3 text-white text-sm truncate max-w-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{v.title}</td>
-                  <td className="px-4 py-3 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{v.category}</td>
-                  <td className="px-4 py-3 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{formatDate(v.created_at)}</td>
+                <tr key={v.id} className="table-row-hover" style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
+                  <td className="px-4 py-3 text-sm truncate max-w-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{v.title}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{v.category}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{formatDate(v.created_at)}</td>
                   <td className="px-4 py-3"><StatusBadge status={v.status} size="sm" /></td>
-                  <td className="px-4 py-3 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{Math.floor((Date.now() - new Date(v.created_at).getTime()) / 86400000)}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{Math.floor((Date.now() - new Date(v.created_at).getTime()) / 86400000)}</td>
                 </tr>
               ))}
             </tbody>

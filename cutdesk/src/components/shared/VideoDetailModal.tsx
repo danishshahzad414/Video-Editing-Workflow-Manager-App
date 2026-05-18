@@ -96,28 +96,29 @@ export default function VideoDetailModal({ video, onClose }: Props) {
     toast.success('Repurpose plan updated!')
   }
 
-  const roleColor: Record<string, string> = { counselor: '#00A2CF', editor: '#F59E0B', social_manager: '#8B5CF6', ceo: '#10B981' }
+  const roleColor: Record<string, string> = { counselor: '#0284C7', editor: '#F59E0B', social_manager: '#8B5CF6', ceo: '#10B981' }
 
   const visibleComments = canSeeInternal ? comments : comments.filter(c => !c.is_internal)
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="rounded-xl overflow-hidden w-full flex flex-col"
-        style={{ maxWidth: 780, maxHeight: '90vh', background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }}
+        className="rounded-2xl overflow-hidden w-full flex flex-col scale-in"
+        style={{ maxWidth: 780, maxHeight: '90vh', background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-start justify-between gap-4" style={{ background: '#006386', flexShrink: 0 }}>
+        <div className="px-6 py-4 flex items-start justify-between gap-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0', flexShrink: 0 }}>
           <div className="min-w-0">
-            <h2 className="text-white text-xl leading-tight" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>{video.title}</h2>
+            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>{video.title}</h2>
             <div className="flex items-center gap-2 mt-1.5 flex-wrap">
               <StatusBadge status={video.status} />
               <PriorityBadge priority={video.priority} />
               {video.revision_rounds > 0 && (
                 <span style={{
-                  background: video.revision_rounds >= 2 ? '#EF4444' : '#F59E0B',
-                  color: '#fff', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10,
+                  background: video.revision_rounds >= 2 ? '#FEE2E2' : '#FEF3C7',
+                  color: video.revision_rounds >= 2 ? '#B91C1C' : '#B45309',
+                  fontFamily: 'Poppins', fontWeight: 600, fontSize: 10,
                   padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase', letterSpacing: '0.08em',
                 }}>
                   {video.revision_rounds} revision{video.revision_rounds > 1 ? 's' : ''}
@@ -125,11 +126,11 @@ export default function VideoDetailModal({ video, onClose }: Props) {
               )}
             </div>
           </div>
-          <button onClick={onClose} className="text-white/60 hover:text-white flex-shrink-0 mt-1"><X size={20} /></button>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 flex-shrink-0 mt-1 transition-colors"><X size={20} /></button>
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-[rgba(0,162,207,0.15)] px-6" style={{ background: '#003D52', flexShrink: 0 }}>
+        <div className="flex px-6" style={{ borderBottom: '1px solid #E2E8F0', flexShrink: 0, background: '#FFFFFF' }}>
           {TABS.filter(t => t !== 'Repurpose' || canSeeRepurpose).map(t => (
             <button
               key={t}
@@ -137,8 +138,8 @@ export default function VideoDetailModal({ video, onClose }: Props) {
               className="py-3 px-1 mr-6 text-sm border-b-2 transition-colors"
               style={{
                 fontFamily: 'Poppins', fontWeight: 600, fontSize: 13,
-                borderColor: tab === t ? '#00A2CF' : 'transparent',
-                color: tab === t ? '#00A2CF' : 'rgba(245,248,250,0.5)',
+                borderColor: tab === t ? '#0284C7' : 'transparent',
+                color: tab === t ? '#0284C7' : '#94A3B8',
               }}
             >
               {t}
@@ -154,28 +155,28 @@ export default function VideoDetailModal({ video, onClose }: Props) {
               <div className="space-y-4">
                 <div>
                   <p className="section-label mb-2">Counselor</p>
-                  <p className="text-white text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{(video.counselor as any)?.full_name || '—'}</p>
+                  <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{(video.counselor as any)?.full_name || '—'}</p>
                 </div>
                 <div>
                   <p className="section-label mb-2">Category</p>
-                  <p className="text-white text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{video.category}</p>
+                  <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{video.category}</p>
                 </div>
                 {video.date_recorded && (
                   <div>
                     <p className="section-label mb-2">Date Recorded</p>
-                    <p className="text-white text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{formatDate(video.date_recorded)}</p>
+                    <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{formatDate(video.date_recorded)}</p>
                   </div>
                 )}
                 {video.description && (
                   <div>
                     <p className="section-label mb-2">Description</p>
-                    <p className="text-white/70 text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{video.description}</p>
+                    <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{video.description}</p>
                   </div>
                 )}
                 {video.notes_for_editor && (
                   <div>
                     <p className="section-label mb-2">Notes for Editor</p>
-                    <div className="p-3 rounded-lg text-sm text-white/70" style={{ background: 'rgba(0,162,207,0.08)', border: '1px solid rgba(0,162,207,0.2)', fontFamily: 'Poppins', fontWeight: 500 }}>
+                    <div className="p-3 rounded-lg text-sm" style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', fontFamily: 'Poppins', fontWeight: 500, color: '#1E40AF' }}>
                       {video.notes_for_editor}
                     </div>
                   </div>
@@ -213,7 +214,7 @@ export default function VideoDetailModal({ video, onClose }: Props) {
                       </a>
                     </div>
                   ) : (
-                    <p className="text-white/40 text-xs" style={{ fontFamily: 'Poppins' }}>Not uploaded yet</p>
+                    <p className="text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Not uploaded yet</p>
                   )}
                 </div>
 
@@ -238,30 +239,30 @@ export default function VideoDetailModal({ video, onClose }: Props) {
           {tab === 'Activity' && (
             <div className="space-y-2">
               {activityLog.length === 0 ? (
-                <p className="text-white/40 text-sm text-center py-8" style={{ fontFamily: 'Poppins' }}>No activity yet</p>
+                <p className="text-sm text-center py-8" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No activity yet</p>
               ) : activityLog.map(entry => (
                 <div
                   key={entry.id}
                   className="flex gap-3 p-3 rounded-lg"
                   style={{
                     background: entry.from_status === 'Revision Requested' || entry.to_status === 'Revision Requested'
-                      ? 'rgba(239,68,68,0.08)' : 'rgba(0,162,207,0.04)',
-                    borderLeft: `3px solid ${entry.from_status === 'Revision Requested' || entry.to_status === 'Revision Requested' ? '#EF4444' : 'rgba(0,162,207,0.2)'}`,
+                      ? '#FFF1F2' : '#F8FAFC',
+                    borderLeft: `3px solid ${entry.from_status === 'Revision Requested' || entry.to_status === 'Revision Requested' ? '#EF4444' : '#E2E8F0'}`,
                   }}
                 >
                   <div className="flex-1">
-                    <p className="text-white text-sm" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+                    <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>
                       {(entry.user as any)?.full_name || 'System'}
-                      <span className="text-white/50 font-normal ml-2">{entry.action}</span>
+                      <span style={{ color: '#475569', fontWeight: 400 }} className="ml-2">{entry.action}</span>
                     </p>
                     {entry.from_status && entry.to_status && (
-                      <p className="text-white/50 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>
+                      <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#64748B' }}>
                         {entry.from_status} → {entry.to_status}
                       </p>
                     )}
-                    {entry.notes && <p className="text-white/60 text-xs mt-1" style={{ fontFamily: 'Poppins' }}>{entry.notes}</p>}
+                    {entry.notes && <p className="text-xs mt-1" style={{ fontFamily: 'Poppins', color: '#475569' }}>{entry.notes}</p>}
                   </div>
-                  <p className="text-white/30 text-xs flex-shrink-0" style={{ fontFamily: 'Poppins' }}>{timeAgo(entry.created_at)}</p>
+                  <p className="text-xs flex-shrink-0" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{timeAgo(entry.created_at)}</p>
                 </div>
               ))}
             </div>
@@ -271,27 +272,27 @@ export default function VideoDetailModal({ video, onClose }: Props) {
             <div className="flex flex-col h-full" style={{ minHeight: 300 }}>
               <div className="flex-1 space-y-3 mb-4">
                 {visibleComments.length === 0 ? (
-                  <p className="text-white/40 text-sm text-center py-8" style={{ fontFamily: 'Poppins' }}>No comments yet</p>
+                  <p className="text-sm text-center py-8" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No comments yet</p>
                 ) : visibleComments.map(c => (
                   <div key={c.id} className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: roleColor[(c.user as any)?.role] || '#6B7280' }}>
+                    <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: roleColor[(c.user as any)?.role] || '#E2E8F0' }}>
                       <span style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: 11, color: '#fff' }}>
                         {(c.user as any)?.full_name?.charAt(0) || '?'}
                       </span>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-white text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{(c.user as any)?.full_name}</span>
-                        {c.is_internal && <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: 'rgba(245,158,11,0.2)', color: '#F59E0B', fontFamily: 'Poppins', fontWeight: 600 }}>Internal</span>}
-                        <span className="text-white/30 text-xs" style={{ fontFamily: 'Poppins' }}>{timeAgo(c.created_at)}</span>
+                        <span className="text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{(c.user as any)?.full_name}</span>
+                        {c.is_internal && <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: '#FEF3C7', color: '#B45309', fontFamily: 'Poppins', fontWeight: 600 }}>Internal</span>}
+                        <span className="text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{timeAgo(c.created_at)}</span>
                       </div>
-                      <p className="text-white/80 text-sm mt-0.5" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{c.body}</p>
+                      <p className="text-sm mt-0.5" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{c.body}</p>
                     </div>
                   </div>
                 ))}
               </div>
               {profile?.role !== 'ceo' && (
-                <div className="border-t border-[rgba(0,162,207,0.15)] pt-4">
+                <div className="pt-4" style={{ borderTop: '1px solid #E2E8F0' }}>
                   <textarea
                     className="cd-textarea mb-2" rows={2} placeholder="Write a comment..."
                     value={newComment} onChange={e => setNewComment(e.target.value)}
@@ -301,12 +302,12 @@ export default function VideoDetailModal({ video, onClose }: Props) {
                       <label className="flex items-center gap-2 cursor-pointer">
                         <div
                           className="w-8 h-5 rounded-full relative"
-                          style={{ background: isInternal ? '#F59E0B' : 'rgba(255,255,255,0.15)' }}
+                          style={{ background: isInternal ? '#F59E0B' : '#E2E8F0' }}
                           onClick={() => setIsInternal(!isInternal)}
                         >
-                          <div className="w-3 h-3 bg-white rounded-full absolute top-1 transition-all" style={{ left: isInternal ? 18 : 4 }} />
+                          <div className="w-3 h-3 bg-white rounded-full absolute top-1 transition-all shadow-sm" style={{ left: isInternal ? 18 : 4 }} />
                         </div>
-                        <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: 'rgba(245,248,250,0.6)' }}>Internal note</span>
+                        <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#475569' }}>Internal note</span>
                       </label>
                     )}
                     <button
@@ -331,16 +332,20 @@ export default function VideoDetailModal({ video, onClose }: Props) {
               ].map(({ format, platforms, duration }) => {
                 const plan = repurpose.find(r => r.format_type === format)
                 const status = plan?.status || 'Not Started'
-                const statusColor = status === 'Done' ? '#10B981' : status === 'In Progress' ? '#F59E0B' : '#6B7280'
+                const statusStyle = status === 'Done'
+                  ? { bg: '#D1FAE5', color: '#065F46' }
+                  : status === 'In Progress'
+                    ? { bg: '#FEF3C7', color: '#B45309' }
+                    : { bg: '#F1F5F9', color: '#64748B' }
 
                 return (
-                  <div key={format} className="p-4 rounded-xl" style={{ background: 'rgba(0,162,207,0.05)', border: '1px solid rgba(0,162,207,0.15)' }}>
+                  <div key={format} className="p-4 rounded-xl" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <p className="text-white font-semibold text-sm" style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>{format}</p>
-                        <p className="text-white/50 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>{platforms} · {duration}</p>
+                        <p className="font-semibold text-sm" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{format}</p>
+                        <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{platforms} · {duration}</p>
                       </div>
-                      <span style={{ background: statusColor, color: '#fff', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '3px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
+                      <span style={{ background: statusStyle.bg, color: statusStyle.color, fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '3px 8px', borderRadius: 4, textTransform: 'uppercase' }}>
                         {status}
                       </span>
                     </div>
@@ -351,8 +356,11 @@ export default function VideoDetailModal({ video, onClose }: Props) {
                           onClick={() => updateRepurposeStatus(format, s)}
                           className="text-xs py-1.5 px-3 rounded-lg transition-colors"
                           style={{
-                            background: status === s ? '#00A2CF' : 'rgba(255,255,255,0.08)',
-                            color: '#fff', fontFamily: 'Poppins', fontWeight: 600, border: 'none', cursor: 'pointer',
+                            background: status === s ? '#0284C7' : '#FFFFFF',
+                            color: status === s ? '#fff' : '#475569',
+                            fontFamily: 'Poppins', fontWeight: 600,
+                            border: status === s ? 'none' : '1px solid #E2E8F0',
+                            cursor: 'pointer',
                           }}
                         >
                           {s}

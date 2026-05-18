@@ -26,10 +26,10 @@ export default function CounselorDashboard() {
   const revisionVideos = videos.filter(v => v.status === 'Revision Requested')
 
   const kpis = [
-    { label: 'Total Uploaded', value: totalUploaded },
-    { label: 'In Editing', value: inEditing },
-    { label: 'Completed', value: completed },
-    { label: 'Avg Turnaround', value: `${avgTurnaround}d` },
+    { label: 'Total Uploaded', value: totalUploaded, color: '#0284C7' },
+    { label: 'In Editing', value: inEditing, color: '#6366F1' },
+    { label: 'Completed', value: completed, color: '#10B981' },
+    { label: 'Avg Turnaround', value: `${avgTurnaround}d`, color: '#F59E0B' },
   ]
 
   return (
@@ -37,7 +37,7 @@ export default function CounselorDashboard() {
       <div className="max-w-4xl mx-auto fade-in">
         {/* Greeting */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-white" style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 28 }}>
+          <h1 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 28, color: '#0F172A' }}>
             {getGreeting()}, {profile?.full_name?.split(' ')[0]}!
           </h1>
           <button
@@ -49,25 +49,25 @@ export default function CounselorDashboard() {
         </div>
 
         {/* KPI cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 stagger-children">
           {kpis.map(kpi => (
-            <div key={kpi.label} className="cd-card p-4 text-center">
-              <p className="text-[#00A2CF] text-2xl font-bold mb-1" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>{kpi.value}</p>
-              <p className="text-white/50 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{kpi.label}</p>
+            <div key={kpi.label} className="stat-card p-4 text-center fade-in">
+              <p className="text-2xl font-bold mb-1" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: kpi.color }}>{kpi.value}</p>
+              <p className="text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{kpi.label}</p>
             </div>
           ))}
         </div>
 
         {/* Action required alerts */}
         {revisionVideos.map(video => (
-          <div key={video.id} className="mb-4 p-4 rounded-xl" style={{ background: 'rgba(245,158,11,0.08)', borderLeft: '4px solid #F59E0B', border: '1px solid rgba(245,158,11,0.2)' }}>
+          <div key={video.id} className="mb-4 p-4 rounded-xl" style={{ background: '#FFFBEB', borderLeft: '4px solid #F59E0B', border: '1px solid #FDE68A' }}>
             <div className="flex items-center gap-2 mb-2">
-              <AlertCircle size={16} className="text-amber-400" />
-              <p className="text-amber-400 text-xs font-semibold uppercase tracking-widest" style={{ fontFamily: 'Poppins', fontWeight: 600, letterSpacing: '0.08em' }}>Action Required</p>
+              <AlertCircle size={16} style={{ color: '#B45309' }} />
+              <p className="text-xs font-semibold uppercase tracking-widest" style={{ fontFamily: 'Poppins', fontWeight: 600, letterSpacing: '0.08em', color: '#B45309' }}>Action Required</p>
             </div>
-            <p className="text-white font-semibold text-sm mb-1" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{video.title}</p>
+            <p className="text-sm font-semibold mb-1" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{video.title}</p>
             {video.notes_for_editor && (
-              <p className="text-white/60 text-xs mb-3" style={{ fontFamily: 'Poppins' }}>{video.notes_for_editor}</p>
+              <p className="text-xs mb-3" style={{ fontFamily: 'Poppins', color: '#475569' }}>{video.notes_for_editor}</p>
             )}
             <button className="btn-primary text-xs py-2 px-4" onClick={() => setSelectedVideo(video)}>Submit Re-record</button>
           </div>
@@ -75,12 +75,12 @@ export default function CounselorDashboard() {
 
         {/* Recent videos */}
         <div>
-          <h2 className="text-white text-base mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>My Videos</h2>
+          <h2 className="text-base mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>My Videos</h2>
           {isLoading ? (
-            <div className="text-white/40 text-sm text-center py-8" style={{ fontFamily: 'Poppins' }}>Loading...</div>
+            <div className="text-sm text-center py-8" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Loading...</div>
           ) : videos.length === 0 ? (
             <div className="cd-card p-8 text-center">
-              <p className="text-white/40 text-sm" style={{ fontFamily: 'Poppins' }}>No videos yet. Upload your first video!</p>
+              <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No videos yet. Upload your first video!</p>
             </div>
           ) : (
             <div className="space-y-2">

@@ -83,15 +83,15 @@ export default function InProgress() {
               <div key={video.id} className="cd-card p-4" style={{ borderLeft: `4px solid ${stageColor(video.status)}` }}>
                 <div className="flex items-center gap-4">
                   <div className="flex-1 min-w-0 cursor-pointer" onClick={() => setDetailVideo(video)}>
-                    <p className="text-white font-bold text-sm truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>{video.title}</p>
-                    <p className="text-white/50 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>{(video.counselor as any)?.full_name} · {timeAgo(video.created_at)}</p>
+                    <p className="font-bold text-sm truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{video.title}</p>
+                    <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{(video.counselor as any)?.full_name} · {timeAgo(video.created_at)}</p>
                   </div>
                   <EditTimer
                     videoId={video.id}
                     onStop={minutes => setLogConfirm({ videoId: video.id, minutes })}
                   />
                   {video.actual_edit_time_minutes && (
-                    <span className="text-[#10B981] text-xs px-2 py-1 rounded-lg" style={{ background: 'rgba(16,185,129,0.15)', fontFamily: 'Poppins', fontWeight: 600 }}>
+                    <span className="text-xs px-2 py-1 rounded-lg" style={{ background: '#D1FAE5', color: '#065F46', fontFamily: 'Poppins', fontWeight: 600 }}>
                       Logged: {Math.floor(video.actual_edit_time_minutes / 60)}h {video.actual_edit_time_minutes % 60}m
                     </span>
                   )}
@@ -120,22 +120,22 @@ export default function InProgress() {
       {/* Mark complete modal */}
       {completeVideo && (
         <div className="modal-overlay" onClick={() => setCompleteVideo(null)}>
-          <div className="rounded-xl overflow-hidden w-full max-w-lg" style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }} onClick={e => e.stopPropagation()}>
-            <div className="px-6 py-4" style={{ background: '#006386' }}>
-              <h2 className="text-white text-lg" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Mark Editing Complete</h2>
-              <p className="text-white/60 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>{completeVideo.title}</p>
+          <div className="rounded-2xl overflow-hidden w-full max-w-lg scale-in" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }} onClick={e => e.stopPropagation()}>
+            <div className="px-6 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>Mark Editing Complete</h2>
+              <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{completeVideo.title}</p>
             </div>
             <div className="p-6 space-y-4">
               <div>
                 <label className="section-label mb-2 block">Upload Edited Video</label>
-                <div {...getRootProps()} className="rounded-xl border-2 border-dashed p-6 text-center cursor-pointer" style={{ borderColor: isDragActive ? '#00A2CF' : 'rgba(0,162,207,0.25)' }}>
+                <div {...getRootProps()} className="rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition-colors" style={{ borderColor: isDragActive ? '#0284C7' : '#E2E8F0', background: isDragActive ? '#EFF6FF' : '#F8FAFC' }}>
                   <input {...getInputProps()} />
                   {editedFile ? (
-                    <p className="text-[#00A2CF] text-sm font-semibold" style={{ fontFamily: 'Poppins' }}>{editedFile.name}</p>
+                    <p className="text-sm font-semibold" style={{ fontFamily: 'Poppins', color: '#0284C7' }}>{editedFile.name}</p>
                   ) : (
                     <div>
-                      <Upload size={24} className="mx-auto mb-2 text-white/20" />
-                      <p className="text-white/40 text-sm" style={{ fontFamily: 'Poppins' }}>Drop edited video here (optional)</p>
+                      <Upload size={24} className="mx-auto mb-2 text-slate-300" />
+                      <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Drop edited video here (optional)</p>
                     </div>
                   )}
                 </div>
@@ -144,7 +144,7 @@ export default function InProgress() {
                 <label className="section-label mb-2 block">Completion Notes</label>
                 <textarea className="cd-textarea" rows={3} placeholder="Any notes for the SMM..." value={completeNotes} onChange={e => setCompleteNotes(e.target.value)} />
               </div>
-              {uploading && <div className="h-2 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }}><div style={{ width: `${progress}%`, height: '100%', background: '#00A2CF', borderRadius: 9999 }} /></div>}
+              {uploading && <div className="h-2 rounded-full" style={{ background: '#E2E8F0' }}><div style={{ width: `${progress}%`, height: '100%', background: 'linear-gradient(90deg, #0284C7, #06B6D4)', borderRadius: 9999 }} /></div>}
             </div>
             <div className="flex justify-end gap-3 px-6 pb-6">
               <button className="btn-secondary" onClick={() => setCompleteVideo(null)}>Cancel</button>

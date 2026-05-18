@@ -45,7 +45,7 @@ function ScriptCard({ assignment, onRefresh }: { assignment: Assignment; onRefre
   const isOverdue = daysUntilDeadline !== null && daysUntilDeadline < 0
   const isNear = daysUntilDeadline !== null && daysUntilDeadline >= 0 && daysUntilDeadline < 3
 
-  const priorityColor = script.priority === 'Urgent' ? '#EF4444' : script.priority === 'Low' ? '#6B7280' : '#00A2CF'
+  const priorityColor = script.priority === 'Urgent' ? '#EF4444' : script.priority === 'Low' ? '#6B7280' : '#0284C7'
 
   async function updateStatus(status: AssignmentStatus) {
     await supabase.from('script_assignments').update({ status }).eq('id', assignment.id)
@@ -64,12 +64,12 @@ function ScriptCard({ assignment, onRefresh }: { assignment: Assignment; onRefre
     <div className="cd-card overflow-hidden" style={{ borderLeft: `4px solid ${priorityColor}` }}>
       <div className="p-4">
         <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className="text-white text-sm font-bold" style={{ fontFamily: 'Montserrat', fontWeight: 700 }}>{script.title}</h3>
+          <h3 className="text-sm font-bold" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{script.title}</h3>
           <div className="flex items-center gap-2 flex-shrink-0">
             {script.priority !== 'Normal' && (
               <span style={{ background: priorityColor, color: '#fff', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase' }}>{script.priority}</span>
             )}
-            <span style={{ background: 'rgba(0,162,207,0.2)', color: '#00A2CF', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>{script.category}</span>
+            <span style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>{script.category}</span>
           </div>
         </div>
 
@@ -81,27 +81,27 @@ function ScriptCard({ assignment, onRefresh }: { assignment: Assignment; onRefre
             ))}
           </div>
           {script.deadline && (
-            <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: isOverdue ? '#EF4444' : isNear ? '#F59E0B' : 'rgba(245,248,250,0.5)' }}>
+            <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: isOverdue ? '#EF4444' : isNear ? '#F59E0B' : '#94A3B8' }}>
               Due {formatDate(script.deadline)}{isOverdue ? ' (Overdue)' : ''}
             </span>
           )}
-          <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4, background: 'rgba(0,162,207,0.15)', color: '#00A2CF' }}>{assignment.status}</span>
+          <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4, background: '#EFF6FF', color: '#0284C7' }}>{assignment.status}</span>
         </div>
 
         {/* Recording notes */}
         {script.recording_notes && (
-          <div className="p-3 rounded-lg mb-3" style={{ background: 'rgba(245,158,11,0.08)', borderLeft: '3px solid rgba(245,158,11,0.5)' }}>
-            <p className="text-white/70 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{script.recording_notes}</p>
+          <div className="p-3 rounded-lg mb-3" style={{ background: '#FFFBEB', borderLeft: '3px solid #F59E0B' }}>
+            <p className="text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#92400E' }}>{script.recording_notes}</p>
           </div>
         )}
 
         {/* Expandable script body */}
         <div>
-          <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-1 text-white/40 hover:text-white/70 mb-2" style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12 }}>
+          <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-1 mb-2 transition-colors" style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#94A3B8' }}>
             {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />} Read Full Script
           </button>
           {expanded && (
-            <div className="p-3 rounded-lg text-white/70 text-xs" style={{ background: 'rgba(0,162,207,0.05)', border: '1px solid rgba(0,162,207,0.1)', fontFamily: 'Poppins', fontWeight: 500, whiteSpace: 'pre-wrap', maxHeight: 200, overflowY: 'auto' }}>
+            <div className="p-3 rounded-lg text-xs" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', fontFamily: 'Poppins', fontWeight: 500, color: '#475569', whiteSpace: 'pre-wrap', maxHeight: 200, overflowY: 'auto' }}>
               {script.body}
             </div>
           )}
@@ -119,7 +119,7 @@ function ScriptCard({ assignment, onRefresh }: { assignment: Assignment; onRefre
             <button className="btn-primary text-xs py-2 px-4" onClick={() => setShowSubmit(true)}><Film size={13} /> Submit Recording</button>
           )}
           {['Submitted', 'Done'].includes(assignment.status) && (
-            <span className="text-[#10B981] text-xs flex items-center gap-1" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>✓ Recording Submitted</span>
+            <span className="text-xs flex items-center gap-1" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#10B981' }}>✓ Recording Submitted</span>
           )}
         </div>
       </div>
@@ -171,17 +171,21 @@ function SubmitRecordingModal({ assignment, onClose, onDone }: { assignment: Ass
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="rounded-xl overflow-hidden w-full max-w-md" style={{ background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }} onClick={e => e.stopPropagation()}>
-        <div className="px-5 py-4" style={{ background: '#006386' }}>
-          <h3 className="text-white text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Submit Recording</h3>
+      <div className="scale-in rounded-xl overflow-hidden w-full max-w-md" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }} onClick={e => e.stopPropagation()}>
+        <div className="px-5 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+          <h3 className="text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Submit Recording</h3>
         </div>
         <div className="p-5 space-y-4">
-          <div {...getRootProps()} className="rounded-xl border-2 border-dashed p-6 text-center cursor-pointer" style={{ borderColor: isDragActive ? '#00A2CF' : 'rgba(0,162,207,0.25)' }}>
+          <div {...getRootProps()} className="rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition-colors" style={{ borderColor: isDragActive ? '#0284C7' : '#BFDBFE', background: isDragActive ? '#EFF6FF' : '#F8FAFC' }}>
             <input {...getInputProps()} />
-            {file ? <p className="text-[#00A2CF] text-sm font-semibold" style={{ fontFamily: 'Poppins' }}>{file.name}</p> : <p className="text-white/40 text-sm" style={{ fontFamily: 'Poppins' }}>Drop video here (MP4/MOV/AVI)</p>}
+            {file ? <p className="text-sm font-semibold" style={{ fontFamily: 'Poppins', color: '#0284C7' }}>{file.name}</p> : <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Drop video here (MP4/MOV/AVI)</p>}
           </div>
           <textarea className="cd-textarea" rows={2} placeholder="Notes for editor..." value={notes} onChange={e => setNotes(e.target.value)} />
-          {uploading && <div className="h-2 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }}><div style={{ width: `${progress}%`, height: '100%', background: '#00A2CF', borderRadius: 9999 }} /></div>}
+          {uploading && (
+            <div className="h-2 rounded-full" style={{ background: '#E2E8F0' }}>
+              <div style={{ width: `${progress}%`, height: '100%', background: 'linear-gradient(90deg, #0284C7, #06B6D4)', borderRadius: 9999, transition: 'width 0.3s ease' }} />
+            </div>
+          )}
         </div>
         <div className="flex justify-end gap-3 px-5 pb-5">
           <button className="btn-secondary" onClick={onClose}>Cancel</button>
@@ -216,13 +220,13 @@ export default function MyScripts() {
   return (
     <Layout title="My Scripts">
       <div className="max-w-3xl mx-auto fade-in">
-        <div className="flex gap-1 mb-5 p-1 rounded-xl w-fit" style={{ background: '#003D52' }}>
+        <div className="flex gap-1 mb-5 p-1 rounded-xl w-fit" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>
           {FILTERS.map(f => (
-            <button key={f} onClick={() => setFilter(f)} className="px-4 py-2 rounded-lg text-xs transition-all" style={{ background: filter === f ? '#00A2CF' : 'transparent', color: filter === f ? '#fff' : 'rgba(245,248,250,0.5)', fontFamily: 'Poppins', fontWeight: 600 }}>{f}</button>
+            <button key={f} onClick={() => setFilter(f)} className="px-4 py-2 rounded-lg text-xs transition-all" style={{ background: filter === f ? '#0284C7' : 'transparent', color: filter === f ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600 }}>{f}</button>
           ))}
         </div>
         {loading ? (
-          <div className="text-white/40 text-sm text-center py-12" style={{ fontFamily: 'Poppins' }}>Loading...</div>
+          <div className="text-sm text-center py-12" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Loading...</div>
         ) : filtered.length === 0 ? (
           <EmptyState icon={BookOpen} title="No scripts here" description="Scripts assigned to you will appear here" />
         ) : (

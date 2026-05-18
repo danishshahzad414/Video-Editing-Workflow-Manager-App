@@ -25,7 +25,7 @@ export default function EditorActivityLog() {
         <div className="cd-card overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr style={{ background: 'rgba(0,162,207,0.05)' }}>
+              <tr style={{ background: '#F8FAFC' }}>
                 {['User', 'Action', 'Video', 'From Status', 'To Status', 'Timestamp'].map(h => (
                   <th key={h} className="px-4 py-2.5 text-left section-label">{h}</th>
                 ))}
@@ -33,19 +33,19 @@ export default function EditorActivityLog() {
             </thead>
             <tbody>
               {filtered.length === 0 ? (
-                <tr><td colSpan={6} className="px-4 py-12 text-center text-white/30" style={{ fontFamily: 'Poppins' }}>No activity found</td></tr>
+                <tr><td colSpan={6} className="px-4 py-12 text-center" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No activity found</td></tr>
               ) : filtered.map((entry, i) => (
-                <tr key={entry.id} style={{ borderBottom: '1px solid rgba(0,162,207,0.06)', background: i % 2 === 0 ? 'transparent' : 'rgba(0,61,82,0.3)' }}>
-                  <td className="px-4 py-3 text-white text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{(entry.user as any)?.full_name || '—'}</td>
-                  <td className="px-4 py-3 text-white/70 text-xs" style={{ fontFamily: 'Poppins' }}>{entry.action}</td>
-                  <td className="px-4 py-3 text-white/60 text-xs max-w-xs truncate" style={{ fontFamily: 'Poppins' }}>{(entry.video as any)?.title || '—'}</td>
+                <tr key={entry.id} className="table-row-hover" style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
+                  <td className="px-4 py-3 text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{(entry.user as any)?.full_name || '—'}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{entry.action}</td>
+                  <td className="px-4 py-3 text-xs max-w-xs truncate" style={{ fontFamily: 'Poppins', color: '#475569' }}>{(entry.video as any)?.title || '—'}</td>
                   <td className="px-4 py-3">
                     {entry.from_status && <span className="text-[10px] px-2 py-0.5 rounded" style={{ background: stageColor(entry.from_status), color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>{entry.from_status}</span>}
                   </td>
                   <td className="px-4 py-3">
                     {entry.to_status && <span className="text-[10px] px-2 py-0.5 rounded" style={{ background: stageColor(entry.to_status), color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>{entry.to_status}</span>}
                   </td>
-                  <td className="px-4 py-3 text-white/40 text-xs" style={{ fontFamily: 'Poppins' }}>{formatDateTime(entry.created_at)}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{formatDateTime(entry.created_at)}</td>
                 </tr>
               ))}
             </tbody>

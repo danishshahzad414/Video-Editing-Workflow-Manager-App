@@ -11,7 +11,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
 
   if (compact) {
     return (
-      <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: 'rgba(245,248,250,0.5)' }}>
+      <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
         Step {currentIdx + 1} of {PIPELINE_STAGES.length}
       </span>
     )
@@ -23,7 +23,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
         const isDone = idx < currentIdx
         const isCurrent = idx === currentIdx
         const isUpcoming = idx > currentIdx
-        const color = isDone ? '#00A2CF' : isCurrent ? stageColor(stage) : '#374151'
+        const color = isDone ? '#0284C7' : isCurrent ? stageColor(stage) : '#E2E8F0'
 
         return (
           <div key={stage} className="flex items-start gap-3">
@@ -34,11 +34,11 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
               >
                 {isDone
                   ? <Check size={12} className="text-white" />
-                  : <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 9, color: isUpcoming ? 'rgba(255,255,255,0.4)' : '#fff' }}>{idx + 1}</span>
+                  : <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 9, color: isUpcoming ? '#94A3B8' : '#fff' }}>{idx + 1}</span>
                 }
               </div>
               {idx < PIPELINE_STAGES.length - 1 && (
-                <div className="w-0.5 h-6" style={{ background: idx < currentIdx ? '#00A2CF' : 'rgba(255,255,255,0.1)' }} />
+                <div className="w-0.5 h-6" style={{ background: idx < currentIdx ? '#0284C7' : '#E2E8F0' }} />
               )}
             </div>
             <div className="pb-5 pt-0.5">
@@ -46,7 +46,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
                 fontFamily: 'Poppins',
                 fontWeight: isCurrent ? 600 : 500,
                 fontSize: 12,
-                color: isUpcoming ? 'rgba(245,248,250,0.4)' : isCurrent ? stageColor(stage) : 'rgba(245,248,250,0.7)',
+                color: isUpcoming ? '#94A3B8' : isCurrent ? stageColor(stage) : '#475569',
               }}>
                 {stage}
                 {isCurrent && <span className="ml-2 inline-block w-2 h-2 rounded-full pulse-dot" style={{ background: stageColor(stage) }} />}

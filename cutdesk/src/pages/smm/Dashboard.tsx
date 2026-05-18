@@ -16,9 +16,9 @@ export default function SMMDashboard() {
   const scheduledThisWeek = allVideos.filter(v => v.status === 'Scheduled').length
 
   const kpis = [
-    { label: 'Ready to Publish', value: readyToPublish, color: '#00A2CF' },
+    { label: 'Ready to Publish', value: readyToPublish, color: '#0284C7' },
     { label: 'Scheduled This Week', value: scheduledThisWeek, color: '#6366F1' },
-    { label: 'Published This Month', value: publishedThisMonth, color: '#22C55E' },
+    { label: 'Published This Month', value: publishedThisMonth, color: '#10B981' },
     { label: 'Platforms Active', value: 5, color: '#F59E0B' },
   ]
 
@@ -28,19 +28,19 @@ export default function SMMDashboard() {
     <Layout title="SMM Dashboard">
       <div className="fade-in space-y-6">
         {/* KPIs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
           {kpis.map(k => (
-            <div key={k.label} className="cd-card p-4 text-center">
+            <div key={k.label} className="stat-card p-4 text-center fade-in">
               <p className="text-2xl font-bold mb-1" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: k.color }}>{k.value}</p>
-              <p className="text-white/50 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{k.label}</p>
+              <p className="text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{k.label}</p>
             </div>
           ))}
         </div>
 
         {/* Weekly calendar */}
         <div className="cd-card overflow-hidden">
-          <div className="px-5 py-3 border-b border-[rgba(0,162,207,0.15)]">
-            <h2 className="text-white text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Publishing Calendar — This Week</h2>
+          <div className="px-5 py-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
+            <h2 className="text-base" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Publishing Calendar — This Week</h2>
           </div>
           <div className="p-4 grid grid-cols-7 gap-2">
             {weekDays.map((day, i) => {
@@ -48,9 +48,9 @@ export default function SMMDashboard() {
               const dayVideos = allVideos.filter(v => v.status === 'Scheduled' && v.estimated_completion_date === dayStr)
               return (
                 <div key={i} className="min-h-24">
-                  <p className="text-white/50 text-xs mb-2 text-center" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+                  <p className="text-xs mb-2 text-center" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#475569' }}>
                     {DAYS[i]}<br />
-                    <span className="text-white/30">{format(day, 'MM/dd')}</span>
+                    <span style={{ color: '#94A3B8' }}>{format(day, 'MM/dd')}</span>
                   </p>
                   {dayVideos.map(v => (
                     <div key={v.id} className="px-2 py-1 rounded text-[10px] mb-1 truncate" style={{ background: stageColor(v.status), color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>

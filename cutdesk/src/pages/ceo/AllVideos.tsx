@@ -30,19 +30,19 @@ export default function CEOAllVideos() {
           <input className="cd-input" style={{ height: 36, fontSize: 13 }} placeholder="Search videos..." value={search} onChange={e => setSearch(e.target.value)} />
           <div className="flex gap-1.5 flex-wrap">
             {PIPELINE_STAGES.map(s => (
-              <button key={s} onClick={() => toggleStatus(s)} className="text-xs px-3 py-1 rounded-full transition-all" style={{ background: statusFilter.includes(s) ? stageColor(s) : 'rgba(255,255,255,0.08)', color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>{s}</button>
+              <button key={s} onClick={() => toggleStatus(s)} className="text-xs px-3 py-1 rounded-full transition-all" style={{ background: statusFilter.includes(s) ? stageColor(s) : '#F1F5F9', color: statusFilter.includes(s) ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #E2E8F0' }}>{s}</button>
             ))}
           </div>
         </div>
 
         <div className="cd-card overflow-hidden">
-          <div className="px-5 py-3 border-b border-[rgba(0,162,207,0.15)]">
-            <p className="text-white/50 text-xs" style={{ fontFamily: 'Poppins' }}>{filtered.length} videos (read-only)</p>
+          <div className="px-5 py-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
+            <p className="text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{filtered.length} videos (read-only)</p>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[700px]">
               <thead>
-                <tr style={{ background: 'rgba(0,162,207,0.05)' }}>
+                <tr style={{ background: '#F8FAFC' }}>
                   {['Title', 'Counselor', 'Category', 'Status', 'Uploaded'].map(h => (
                     <th key={h} className="px-4 py-2.5 text-left section-label">{h}</th>
                   ))}
@@ -50,14 +50,14 @@ export default function CEOAllVideos() {
               </thead>
               <tbody>
                 {filtered.length === 0 ? (
-                  <tr><td colSpan={5} className="px-4 py-12 text-center text-white/30" style={{ fontFamily: 'Poppins' }}>No videos match</td></tr>
+                  <tr><td colSpan={5} className="px-4 py-12 text-center" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No videos match</td></tr>
                 ) : filtered.map((v, i) => (
-                  <tr key={v.id} onClick={() => setSelected(v)} className="cursor-pointer hover:bg-[rgba(0,162,207,0.04)]" style={{ borderBottom: '1px solid rgba(0,162,207,0.06)', background: i % 2 === 0 ? 'transparent' : 'rgba(0,61,82,0.3)' }}>
-                    <td className="px-4 py-3 text-white text-sm max-w-xs truncate" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>{v.title}</td>
-                    <td className="px-4 py-3 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{(v.counselor as any)?.full_name}</td>
-                    <td className="px-4 py-3 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{v.category}</td>
+                  <tr key={v.id} onClick={() => setSelected(v)} className="cursor-pointer table-row-hover" style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
+                    <td className="px-4 py-3 text-sm max-w-xs truncate" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{v.title}</td>
+                    <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{(v.counselor as any)?.full_name}</td>
+                    <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{v.category}</td>
                     <td className="px-4 py-3"><StatusBadge status={v.status} size="sm" /></td>
-                    <td className="px-4 py-3 text-white/50 text-xs" style={{ fontFamily: 'Poppins' }}>{formatDate(v.created_at)}</td>
+                    <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{formatDate(v.created_at)}</td>
                   </tr>
                 ))}
               </tbody>

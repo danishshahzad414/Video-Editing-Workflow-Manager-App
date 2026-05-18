@@ -164,6 +164,33 @@ export const MOCK_PERFORMANCE = [
   { id: 'p-005', video_id: 'v-010', platform: 'LinkedIn', published_date: '2024-10-30', views: 1240, likes: 89, comments: 14, notes: null, updated_at: '2024-11-05T10:00:00Z', video: { title: 'Financial Planning for Study Abroad' } },
 ]
 
+// ─── Script & Video Assignment Types ──────────────────────────────────────────
+export interface ScriptAssignment {
+  id: string; script_id: string; assigned_to: string; assigned_by: string
+  status: 'Assigned' | 'Acknowledged' | 'Recording' | 'Submitted' | 'Done'
+  assigned_at: string; deadline: string | null
+  counselor?: { full_name: string; email: string }
+}
+
+export interface VideoAssignment {
+  id: string; video_id: string; assigned_to: string; assigned_by: string
+  status: 'Assigned' | 'In Progress' | 'Complete'
+  assigned_at: string; deadline: string | null
+  notes: string | null
+  editor?: { full_name: string; email: string }
+}
+
+export const MOCK_SCRIPT_ASSIGNMENTS: ScriptAssignment[] = [
+  { id: 'sa-001', script_id: 's-001', assigned_to: 'c1-001', assigned_by: 'smm-001', status: 'Assigned', assigned_at: new Date(Date.now() - 1000*60*60*24).toISOString(), deadline: new Date(Date.now() + 1000*60*60*24*3).toISOString().split('T')[0], counselor: { full_name: 'Sarah Chen', email: 'counselor1@themigration.com' } },
+  { id: 'sa-002', script_id: 's-001', assigned_to: 'c2-001', assigned_by: 'smm-001', status: 'Recording', assigned_at: new Date(Date.now() - 1000*60*60*36).toISOString(), deadline: new Date(Date.now() + 1000*60*60*24*3).toISOString().split('T')[0], counselor: { full_name: 'David Kim', email: 'counselor2@themigration.com' } },
+  { id: 'sa-003', script_id: 's-003', assigned_to: 'c3-001', assigned_by: 'smm-001', status: 'Submitted', assigned_at: new Date(Date.now() - 1000*60*60*72).toISOString(), deadline: new Date(Date.now() + 1000*60*60*24*7).toISOString().split('T')[0], counselor: { full_name: 'Emma Roberts', email: 'counselor3@themigration.com' } },
+]
+
+export const MOCK_VIDEO_ASSIGNMENTS: VideoAssignment[] = [
+  { id: 'va-001', video_id: 'v-003', assigned_to: 'editor-001', assigned_by: 'smm-001', status: 'In Progress', assigned_at: new Date(Date.now() - 1000*60*60*5).toISOString(), deadline: new Date(Date.now() + 1000*60*60*24*2).toISOString().split('T')[0], notes: 'Focus on colour grade and captions', editor: { full_name: 'James Wilson', email: 'editor@themigration.com' } },
+  { id: 'va-002', video_id: 'v-008', assigned_to: 'editor-001', assigned_by: 'smm-001', status: 'Assigned', assigned_at: new Date(Date.now() - 1000*60*60*1).toISOString(), deadline: new Date(Date.now() + 1000*60*60*24*4).toISOString().split('T')[0], notes: null, editor: { full_name: 'James Wilson', email: 'editor@themigration.com' } },
+]
+
 // ─── Mock Scripts ──────────────────────────────────────────────────────────────
 export const MOCK_SCRIPTS = [
   { id: 's-001', title: 'Why Study in Australia in 2025?', category: 'Study Abroad', target_platforms: ['YouTube', 'Instagram'], target_duration: '5min', body: 'Australia continues to be one of the world\'s top study destinations. In this video, we explore why 2025 is the best time to make your move...\n\n[HOOK: Start with a statistic about international students]\n\n1. World-class universities\n2. Post-study work rights\n3. Multicultural environment\n4. Pathway to PR\n\n[OUTRO: Call to action - book a consultation]', recording_notes: 'Speak confidently and directly to camera. Use the whiteboard for the list items. Good lighting essential.', priority: 'Urgent', deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toISOString().split('T')[0], status: 'Assigned', created_by: 'smm-001', created_at: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString() },

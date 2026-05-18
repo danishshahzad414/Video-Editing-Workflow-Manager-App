@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0f0f13;
+  color: #e2e2f0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a22;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a38;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a50;
+}
+
+.timeline-grid {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 59px,
+    #2a2a38 59px,
+    #2a2a38 60px
+  );
+}
+
+.keyframe-diamond {
+  width: 10px;
+  height: 10px;
+  background: #6366f1;
+  transform: rotate(45deg);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.keyframe-diamond:hover {
+  background: #a855f7;
+}
+
+.panel-label {
+  @apply text-xs font-medium text-studio-muted uppercase tracking-wider mb-1;
+}
+
+.btn {
+  @apply px-3 py-1.5 rounded text-sm font-medium transition-colors cursor-pointer;
+}
+.btn-primary {
+  @apply bg-studio-accent text-white hover:bg-indigo-500;
+}
+.btn-ghost {
+  @apply text-studio-muted hover:text-studio-text hover:bg-studio-border;
+}
+.btn-danger {
+  @apply text-red-400 hover:text-red-300 hover:bg-red-900/20;
+}
+
+.input {
+  @apply bg-studio-bg border border-studio-border rounded px-2 py-1 text-sm text-studio-text
+    focus:outline-none focus:border-studio-accent w-full;
+}
+
+.canvas-layer {
+  position: absolute;
+  transform-origin: center center;
+  cursor: move;
+  user-select: none;
+}
+
+.canvas-layer.selected {
+  outline: 2px solid #6366f1;
+  outline-offset: 1px;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #6366f1;
+  border: 1px solid #fff;
+  border-radius: 1px;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 2s linear infinite; }

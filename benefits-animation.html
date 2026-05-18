@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefits Animation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #050010;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    canvas#bgCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .scene {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .top-cards {
+      display: flex;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 18px 22px;
+      min-height: 190px;
+      width: 210px;
+      flex-shrink: 0;
+
+      background: linear-gradient(
+        145deg,
+        rgba(110, 30, 200, 0.38) 0%,
+        rgba(55, 5, 115, 0.60) 55%,
+        rgba(90, 15, 170, 0.40) 100%
+      );
+      border: 1px solid rgba(190, 110, 255, 0.38);
+      backdrop-filter: blur(24px);
+      box-shadow:
+        0 0 25px rgba(160, 0, 255, 0.28),
+        0 0 55px rgba(120, 0, 210, 0.12),
+        inset 0 1.5px 0 rgba(220, 170, 255, 0.22);
+
+      transform: translateX(-120vw);
+      opacity: 0;
+      will-change: transform, opacity, width;
+    }
+
+    /* top-edge shimmer */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(210, 160, 255, 0.10) 50%,
+        transparent 70%
+      );
+      animation: shimmer 3.5s infinite;
+    }
+    @keyframes shimmer {
+      0%   { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    /* inner highlight */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(to bottom, rgba(200,150,255,0.07), transparent);
+      pointer-events: none;
+    }
+
+    /* bottom glow pool */
+    .card-glow {
+      position: absolute;
+      bottom: -20px; left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 28px;
+      background: radial-gradient(ellipse, rgba(160,0,255,0.35), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    /* ── ICON ── */
+    .card-icon-wrap {
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .icon-3d {
+      width: 64px;
+      height: 64px;
+      display: block;
+      filter:
+        drop-shadow(0 0 10px rgba(200, 110, 255, 0.9))
+        drop-shadow(0 6px 12px rgba(0,0,0,0.55));
+      transform: perspective(280px) rotateX(14deg) rotateY(-6deg);
+      animation: float3d 3.2s ease-in-out infinite;
+    }
+
+    @keyframes float3d {
+      0%,100% { transform: perspective(280px) rotateX(14deg) rotateY(-6deg) translateY(0px); }
+      50%      { transform: perspective(280px) rotateX(14deg) rotateY(-6deg) translateY(-5px); }
+    }
+
+    .card-title {
+      color: #eddcff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.45;
+      text-shadow: 0 0 18px rgba(200, 110, 255, 0.65);
+      letter-spacing: 0.02em;
+      white-space: pre-line;
+    }
+
+    /* ── BOTTOM CARD ── */
+    .bottom-card {
+      width: 510px;
+      min-height: 88px;
+      flex-direction: row;
+      gap: 18px;
+      padding: 22px 34px;
+      background: linear-gradient(
+        145deg,
+        rgba(130, 50, 210, 0.48) 0%,
+        rgba(75, 5, 150, 0.68) 55%,
+        rgba(110, 25, 195, 0.48) 100%
+      );
+      border-color: rgba(210, 130, 255, 0.52);
+      box-shadow:
+        0 0 35px rgba(190, 10, 255, 0.38),
+        0 0 70px rgba(150, 0, 225, 0.18),
+        inset 0 1.5px 0 rgba(230, 185, 255, 0.28);
+    }
+
+    .bottom-card .icon-3d {
+      width: 46px;
+      height: 46px;
+    }
+
+    .bottom-card .card-title {
+      font-size: 17px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    /* ── SVG LINES OVERLAY ── */
+    #linesSvg {
+      position: fixed;
+      inset: 0;
+      width: 100%; height: 100%;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* ── ORB ── */
+    #orb {
+      position: fixed;
+      z-index: 6;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #orb-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    #orb-label {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+      pointer-events: none;
+    }
+
+    /* ── CURSOR ── */
+    #cursorEl {
+      position: fixed;
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      width: 34px;
+      height: 42px;
+      filter: drop-shadow(0 0 6px rgba(200,100,255,0.7));
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="scene">
+  <div class="top-cards" id="topCards"></div>
+  <div id="bottomCardWrap"></div>
+</div>
+
+<svg id="linesSvg"></svg>
+<div id="orb">
+  <div id="orb-inner"></div>
+  <div id="orb-label">APPLY<br>NOW</div>
+</div>
+<div id="cursorEl">
+  <svg viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 3L3 31L11 23L16 37L21 35L16 21L25 21L3 3Z"
+      fill="white" stroke="rgba(190,80,255,0.95)" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════
+//  BACKGROUND — particles + nebula
+// ════════════════════════════════════════════════════
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const PARTICLES = Array.from({ length: 90 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 1.4 + 0.3,
+  vx: (Math.random() - 0.5) * 0.25,
+  vy: (Math.random() - 0.5) * 0.25,
+  a: Math.random() * 0.55 + 0.1,
+  hue: 255 + Math.random() * 70,
+}));
+
+let bgT = 0;
+function drawBackground() {
+  bgT += 0.003;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // deep gradient
+  const g = ctx.createRadialGradient(
+    canvas.width / 2, canvas.height * 0.45, 0,
+    canvas.width / 2, canvas.height * 0.45, canvas.width * 0.85
+  );
+  g.addColorStop(0,   '#1c0040');
+  g.addColorStop(0.4, '#100028');
+  g.addColorStop(1,   '#050010');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // nebula blobs
+  const blobs = [
+    { x: canvas.width * 0.2,  y: canvas.height * 0.3,  r: 260, h: 270, a: 0.055 },
+    { x: canvas.width * 0.75, y: canvas.height * 0.65, r: 310, h: 285, a: 0.045 },
+    { x: canvas.width * 0.5,  y: canvas.height * 0.5,  r: 200, h: 260, a: 0.06  },
+  ];
+  blobs.forEach(b => {
+    const ng = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+    ng.addColorStop(0,   `hsla(${b.h}, 90%, 45%, ${b.a})`);
+    ng.addColorStop(0.6, `hsla(${b.h}, 70%, 30%, ${b.a * 0.4})`);
+    ng.addColorStop(1,   'transparent');
+    ctx.fillStyle = ng;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  });
+
+  // particles
+  PARTICLES.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = canvas.width;
+    if (p.x > canvas.width)  p.x = 0;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.y > canvas.height) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${p.hue}, 80%, 72%, ${p.a})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(drawBackground);
+}
+drawBackground();
+
+// ════════════════════════════════════════════════════
+//  CARD DATA
+// ════════════════════════════════════════════════════
+const TOP_CARDS = [
+  {
+    title: 'Premium\nGlobal Salary',
+    svg: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg0" cx="40%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ffe080"/>
+          <stop offset="50%" stop-color="#f0a800"/>
+          <stop offset="100%" stop-color="#7a4800"/>
+        </radialGradient>
+        <filter id="cf0"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#f0a80080"/></filter>
+      </defs>
+      <rect x="8" y="18" width="48" height="30" rx="6" fill="url(#cg0)" filter="url(#cf0)"/>
+      <rect x="8" y="18" width="48" height="8" rx="6" fill="#ffd040" opacity="0.5"/>
+      <circle cx="32" cy="33" r="8" fill="#fff8e0" opacity="0.9"/>
+      <text x="32" y="37.5" text-anchor="middle" font-size="10" font-weight="900" fill="#8a5000" font-family="Montserrat,sans-serif">$</text>
+      <rect x="4" y="22" width="48" height="30" rx="6" fill="none" stroke="rgba(255,220,80,0.35)" stroke-width="1"/>
+    </svg>`
+  },
+  {
+    title: 'World-Class\nHealthcare',
+    svg: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg1" cx="40%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#ff80b0"/>
+          <stop offset="50%" stop-color="#e0186a"/>
+          <stop offset="100%" stop-color="#700030"/>
+        </radialGradient>
+        <filter id="cf1"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#e0186a80"/></filter>
+      </defs>
+      <path d="M32 52C32 52 10 38 10 24a12 12 0 0 1 22-6.7A12 12 0 0 1 54 24c0 14-22 28-22 28z" fill="url(#cg1)" filter="url(#cf1)"/>
+      <path d="M32 52C32 52 10 38 10 24a12 12 0 0 1 22-6.7" fill="rgba(255,160,180,0.25)"/>
+      <rect x="28" y="20" width="8" height="16" rx="2" fill="white" opacity="0.9"/>
+      <rect x="24" y="24" width="16" height="8" rx="2" fill="white" opacity="0.9"/>
+    </svg>`
+  },
+  {
+    title: 'Australian PR',
+    svg: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg2" cx="40%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#80b0ff"/>
+          <stop offset="50%" stop-color="#1a5adc"/>
+          <stop offset="100%" stop-color="#0a2870"/>
+        </radialGradient>
+        <filter id="cf2"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1a5adc80"/></filter>
+      </defs>
+      <rect x="10" y="12" width="44" height="34" rx="5" fill="url(#cg2)" filter="url(#cf2)"/>
+      <rect x="10" y="12" width="44" height="10" rx="5" fill="rgba(120,170,255,0.3)"/>
+      <!-- passport lines -->
+      <rect x="18" y="30" width="28" height="3" rx="1.5" fill="rgba(255,255,255,0.55)"/>
+      <rect x="18" y="36" width="20" height="3" rx="1.5" fill="rgba(255,255,255,0.35)"/>
+      <!-- star -->
+      <text x="32" y="24" text-anchor="middle" font-size="11" fill="rgba(255,220,80,0.9)" font-family="serif">★</text>
+      <!-- bottom bar -->
+      <rect x="10" y="40" width="44" height="6" rx="0" fill="rgba(0,0,50,0.25)"/>
+      <rect x="14" y="42" width="36" height="2" rx="1" fill="rgba(150,200,255,0.4)"/>
+    </svg>`
+  },
+  {
+    title: 'Education\nBenefits',
+    svg: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg3" cx="40%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#a0e8ff"/>
+          <stop offset="50%" stop-color="#0a90d0"/>
+          <stop offset="100%" stop-color="#014870"/>
+        </radialGradient>
+        <filter id="cf3"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0a90d080"/></filter>
+      </defs>
+      <!-- mortarboard cap -->
+      <polygon points="32,10 56,22 32,34 8,22" fill="url(#cg3)" filter="url(#cf3)"/>
+      <polygon points="32,10 56,22 32,34 8,22" fill="rgba(160,230,255,0.2)"/>
+      <rect x="46" y="22" width="3" height="14" rx="1.5" fill="#0a90d0"/>
+      <circle cx="47.5" cy="38" r="4" fill="#0a90d0" stroke="rgba(160,230,255,0.5)" stroke-width="1"/>
+      <!-- book spine -->
+      <rect x="22" y="34" width="20" height="16" rx="2" fill="#0a70b0" filter="url(#cf3)"/>
+      <rect x="31" y="34" width="2" height="16" fill="rgba(160,230,255,0.3)"/>
+    </svg>`
+  },
+];
+
+const BOTTOM_CARD = {
+  title: 'For Your Entire Family',
+  svg: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="cg4" cx="40%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#e080ff"/>
+        <stop offset="50%" stop-color="#9010d0"/>
+        <stop offset="100%" stop-color="#440060"/>
+      </radialGradient>
+      <filter id="cf4"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#9010d080"/></filter>
+    </defs>
+    <!-- parent left -->
+    <circle cx="20" cy="18" r="7" fill="url(#cg4)" filter="url(#cf4)"/>
+    <path d="M10 44 Q10 32 20 32 Q30 32 30 44" fill="url(#cg4)" filter="url(#cf4)"/>
+    <!-- parent right -->
+    <circle cx="44" cy="18" r="7" fill="url(#cg4)" filter="url(#cf4)"/>
+    <path d="M34 44 Q34 32 44 32 Q54 32 54 44" fill="url(#cg4)" filter="url(#cf4)"/>
+    <!-- child -->
+    <circle cx="32" cy="24" r="5" fill="rgba(230,160,255,0.95)" filter="url(#cf4)"/>
+    <path d="M24 44 Q24 36 32 36 Q40 36 40 44" fill="rgba(200,100,255,0.8)" filter="url(#cf4)"/>
+    <!-- heart -->
+    <path d="M29 10 Q29 7 32 9 Q35 7 35 10 Q35 13 32 15 Q29 13 29 10Z" fill="rgba(255,200,255,0.9)"/>
+  </svg>`
+};
+
+// ════════════════════════════════════════════════════
+//  BUILD DOM
+// ════════════════════════════════════════════════════
+function makeCard(data, isBottom = false) {
+  const card = document.createElement('div');
+  card.className = isBottom ? 'card bottom-card' : 'card';
+  card.innerHTML = `
+    <div class="card-icon-wrap">
+      <div class="icon-3d">${data.svg}</div>
+    </div>
+    <div class="card-title">${data.title}</div>
+    <div class="card-glow"></div>
+  `;
+  if (!isBottom) card.style.width = '210px';
+  return card;
+}
+
+const topCardsEl   = document.getElementById('topCards');
+const bottomWrapEl = document.getElementById('bottomCardWrap');
+
+const topCardEls = TOP_CARDS.map(d => {
+  const c = makeCard(d);
+  topCardsEl.appendChild(c);
+  return c;
+});
+
+const bottomCardEl = makeCard(BOTTOM_CARD, true);
+bottomCardEl.style.transform = 'translateX(-120vw)';
+bottomCardEl.style.opacity   = '0';
+bottomWrapEl.appendChild(bottomCardEl);
+
+const ALL_CARDS = [...topCardEls, bottomCardEl];
+
+// ════════════════════════════════════════════════════
+//  ANIMATION UTILITIES
+// ════════════════════════════════════════════════════
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+function tween(duration, fn, ease = easeOutCubic) {
+  return new Promise(resolve => {
+    const t0 = performance.now();
+    const tick = now => {
+      const raw = Math.min((now - t0) / duration, 1);
+      fn(ease(raw), raw);
+      if (raw < 1) requestAnimationFrame(tick);
+      else resolve();
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+function easeOutCubic(t)    { return 1 - Math.pow(1 - t, 3); }
+function easeInOutCubic(t)  { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+function easeOutBack(t) {
+  const c1 = 1.70158, c3 = c1 + 1;
+  return 1 + c3 * Math.pow(t-1, 3) + c1 * Math.pow(t-1, 2);
+}
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function getCenter(el) {
+  const r = el.getBoundingClientRect();
+  return { x: r.left + r.width/2, y: r.top + r.height/2 };
+}
+
+// ════════════════════════════════════════════════════
+//  PHASE 1 — cards slide in + compress
+// ════════════════════════════════════════════════════
+async function phase1() {
+  // width targets per stage (last card in each stage keeps full 210)
+  const stages = [
+    [210],
+    [180, 210],
+    [158, 158, 210],
+    [142, 142, 142, 210],
+  ];
+
+  for (let i = 0; i < topCardEls.length; i++) {
+    const card = topCardEls[i];
+
+    // slide in
+    await tween(680, p => {
+      card.style.transform = `translateX(${lerp(-120, 0, p)}vw)`;
+      card.style.opacity   = String(Math.min(p * 2.5, 1));
+    }, easeOutBack);
+
+    // compress previous visible cards
+    if (i < topCardEls.length - 1) {
+      const targets  = stages[i];
+      const visible  = topCardEls.slice(0, i + 1);
+      const fromW    = visible.map(c => parseFloat(c.style.width));
+
+      await tween(380, p => {
+        visible.forEach((c, j) => {
+          c.style.width = lerp(fromW[j], targets[j], p) + 'px';
+        });
+      }, easeInOutCubic);
+    }
+
+    await sleep(90);
+  }
+
+  // gently expand back to comfortable widths
+  const fromW = topCardEls.map(c => parseFloat(c.style.width));
+  await tween(520, p => {
+    topCardEls.forEach((c, j) => {
+      c.style.width = lerp(fromW[j], 168, p) + 'px';
+    });
+  }, easeOutBack);
+}
+
+// ════════════════════════════════════════════════════
+//  PHASE 2 — bottom card slides in
+// ════════════════════════════════════════════════════
+async function phase2() {
+  await tween(760, p => {
+    bottomCardEl.style.transform = `translateX(${lerp(-120, 0, p)}vw)`;
+    bottomCardEl.style.opacity   = String(Math.min(p * 2.2, 1));
+  }, easeOutBack);
+}
+
+// ════════════════════════════════════════════════════
+//  PHASE 3 — all cards fly up
+// ════════════════════════════════════════════════════
+async function phase3() {
+  const stagger = [0, 55, 110, 165, 80];
+  return Promise.all(ALL_CARDS.map((card, i) =>
+    sleep(stagger[i]).then(() =>
+      tween(950, p => {
+        card.style.transform = `translateY(${lerp(0, -115, p)}px)`;
+      }, easeInOutCubic)
+    )
+  ));
+}
+
+// ════════════════════════════════════════════════════
+//  PHASE 4 — draw lines to orb
+// ════════════════════════════════════════════════════
+async function phase4() {
+  const svg = document.getElementById('linesSvg');
+  const orb  = document.getElementById('orb');
+
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight * 0.84;
+  const orbR = 75;
+
+  // configure orb
+  orb.style.left   = cx + 'px';
+  orb.style.top    = cy + 'px';
+  orb.style.width  = orbR * 2 + 'px';
+  orb.style.height = orbR * 2 + 'px';
+  orb.style.background = `radial-gradient(circle at 38% 32%, #d070ff, #8800cc, #3a0060)`;
+  orb.style.boxShadow  = `
+    0 0 30px rgba(210, 80, 255, 0.85),
+    0 0 65px rgba(170, 0, 255, 0.55),
+    0 0 130px rgba(130, 0, 210, 0.30)
+  `;
+  orb.style.border = '1.5px solid rgba(220, 155, 255, 0.55)';
+
+  const inner = document.getElementById('orb-inner');
+  inner.style.background = `radial-gradient(circle at 42% 28%, rgba(255,255,255,0.28), transparent 58%)`;
+  inner.style.border = '1px solid rgba(255,210,255,0.2)';
+
+  // line colors
+  const COLORS = ['#c878ff','#a858ee','#b868ff','#9848dd','#de90ff'];
+
+  // build SVG lines with gradient defs
+  const lineEls = ALL_CARDS.map((_, i) => {
+    const gid  = `lg${i}`;
+    const def  = document.createElementNS('http://www.w3.org/2000/svg','defs');
+    const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+    grad.setAttribute('id', gid);
+    grad.setAttribute('gradientUnits','userSpaceOnUse');
+    grad.innerHTML = `
+      <stop offset="0%"   stop-color="${COLORS[i]}" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff80ff"       stop-opacity="0.35"/>
+    `;
+    def.appendChild(grad);
+    svg.appendChild(def);
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('stroke', `url(#${gid})`);
+    path.setAttribute('stroke-width', '2.2');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke-linecap', 'round');
+    path.style.filter = `drop-shadow(0 0 4px ${COLORS[i]})`;
+    svg.appendChild(path);
+    return path;
+  });
+
+  // animate lines drawing (staggered)
+  const stagger = [0, 80, 160, 240, 120];
+  await Promise.all(ALL_CARDS.map((card, i) => {
+    const src = getCenter(card);
+    return sleep(stagger[i]).then(() =>
+      tween(720, p => {
+        const ex = lerp(src.x, cx, p);
+        const ey = lerp(src.y, cy, p);
+        lineEls[i].setAttribute('d', `M${src.x},${src.y} L${ex},${ey}`);
+      }, easeOutCubic)
+    );
+  }));
+
+  // reveal orb
+  await tween(500, p => {
+    orb.style.transform = `translate(-50%,-50%) scale(${easeOutBack(p)})`;
+    orb.style.opacity   = String(p);
+  }, t => t);
+
+  // pulse orb
+  await tween(350, p => {
+    const s = lerp(1, 1.18, Math.sin(p * Math.PI));
+    orb.style.transform = `translate(-50%,-50%) scale(${s})`;
+  });
+
+  return { cx, cy };
+}
+
+// ════════════════════════════════════════════════════
+//  PHASE 5 — cursor + click
+// ════════════════════════════════════════════════════
+async function phase5(cx, cy) {
+  const cursorEl = document.getElementById('cursorEl');
+  const orb       = document.getElementById('orb');
+
+  const sx = cx + 130, sy = cy - 90;
+  cursorEl.style.left      = sx + 'px';
+  cursorEl.style.top       = sy + 'px';
+  cursorEl.style.opacity   = '1';
+  cursorEl.style.transform = 'scale(1)';
+
+  // glide cursor to orb
+  await tween(850, p => {
+    cursorEl.style.left = lerp(sx, cx + 8, p) + 'px';
+    cursorEl.style.top  = lerp(sy, cy + 6, p) + 'px';
+  }, easeInOutCubic);
+
+  // press
+  await Promise.all([
+    tween(170, p => { cursorEl.style.transform = `scale(${lerp(1, 0.72, p)})`; }),
+    tween(170, p => { orb.style.transform = `translate(-50%,-50%) scale(${lerp(1, 1.22, p)})`; }),
+  ]);
+
+  // ripples burst
+  [0, 160, 330].forEach(d => createRipple(cx, cy, d));
+
+  // flash orb
+  orb.style.boxShadow = `
+    0 0 60px rgba(230, 100, 255, 1),
+    0 0 130px rgba(190, 30, 255, 0.85),
+    0 0 260px rgba(150, 0, 230, 0.5)
+  `;
+
+  // release
+  await Promise.all([
+    tween(280, p => { cursorEl.style.transform = `scale(${lerp(0.72, 1, p)})`; }),
+    tween(450, p => {
+      const s = lerp(1.22, 1, p);
+      orb.style.transform = `translate(-50%,-50%) scale(${s})`;
+    }),
+  ]);
+
+  await sleep(600);
+}
+
+function createRipple(cx, cy, delay) {
+  setTimeout(() => {
+    const el = document.createElement('div');
+    el.style.cssText = `
+      position: fixed;
+      left: ${cx}px; top: ${cy}px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      border: 2px solid rgba(210,110,255,0.85);
+      transform: translate(-50%,-50%) scale(0.5);
+      pointer-events: none;
+      z-index: 7;
+    `;
+    document.body.appendChild(el);
+    tween(1100, p => {
+      el.style.transform = `translate(-50%,-50%) scale(${lerp(0.5, 3.5, p)})`;
+      el.style.opacity   = String(lerp(1, 0, p));
+    }, t => t).then(() => el.remove());
+  }, delay);
+}
+
+// ════════════════════════════════════════════════════
+//  RESET
+// ════════════════════════════════════════════════════
+function resetState() {
+  topCardEls.forEach(c => {
+    c.style.transition = 'none';
+    c.style.transform  = 'translateX(-120vw)';
+    c.style.opacity    = '0';
+    c.style.width      = '210px';
+  });
+  bottomCardEl.style.transition = 'none';
+  bottomCardEl.style.transform  = 'translateX(-120vw)';
+  bottomCardEl.style.opacity    = '0';
+
+  document.getElementById('linesSvg').innerHTML = '';
+  document.getElementById('orb').style.opacity   = '0';
+  document.getElementById('orb').style.transform = 'translate(-50%,-50%) scale(0)';
+  document.getElementById('cursorEl').style.opacity = '0';
+}
+
+// ════════════════════════════════════════════════════
+//  MAIN LOOP
+// ════════════════════════════════════════════════════
+async function run() {
+  resetState();
+  await sleep(500);
+
+  await phase1();
+  await sleep(380);
+
+  await phase2();
+  await sleep(580);
+
+  await phase3();
+  await sleep(380);
+
+  const { cx, cy } = await phase4();
+  await sleep(480);
+
+  await phase5(cx, cy);
+  await sleep(2800);
+
+  // fade-out everything
+  await tween(700, p => {
+    ALL_CARDS.forEach(c => { c.style.opacity = String(lerp(1, 0, p)); });
+    document.getElementById('cursorEl').style.opacity = String(lerp(1, 0, p));
+    document.getElementById('orb').style.opacity      = String(lerp(1, 0, p));
+  });
+
+  document.getElementById('linesSvg').innerHTML = '';
+  await sleep(350);
+  run();
+}
+
+document.fonts.ready.then(() => setTimeout(run, 400));
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location 'D:\\Danish Shahzad\\Claude Code'; $s = git status --porcelain 2>&1; if ($s) { git add -A; git -c credential.helper='' commit -m ('auto: claude changes at ' + (Get-Date -Format 'yyyy-MM-dd HH:mm:ss')); git -c credential.helper='' push origin HEAD:main 2>&1 | Out-Null }\""
+          }
+        ]
+      }
+    ]
+  }
+}

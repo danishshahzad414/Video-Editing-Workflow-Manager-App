@@ -1,6 +1,25 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Scissors, ChevronDown, ChevronUp, Eye, EyeOff, Zap } from 'lucide-react'
+import { ChevronDown, ChevronUp, Eye, EyeOff, Zap } from 'lucide-react'
+
+function ViteLogo({ size = 22 }: { size?: number }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 256 257">
+      <defs>
+        <linearGradient id="vll1" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%">
+          <stop offset="0%" stopColor="#41D1FF"/>
+          <stop offset="100%" stopColor="#BD34FE"/>
+        </linearGradient>
+        <linearGradient id="vll2" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%">
+          <stop offset="0%" stopColor="#FF3E00"/>
+          <stop offset="100%" stopColor="#FF3E00" stopOpacity="0"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#vll1)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"/>
+      <path fill="url(#vll2)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"/>
+    </svg>
+  )
+}
 import { useAuth } from '../context/AuthContext'
 import { DEMO_MODE, DEMO_PROFILES } from '../lib/mockData'
 import toast from 'react-hot-toast'
@@ -64,8 +83,8 @@ export default function Login() {
 
         <div className="relative">
           <div className="flex items-center gap-3 mb-16">
-            <div className="w-11 h-11 rounded-2xl flex items-center justify-center float" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)', boxShadow: '0 8px 24px rgba(2,132,199,0.5)' }}>
-              <Scissors size={20} className="text-white" />
+            <div className="w-11 h-11 rounded-2xl flex items-center justify-center float" style={{ background: '#1a1a2e', boxShadow: '0 8px 24px rgba(189,52,254,0.45)' }}>
+              <ViteLogo size={26} />
             </div>
             <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#FFFFFF', letterSpacing: '-0.5px' }}>CutDesk</span>
           </div>
@@ -100,8 +119,8 @@ export default function Login() {
         <div className="w-full max-w-[400px]">
           {/* Mobile logo */}
           <div className="flex items-center gap-3 mb-10 lg:hidden">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)' }}>
-              <Scissors size={18} className="text-white" />
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#1a1a2e', boxShadow: '0 4px 12px rgba(189,52,254,0.35)' }}>
+              <ViteLogo size={22} />
             </div>
             <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>CutDesk</span>
           </div>

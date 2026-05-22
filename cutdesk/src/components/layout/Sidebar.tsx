@@ -53,11 +53,10 @@ const ROLE_COLORS: Record<string, string> = {
 }
 
 const adminNav = [
-  { to: '/admin/dashboard', icon: Shield,        label: 'Admin Console' },
-  { to: '/ceo/overview',    icon: LayoutDashboard,label: 'CEO Overview' },
-  { to: '/ceo/all-videos',  icon: Film,           label: 'All Videos' },
-  { to: '/ceo/counselors',  icon: Users,          label: 'Counselors' },
-  { to: '/ceo/activity',    icon: ScrollText,     label: 'Activity Log' },
+  { to: '/admin/dashboard', icon: Shield,       label: 'Portal Overview' },
+  { to: '/admin/users',     icon: Users,        label: 'User Management' },
+  { to: '/admin/settings',  icon: Settings,     label: 'Portal Settings' },
+  { to: '/admin/audit',     icon: ScrollText,   label: 'Audit Log' },
 ]
 
 interface Props {

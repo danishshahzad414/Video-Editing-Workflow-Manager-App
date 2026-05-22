@@ -32,6 +32,9 @@ import Performance from './pages/smm/Performance'
 
 // Super Admin
 import AdminDashboard from './pages/admin/Dashboard'
+import AdminUsers from './pages/admin/Users'
+import AdminSettings from './pages/admin/Settings'
+import AdminAuditLog from './pages/admin/AuditLog'
 
 // CEO
 import CEOOverview from './pages/ceo/Overview'
@@ -119,14 +122,17 @@ function AppRoutes() {
       <Route path="/smm/performance" element={<AuthGuard allowedRoles={['social_manager']}><Performance /></AuthGuard>} />
 
       {/* CEO */}
-      <Route path="/ceo/overview" element={<AuthGuard allowedRoles={['ceo','super_admin']}><CEOOverview /></AuthGuard>} />
-      <Route path="/ceo/all-videos" element={<AuthGuard allowedRoles={['ceo','super_admin']}><CEOAllVideos /></AuthGuard>} />
-      <Route path="/ceo/counselors" element={<AuthGuard allowedRoles={['ceo','super_admin']}><CEOCounselors /></AuthGuard>} />
-      <Route path="/ceo/editor-stats" element={<AuthGuard allowedRoles={['ceo','super_admin']}><CEOEditorStats /></AuthGuard>} />
-      <Route path="/ceo/activity" element={<AuthGuard allowedRoles={['ceo','super_admin']}><CEOActivityLog /></AuthGuard>} />
+      <Route path="/ceo/overview" element={<AuthGuard allowedRoles={['ceo']}><CEOOverview /></AuthGuard>} />
+      <Route path="/ceo/all-videos" element={<AuthGuard allowedRoles={['ceo']}><CEOAllVideos /></AuthGuard>} />
+      <Route path="/ceo/counselors" element={<AuthGuard allowedRoles={['ceo']}><CEOCounselors /></AuthGuard>} />
+      <Route path="/ceo/editor-stats" element={<AuthGuard allowedRoles={['ceo']}><CEOEditorStats /></AuthGuard>} />
+      <Route path="/ceo/activity" element={<AuthGuard allowedRoles={['ceo']}><CEOActivityLog /></AuthGuard>} />
 
       {/* Super Admin */}
       <Route path="/admin/dashboard" element={<AuthGuard allowedRoles={['super_admin']}><AdminDashboard /></AuthGuard>} />
+      <Route path="/admin/users" element={<AuthGuard allowedRoles={['super_admin']}><AdminUsers /></AuthGuard>} />
+      <Route path="/admin/settings" element={<AuthGuard allowedRoles={['super_admin']}><AdminSettings /></AuthGuard>} />
+      <Route path="/admin/audit" element={<AuthGuard allowedRoles={['super_admin']}><AdminAuditLog /></AuthGuard>} />
 
       {/* Catch all */}
       <Route path="*" element={<RootRedirect />} />

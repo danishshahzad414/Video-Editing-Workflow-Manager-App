@@ -5,7 +5,8 @@ import type { ActivityLogEntry } from '../hooks/useActivityLog'
 export const DEMO_MODE = !import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL === 'https://placeholder.supabase.co'
 
 // ─── Demo Users ────────────────────────────────────────────────────────────────
-export const DEMO_PROFILES: Record<string, { id: string; full_name: string; role: 'counselor' | 'editor' | 'social_manager' | 'ceo'; avatar_url: null; email: string; created_at: string }> = {
+export const DEMO_PROFILES: Record<string, { id: string; full_name: string; role: 'counselor' | 'editor' | 'social_manager' | 'ceo' | 'super_admin'; avatar_url: null; email: string; created_at: string }> = {
+  'admin@themigration.com': { id: 'admin-001', full_name: 'Super Admin', role: 'super_admin', avatar_url: null, email: 'admin@themigration.com', created_at: '2024-01-01T00:00:00Z' },
   'ceo@themigration.com': { id: 'ceo-001', full_name: 'Michael Park', role: 'ceo', avatar_url: null, email: 'ceo@themigration.com', created_at: '2024-01-01T00:00:00Z' },
   'editor@themigration.com': { id: 'editor-001', full_name: 'James Wilson', role: 'editor', avatar_url: null, email: 'editor@themigration.com', created_at: '2024-01-01T00:00:00Z' },
   'smm@themigration.com': { id: 'smm-001', full_name: 'Mia Torres', role: 'social_manager', avatar_url: null, email: 'smm@themigration.com', created_at: '2024-01-01T00:00:00Z' },
@@ -17,6 +18,7 @@ export const DEMO_PROFILES: Record<string, { id: string; full_name: string; role
 }
 
 export const DEMO_PASSWORDS: Record<string, string> = {
+  'admin@themigration.com': 'CutDesk@Admin2024',
   'ceo@themigration.com': 'CutDesk@CEO2024',
   'editor@themigration.com': 'CutDesk@Editor2024',
   'smm@themigration.com': 'CutDesk@SMM2024',

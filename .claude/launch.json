@@ -27,5 +27,12 @@
       "runtimeArgs": ["run", "dev", "--prefix", "cutdesk"],
       "port": 5174
     }
+  ,
+    {
+      "name": "IRONCHAIN",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "lumina-fragrance-house"],
+      "port": 5175
+    }
   ]
 }

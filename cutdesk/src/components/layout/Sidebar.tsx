@@ -4,7 +4,7 @@ import {
   LayoutDashboard, Video, Upload, BookOpen, BarChart2,
   Inbox, List, PlayCircle, CalendarDays, Film, ScrollText,
   LayoutGrid, Send, FileEdit, Calendar, CheckCircle, TrendingUp,
-  Users, LogOut, ChevronLeft, ChevronRight, Settings, X
+  Users, LogOut, ChevronLeft, ChevronRight, Settings, X, Shield
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import SettingsModal from '../shared/SettingsModal'
@@ -45,11 +45,20 @@ const ceoNav = [
 ]
 
 const ROLE_COLORS: Record<string, string> = {
+  super_admin: '#A78BFA',
   ceo: '#F59E0B',
   editor: '#0EA5E9',
-  social_manager: '#A78BFA',
+  social_manager: '#C084FC',
   counselor: '#34D399',
 }
+
+const adminNav = [
+  { to: '/admin/dashboard', icon: Shield,        label: 'Admin Console' },
+  { to: '/ceo/overview',    icon: LayoutDashboard,label: 'CEO Overview' },
+  { to: '/ceo/all-videos',  icon: Film,           label: 'All Videos' },
+  { to: '/ceo/counselors',  icon: Users,          label: 'Counselors' },
+  { to: '/ceo/activity',    icon: ScrollText,     label: 'Activity Log' },
+]
 
 interface Props {
   onClose?: () => void
@@ -62,6 +71,7 @@ export default function Sidebar({ onClose }: Props) {
   const [showSettings, setShowSettings] = useState(false)
 
   const navItems = {
+    super_admin: adminNav,
     counselor: counselorNav,
     editor: editorNav,
     social_manager: smmNav,

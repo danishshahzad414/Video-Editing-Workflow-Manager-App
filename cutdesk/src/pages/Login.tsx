@@ -25,6 +25,7 @@ import { DEMO_MODE, DEMO_PROFILES } from '../lib/mockData'
 import toast from 'react-hot-toast'
 
 const DEMO_ACCOUNTS = [
+  { role: 'Super Admin', email: 'admin@themigration.com', password: 'CutDesk@Admin2024', color: '#8B5CF6', icon: '⚡' },
   { role: 'CEO', email: 'ceo@themigration.com', password: 'CutDesk@CEO2024', color: '#F59E0B', icon: '👑' },
   { role: 'Video Editor', email: 'editor@themigration.com', password: 'CutDesk@Editor2024', color: '#0EA5E9', icon: '🎬' },
   { role: 'Social Media Manager', email: 'smm@themigration.com', password: 'CutDesk@SMM2024', color: '#A78BFA', icon: '📱' },

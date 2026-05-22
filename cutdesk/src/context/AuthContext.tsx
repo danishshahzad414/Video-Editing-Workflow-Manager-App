@@ -6,7 +6,7 @@ import { DEMO_MODE, DEMO_PROFILES, DEMO_PASSWORDS } from '../lib/mockData'
 export interface Profile {
   id: string
   full_name: string
-  role: 'counselor' | 'editor' | 'social_manager' | 'ceo'
+  role: 'counselor' | 'editor' | 'social_manager' | 'ceo' | 'super_admin'
   avatar_url: string | null
   email: string
   created_at: string

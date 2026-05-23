@@ -17,28 +17,29 @@ export default function VideoCard({ video, onClick, actionSlot }: Props) {
   return (
     <div
       onClick={onClick}
-      className="flex items-center gap-4 rounded-xl px-4 py-3 cursor-pointer transition-all duration-200"
+      className="flex items-center gap-4 rounded-2xl px-4 py-3.5 cursor-pointer transition-all duration-200"
       style={{
         background: '#FFFFFF',
-        border: '1px solid #E2E8F0',
-        borderLeft: `4px solid ${borderColor}`,
-        boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+        border: '1px solid rgba(0,0,0,0.065)',
+        borderLeft: `3px solid ${borderColor}`,
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06)',
         transform: 'translateY(0)',
       }}
       onMouseEnter={e => {
-        ;(e.currentTarget as HTMLElement).style.background = '#F8FAFC'
-        ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
-        ;(e.currentTarget as HTMLElement).style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'
+        ;(e.currentTarget as HTMLElement).style.background = '#F5F9FF'
+        ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
+        ;(e.currentTarget as HTMLElement).style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.09), 0 0 0 1px rgba(2,132,199,0.07)'
       }}
       onMouseLeave={e => {
         ;(e.currentTarget as HTMLElement).style.background = '#FFFFFF'
         ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-        ;(e.currentTarget as HTMLElement).style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'
+        ;(e.currentTarget as HTMLElement).style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.9), 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06)'
       }}
     >
       {/* Thumbnail */}
-      <div className="w-20 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>
-        <Film size={20} className="text-slate-400" />
+      <div className="w-20 h-14 rounded-xl flex items-center justify-center flex-shrink-0 relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #EEF2FF 0%, #E0F2FE 100%)', border: '1px solid rgba(0,0,0,0.06)' }}>
+        <Film size={18} style={{ color: '#93C5FD', filter: 'drop-shadow(0 1px 3px rgba(2,132,199,0.3))' }} />
       </div>
 
       {/* Title zone */}

@@ -9,7 +9,7 @@
   --primary:        #0284C7;
   --accent:         #06B6D4;
   --sidebar-bg:     #0D1117;
-  --page-bg:        #F5F7FA;
+  --page-bg:        #F0F3FA;
   --card-bg:        #FFFFFF;
   --border:         rgba(0,0,0,0.06);
   --text-primary:   #0F172A;
@@ -37,6 +37,10 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--page-bg);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 10% 0%,  rgba(2,132,199,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 90% 100%, rgba(6,182,212,0.05) 0%, transparent 60%);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -253,16 +257,23 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 /* ─── Cards ─────────────────────────────────────────────────── */
 .cd-card {
   background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.055);
-  border-radius: 18px;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    0 1px 3px rgba(0,0,0,0.04),
+    0 6px 20px rgba(0,0,0,0.07);
   transition: box-shadow 260ms var(--butter), border-color 260ms var(--butter), transform 260ms var(--butter);
   will-change: transform;
 }
 .cd-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: rgba(0,0,0,0.08);
-  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    0 2px 6px rgba(0,0,0,0.05),
+    0 12px 32px rgba(0,0,0,0.09),
+    0 0 0 1px rgba(2,132,199,0.06);
+  border-color: rgba(0,0,0,0.09);
+  transform: translateY(-2px);
 }
 
 /* ─── KPI card — premium left-accent design ─────────────────── */
@@ -468,7 +479,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   transform-origin: center;
   transition: transform 180ms var(--spring);
 }
-.interactive-row:hover { background-color: #F8FAFC !important; }
+.interactive-row:hover { background-color: #EFF6FF !important; }
 .interactive-row:hover::before { transform: scaleY(1); }
 
 /* ─── Nav active indicator ─────────────────────────────────── */
@@ -586,9 +597,9 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  background: #FAFBFD;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(0,0,0,0.055);
+  background: linear-gradient(180deg, #FAFBFE 0%, #F5F7FC 100%);
 }
 .section-header-icon {
   width: 30px;
@@ -598,26 +609,39 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
 
 /* ─── Stats strip ───────────────────────────────────────────── */
 /* ONE unified card housing all KPI metrics, separated by dividers */
 .stats-strip {
   background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05);
+  border: 1px solid rgba(2,132,199,0.12);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 3px rgba(0,0,0,0.04),
+    0 8px 24px rgba(0,0,0,0.07);
   display: grid;
   overflow: hidden;
   will-change: transform;
+  position: relative;
+}
+.stats-strip::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0284C7, #06B6D4, #38BDF8);
+  z-index: 1;
 }
 .stats-strip-item {
-  padding: 20px 22px;
+  padding: 22px 24px;
   position: relative;
   transition: background 140ms var(--butter);
   cursor: default;
 }
-.stats-strip-item:hover { background: #FAFBFD; }
+.stats-strip-item:hover { background: #F5F9FF; }
 .stats-strip-item + .stats-strip-item::before {
   content: '';
   position: absolute;
@@ -640,11 +664,12 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 .stat-num {
   font-family: 'Inter', 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 28px;
-  color: #111827;
+  font-size: 30px;
+  color: #0F172A;
   line-height: 1;
   margin: 0;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
 }
 .stat-num-sm {
   font-family: 'Poppins', sans-serif;
@@ -665,9 +690,10 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 .page-section-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 13px;
-  color: #111827;
+  font-size: 14px;
+  color: #0F172A;
   margin: 0;
+  letter-spacing: -0.1px;
 }
 
 /* ─── Empty state ───────────────────────────────────────────── */

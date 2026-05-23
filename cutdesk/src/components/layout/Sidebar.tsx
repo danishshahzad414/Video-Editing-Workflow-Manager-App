@@ -89,11 +89,12 @@ export default function Sidebar({ onClose }: Props) {
         className="flex flex-col h-full relative"
         style={{
           width: collapsed ? 64 : 224,
-          background: 'linear-gradient(180deg, #0D1117 0%, #0F172A 100%)',
+          background: 'linear-gradient(180deg, #080E1A 0%, #0B1425 50%, #0D1830 100%)',
           flexShrink: 0,
           transition: 'width 240ms cubic-bezier(0.22,1,0.36,1)',
           height: '100vh',
-          borderRight: '1px solid rgba(255,255,255,0.05)',
+          borderRight: '1px solid rgba(255,255,255,0.04)',
+          boxShadow: '4px 0 24px rgba(0,0,0,0.25)',
         }}
       >
         {/* ── Logo ── */}
@@ -103,7 +104,7 @@ export default function Sidebar({ onClose }: Props) {
         >
           <div
             className="flex items-center justify-center flex-shrink-0"
-            style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(189,52,254,0.12)', border: '1px solid rgba(189,52,254,0.2)', boxShadow: '0 0 16px rgba(189,52,254,0.15)' }}
+            style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(189,52,254,0.15)', border: '1px solid rgba(189,52,254,0.3)', boxShadow: '0 0 24px rgba(189,52,254,0.35), 0 4px 12px rgba(189,52,254,0.2)' }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 256 257">
               <defs>
@@ -154,13 +155,13 @@ export default function Sidebar({ onClose }: Props) {
                   `relative flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
                     isActive
                       ? 'text-white'
-                      : 'text-white/35 hover:text-white/70'
+                      : 'text-white/30 hover:text-white/65 hover:bg-white/[0.04]'
                   }`
                 }
-                style={({ isActive }) => isActive
-                  ? { background: 'rgba(255,255,255,0.08)' }
-                  : {}
-                }
+                style={({ isActive }) => isActive ? {
+                  background: 'linear-gradient(135deg, rgba(14,165,233,0.20) 0%, rgba(2,132,199,0.12) 100%)',
+                  boxShadow: 'inset 2px 0 0 #38BDF8, 0 2px 10px rgba(14,165,233,0.12)',
+                } : {}}
               >
                 {({ isActive }) => (
                   <>

@@ -31,9 +31,11 @@ export default function TopBar({ title, onMenuClick }: Props) {
         className="flex items-center justify-between px-4 md:px-6 lg:px-8 flex-shrink-0"
         style={{
           height: 60,
-          background: '#FFFFFF',
+          background: 'rgba(255,255,255,0.88)',
+          backdropFilter: 'blur(20px) saturate(1.6)',
+          WebkitBackdropFilter: 'blur(20px) saturate(1.6)',
           borderBottom: '1px solid rgba(0,0,0,0.07)',
-          boxShadow: '0 1px 0 rgba(0,0,0,0.04)',
+          boxShadow: 'inset 0 -1px 0 rgba(0,0,0,0.03), 0 4px 20px rgba(0,0,0,0.04)',
         }}
       >
         {/* Left */}

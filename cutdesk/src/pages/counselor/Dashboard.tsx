@@ -4,7 +4,6 @@ import { useVideos } from '../../hooks/useVideos'
 import Layout from '../../components/layout/Layout'
 import VideoCard from '../../components/shared/VideoCard'
 import VideoDetailModal from '../../components/shared/VideoDetailModal'
-import PreUploadChecklist from '../../components/counselor/PreUploadChecklist'
 import VideoUploadModal from '../../components/counselor/VideoUploadModal'
 import { daysSince } from '../../lib/utils'
 
@@ -27,7 +26,6 @@ function Num({ n }: { n: number }) {
 export default function CounselorDashboard() {
   const { data: videos = [], isLoading } = useVideos()
   const [selectedVideo, setSelectedVideo] = useState<any>(null)
-  const [showChecklist, setShowChecklist] = useState(false)
   const [showUpload,    setShowUpload]    = useState(false)
 
   const totalUploaded  = videos.length
@@ -52,7 +50,7 @@ export default function CounselorDashboard() {
               {totalUploaded} uploaded · {inEditing} in editing · {completed} completed
             </p>
           </div>
-          <button className="btn-primary flex-shrink-0" onClick={() => setShowChecklist(true)}>
+          <button className="btn-primary flex-shrink-0" onClick={() => setShowUpload(true)}>
             <Upload size={14} /> Upload Video
           </button>
         </div>
@@ -128,7 +126,7 @@ export default function CounselorDashboard() {
               </div>
               <p className="empty-state-title">No videos yet</p>
               <p className="empty-state-sub">Upload your first video to get started</p>
-              <button className="btn-primary mt-1" onClick={() => setShowChecklist(true)}>
+              <button className="btn-primary mt-1" onClick={() => setShowUpload(true)}>
                 <Upload size={14} /> Upload Your First Video
               </button>
             </div>
@@ -144,7 +142,6 @@ export default function CounselorDashboard() {
         </div>
       </div>
 
-      {showChecklist && <PreUploadChecklist onProceed={() => { setShowChecklist(false); setShowUpload(true) }} onClose={() => setShowChecklist(false)} />}
       {showUpload    && <VideoUploadModal onClose={() => setShowUpload(false)} />}
       {selectedVideo && <VideoDetailModal video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
     </Layout>

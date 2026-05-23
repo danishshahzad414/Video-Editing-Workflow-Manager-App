@@ -11,7 +11,7 @@ export default function Layout({ children, title }: Props) {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
 
   return (
-    <div className="flex h-screen overflow-hidden" style={{ background: '#F1F5F9' }}>
+    <div className="flex h-screen overflow-hidden" style={{ background: 'var(--page-bg)' }}>
       {/* 3px gradient accent stripe */}
       <div className="fixed top-0 left-0 right-0 h-[3px] z-[9999]" style={{ background: 'linear-gradient(90deg, #0284C7, #06B6D4, #0EA5E9)' }} />
 

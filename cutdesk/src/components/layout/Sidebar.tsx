@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard, Video, Upload, BookOpen, BarChart2,
@@ -11,57 +11,55 @@ import SettingsModal from '../shared/SettingsModal'
 
 const counselorNav = [
   { to: '/counselor/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/counselor/videos', icon: Video, label: 'My Videos' },
-  { to: '/counselor/upload', icon: Upload, label: 'Upload Video' },
-  { to: '/counselor/scripts', icon: BookOpen, label: 'My Scripts' },
-  { to: '/counselor/stats', icon: BarChart2, label: 'My Stats' },
+  { to: '/counselor/videos',    icon: Video,           label: 'My Videos' },
+  { to: '/counselor/upload',    icon: Upload,          label: 'Upload Video' },
+  { to: '/counselor/scripts',   icon: BookOpen,        label: 'My Scripts' },
+  { to: '/counselor/stats',     icon: BarChart2,       label: 'My Stats' },
 ]
 
 const editorNav = [
-  { to: '/editor/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/editor/inbox', icon: Inbox, label: 'Inbox' },
-  { to: '/editor/queue', icon: List, label: 'My Queue' },
-  { to: '/editor/in-progress', icon: PlayCircle, label: 'In Progress' },
-  { to: '/editor/capacity', icon: CalendarDays, label: 'Capacity' },
-  { to: '/editor/all-videos', icon: Film, label: 'All Videos' },
-  { to: '/editor/activity', icon: ScrollText, label: 'Activity Log' },
+  { to: '/editor/dashboard',   icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/editor/inbox',       icon: Inbox,           label: 'Inbox' },
+  { to: '/editor/queue',       icon: List,            label: 'My Queue' },
+  { to: '/editor/in-progress', icon: PlayCircle,      label: 'In Progress' },
+  { to: '/editor/capacity',    icon: CalendarDays,    label: 'Capacity' },
+  { to: '/editor/all-videos',  icon: Film,            label: 'All Videos' },
+  { to: '/editor/activity',    icon: ScrollText,      label: 'Activity Log' },
 ]
 
 const smmNav = [
-  { to: '/smm/dashboard', icon: LayoutGrid, label: 'Dashboard' },
-  { to: '/smm/ready', icon: Send, label: 'Ready to Publish' },
-  { to: '/smm/scripts', icon: FileEdit, label: 'Scripts' },
-  { to: '/smm/calendar', icon: Calendar, label: 'Calendar' },
-  { to: '/smm/published', icon: CheckCircle, label: 'Published' },
-  { to: '/smm/performance', icon: TrendingUp, label: 'Performance' },
+  { to: '/smm/dashboard',   icon: LayoutGrid,  label: 'Dashboard' },
+  { to: '/smm/ready',       icon: Send,        label: 'Ready to Publish' },
+  { to: '/smm/scripts',     icon: FileEdit,    label: 'Scripts' },
+  { to: '/smm/calendar',    icon: Calendar,    label: 'Calendar' },
+  { to: '/smm/published',   icon: CheckCircle, label: 'Published' },
+  { to: '/smm/performance', icon: TrendingUp,  label: 'Performance' },
 ]
 
 const ceoNav = [
-  { to: '/ceo/overview', icon: LayoutDashboard, label: 'Overview' },
-  { to: '/ceo/all-videos', icon: Film, label: 'All Videos' },
-  { to: '/ceo/counselors', icon: Users, label: 'Counselors' },
-  { to: '/ceo/editor-stats', icon: BarChart2, label: 'Editor Stats' },
-  { to: '/ceo/activity', icon: ScrollText, label: 'Activity Log' },
+  { to: '/ceo/overview',      icon: LayoutDashboard, label: 'Overview' },
+  { to: '/ceo/all-videos',    icon: Film,            label: 'All Videos' },
+  { to: '/ceo/counselors',    icon: Users,           label: 'Counselors' },
+  { to: '/ceo/editor-stats',  icon: BarChart2,       label: 'Editor Stats' },
+  { to: '/ceo/activity',      icon: ScrollText,      label: 'Activity Log' },
 ]
-
-const ROLE_COLORS: Record<string, string> = {
-  super_admin: '#A78BFA',
-  ceo: '#F59E0B',
-  editor: '#0EA5E9',
-  social_manager: '#C084FC',
-  counselor: '#34D399',
-}
 
 const adminNav = [
-  { to: '/admin/dashboard', icon: Shield,       label: 'Portal Overview' },
-  { to: '/admin/users',     icon: Users,        label: 'User Management' },
-  { to: '/admin/settings',  icon: Settings,     label: 'Portal Settings' },
-  { to: '/admin/audit',     icon: ScrollText,   label: 'Audit Log' },
+  { to: '/admin/dashboard', icon: Shield,     label: 'Portal Overview' },
+  { to: '/admin/users',     icon: Users,      label: 'User Management' },
+  { to: '/admin/settings',  icon: Settings,   label: 'Portal Settings' },
+  { to: '/admin/audit',     icon: ScrollText, label: 'Audit Log' },
 ]
 
-interface Props {
-  onClose?: () => void
+const ROLE_META: Record<string, { color: string; label: string }> = {
+  super_admin:    { color: '#A78BFA', label: 'Super Admin' },
+  ceo:            { color: '#F59E0B', label: 'CEO' },
+  editor:         { color: '#38BDF8', label: 'Video Editor' },
+  social_manager: { color: '#C084FC', label: 'Social Manager' },
+  counselor:      { color: '#34D399', label: 'Counselor' },
 }
+
+interface Props { onClose?: () => void }
 
 export default function Sidebar({ onClose }: Props) {
   const { profile, signOut } = useAuth()
@@ -70,15 +68,15 @@ export default function Sidebar({ onClose }: Props) {
   const [showSettings, setShowSettings] = useState(false)
 
   const navItems = {
-    super_admin: adminNav,
-    counselor: counselorNav,
-    editor: editorNav,
+    super_admin:    adminNav,
+    counselor:      counselorNav,
+    editor:         editorNav,
     social_manager: smmNav,
-    ceo: ceoNav,
+    ceo:            ceoNav,
   }[profile?.role || 'counselor'] || []
 
-  const initials = profile?.full_name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '?'
-  const roleColor = ROLE_COLORS[profile?.role || 'counselor'] || '#0EA5E9'
+  const initials  = profile?.full_name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '?'
+  const roleMeta  = ROLE_META[profile?.role || 'counselor'] || { color: '#38BDF8', label: 'User' }
 
   async function handleSignOut() {
     await signOut()
@@ -90,17 +88,24 @@ export default function Sidebar({ onClose }: Props) {
       <aside
         className="flex flex-col h-full relative"
         style={{
-          width: collapsed ? 68 : 230,
-          background: '#0F172A',
+          width: collapsed ? 64 : 224,
+          background: 'linear-gradient(180deg, #0D1117 0%, #0F172A 100%)',
           flexShrink: 0,
-          transition: 'width 250ms cubic-bezier(0.34,1.1,0.64,1)',
+          transition: 'width 240ms cubic-bezier(0.22,1,0.36,1)',
           height: '100vh',
+          borderRight: '1px solid rgba(255,255,255,0.05)',
         }}
       >
-        {/* Logo + mobile close */}
-        <div className="flex items-center gap-3 px-4 py-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#1a1a2e', boxShadow: '0 4px 12px rgba(189,52,254,0.35)' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 257">
+        {/* ── Logo ── */}
+        <div
+          className="flex items-center gap-3 px-4"
+          style={{ height: 60, borderBottom: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 }}
+        >
+          <div
+            className="flex items-center justify-center flex-shrink-0"
+            style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(189,52,254,0.12)', border: '1px solid rgba(189,52,254,0.2)', boxShadow: '0 0 16px rgba(189,52,254,0.15)' }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 256 257">
               <defs>
                 <linearGradient id="vl1" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%">
                   <stop offset="0%" stopColor="#41D1FF"/>
@@ -117,103 +122,149 @@ export default function Sidebar({ onClose }: Props) {
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 17, color: '#FFFFFF', whiteSpace: 'nowrap', letterSpacing: '-0.3px' }}>
+              <p style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 16, color: '#FFFFFF', margin: 0, letterSpacing: '-0.3px', whiteSpace: 'nowrap' }}>
                 CutDesk
-              </span>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.35)', marginTop: 1, whiteSpace: 'nowrap' }}>Video Workflow OS</p>
+              </p>
+              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.28)', margin: 0, whiteSpace: 'nowrap' }}>
+                Video Workflow OS
+              </p>
             </div>
           )}
           {onClose && !collapsed && (
-            <button onClick={onClose} className="lg:hidden text-white/40 hover:text-white ml-auto flex-shrink-0 transition-colors p-1">
-              <X size={18} />
+            <button
+              onClick={onClose}
+              className="lg:hidden ml-auto flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
+              style={{ color: 'rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.06)' }}
+            >
+              <X size={15} />
             </button>
           )}
         </div>
 
-        {/* Role badge */}
-        {!collapsed && (
-          <div className="px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)' }}>
-              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: roleColor, boxShadow: `0 0 6px ${roleColor}` }} />
-              <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11, color: roleColor, textTransform: 'capitalize', whiteSpace: 'nowrap' }}>
-                {profile?.role?.replace('_', ' ')}
-              </span>
-            </div>
-          </div>
-        )}
-
-        {/* Nav items */}
+        {/* ── Nav items ── */}
         <nav className="flex-1 py-3 overflow-y-auto overflow-x-hidden">
-          {navItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              onClick={onClose}
-              className={({ isActive }) =>
-                `relative flex items-center gap-3 mx-2 px-3 py-2.5 rounded-xl mb-0.5 transition-all duration-200 ${
-                  isActive ? 'text-white' : 'text-white/40 hover:text-white/80 hover:bg-white/5'
-                }`
-              }
-              style={({ isActive }) => isActive ? { background: 'rgba(2,132,199,0.2)' } : {}}
-              title={collapsed ? label : undefined}
-            >
-              {({ isActive }) => (
-                <>
-                  {isActive && <div className="nav-active-dot" />}
-                  <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                    <Icon size={17} className={isActive ? 'text-sky-400' : ''} />
-                  </div>
-                  {!collapsed && (
-                    <span style={{ fontFamily: 'Poppins', fontWeight: isActive ? 600 : 500, fontSize: 13, whiteSpace: 'nowrap', color: isActive ? '#FFFFFF' : undefined }}>
-                      {label}
-                    </span>
-                  )}
-                  {isActive && !collapsed && (
-                    <div className="ml-auto w-1.5 h-1.5 rounded-full bg-sky-400" />
-                  )}
-                </>
-              )}
-            </NavLink>
-          ))}
+          <div className="space-y-0.5 px-2">
+            {navItems.map(({ to, icon: Icon, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                onClick={onClose}
+                title={collapsed ? label : undefined}
+                className={({ isActive }) =>
+                  `relative flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-white/35 hover:text-white/70'
+                  }`
+                }
+                style={({ isActive }) => isActive
+                  ? { background: 'rgba(255,255,255,0.08)' }
+                  : {}
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && <div className="nav-active-dot" />}
+                    <div
+                      className="flex-shrink-0 w-[18px] h-[18px] flex items-center justify-center"
+                      style={{ transition: 'transform 200ms var(--spring)' }}
+                    >
+                      <Icon
+                        size={16}
+                        style={{ color: isActive ? '#38BDF8' : undefined }}
+                      />
+                    </div>
+                    {!collapsed && (
+                      <span style={{
+                        fontFamily: 'Poppins',
+                        fontWeight: isActive ? 600 : 500,
+                        fontSize: 13,
+                        whiteSpace: 'nowrap',
+                        color: isActive ? '#FFFFFF' : undefined,
+                        transition: 'color 150ms',
+                      }}>
+                        {label}
+                      </span>
+                    )}
+                    {isActive && !collapsed && (
+                      <div className="ml-auto w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: '#38BDF8', boxShadow: '0 0 6px #38BDF8' }} />
+                    )}
+                  </>
+                )}
+              </NavLink>
+            ))}
+          </div>
         </nav>
 
-        {/* Bottom: user + logout */}
-        <div className="p-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        {/* ── User area + logout ── */}
+        <div className="px-2 pb-3 pt-2 space-y-0.5" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', flexShrink: 0 }}>
+          {/* User / Settings */}
           <button
             onClick={() => setShowSettings(true)}
-            className="flex items-center gap-3 w-full rounded-xl p-2.5 transition-all duration-200 hover:bg-white/5 text-left mb-1"
-            title={collapsed ? profile?.full_name : undefined}
+            title={collapsed ? `${profile?.full_name} — Settings` : undefined}
+            className="flex items-center gap-2.5 w-full rounded-xl px-3 py-2.5 transition-all duration-150 hover:bg-white/5 text-left group"
           >
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: roleColor + '22', border: `1px solid ${roleColor}44` }}>
-              <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 12, color: roleColor }}>{initials}</span>
+            {/* Avatar */}
+            <div
+              className="flex-shrink-0 flex items-center justify-center"
+              style={{
+                width: 32, height: 32, borderRadius: 9,
+                background: `${roleMeta.color}18`,
+                border: `1.5px solid ${roleMeta.color}35`,
+              }}
+            >
+              <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 11, color: roleMeta.color }}>
+                {initials}
+              </span>
             </div>
             {!collapsed && (
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold truncate" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#FFFFFF' }}>{profile?.full_name}</p>
-                <div className="flex items-center gap-1 mt-0.5">
-                  <Settings size={9} className="text-white/30" />
-                  <p className="text-[10px] truncate" style={{ fontFamily: 'Poppins', color: 'rgba(255,255,255,0.35)' }}>Settings</p>
-                </div>
+                <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12.5, color: '#FFFFFF', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {profile?.full_name}
+                </p>
+                <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10.5, color: roleMeta.color, margin: 0, whiteSpace: 'nowrap', opacity: 0.85 }}>
+                  {roleMeta.label}
+                </p>
               </div>
             )}
+            {!collapsed && (
+              <Settings size={12} style={{ color: 'rgba(255,255,255,0.22)', flexShrink: 0 }}
+                className="group-hover:text-white/50 transition-colors" />
+            )}
           </button>
+
+          {/* Logout */}
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-3 w-full rounded-xl p-2.5 transition-all duration-200 hover:bg-red-500/10 group"
-            title={collapsed ? 'Logout' : undefined}
+            title={collapsed ? 'Log out' : undefined}
+            className="flex items-center gap-2.5 w-full rounded-xl px-3 py-2.5 transition-all duration-150 group"
+            style={{ color: 'rgba(255,255,255,0.28)' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(239,68,68,0.08)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
-            <LogOut size={16} className="text-white/30 group-hover:text-red-400 flex-shrink-0 transition-colors" />
-            {!collapsed && <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: 'rgba(255,255,255,0.35)' }} className="group-hover:text-red-400 transition-colors">Logout</span>}
+            <LogOut size={15} className="flex-shrink-0 group-hover:text-red-400 transition-colors" style={{ transition: 'color 150ms' }} />
+            {!collapsed && (
+              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12.5 }}
+                className="group-hover:text-red-400 transition-colors">
+                Log out
+              </span>
+            )}
           </button>
         </div>
 
-        {/* Desktop collapse toggle */}
+        {/* ── Collapse toggle (desktop only) ── */}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="hidden lg:flex absolute -right-3 top-16 w-6 h-6 rounded-full items-center justify-center z-10 transition-all duration-200 hover:scale-110"
-          style={{ background: '#1E293B', border: '1.5px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.5)', boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
+          className="hidden lg:flex absolute -right-3 top-[18px] w-6 h-6 rounded-full items-center justify-center z-10 transition-all duration-200 hover:scale-110 active:scale-95"
+          style={{
+            background: '#1E293B',
+            border: '1.5px solid rgba(255,255,255,0.10)',
+            color: 'rgba(255,255,255,0.4)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.35)',
+          }}
         >
-          {collapsed ? <ChevronRight size={11} /> : <ChevronLeft size={11} />}
+          {collapsed ? <ChevronRight size={10} /> : <ChevronLeft size={10} />}
         </button>
       </aside>
 

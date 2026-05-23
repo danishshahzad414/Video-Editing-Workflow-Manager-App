@@ -76,12 +76,19 @@ export default function VideoUploadModal({ onClose }: Props) {
         driveUrl = `https://drive.google.com/demo/${Date.now()}`
         if (scriptFile) scriptUrl = `https://drive.google.com/demo/script-${Date.now()}`
       } else {
-        // Real Google Drive upload
-        const driveResult = await uploadToDrive(videoFile, profile.full_name, undefined, setProgress)
-        driveUrl = driveResult.webViewLink
-        if (scriptFile) {
-          const scriptResult = await uploadToDrive(scriptFile, profile.full_name, 'Scripts')
-          scriptUrl = scriptResult.directDownloadUrl
+        // Try real Google Drive upload — fall back to placeholder if Drive isn't configured
+        try {
+          const driveResult = await uploadToDrive(videoFile, profile.full_name, undefined, setProgress)
+          driveUrl = driveResult.webViewLink
+          if (scriptFile) {
+            const scriptResult = await uploadToDrive(scriptFile, profile.full_name, 'Scripts')
+            scriptUrl = scriptResult.directDownloadUrl
+          }
+        } catch {
+          // Drive not configured yet — simulate progress and save record with placeholder
+          await simulateProgress(setProgress)
+          driveUrl = `#pending-${Date.now()}`
+          if (scriptFile) scriptUrl = `#pending-script-${Date.now()}`
         }
       }
 

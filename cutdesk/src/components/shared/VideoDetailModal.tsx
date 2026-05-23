@@ -135,11 +135,12 @@ export default function VideoDetailModal({ video, onClose }: Props) {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className="py-3 px-1 mr-6 text-sm border-b-2 transition-colors"
+              className="py-3 px-1 mr-6 text-sm border-b-2"
               style={{
                 fontFamily: 'Poppins', fontWeight: 600, fontSize: 13,
                 borderColor: tab === t ? '#0284C7' : 'transparent',
                 color: tab === t ? '#0284C7' : '#94A3B8',
+                transition: 'color 180ms ease, border-color 180ms ease',
               }}
             >
               {t}
@@ -147,8 +148,9 @@ export default function VideoDetailModal({ video, onClose }: Props) {
           ))}
         </div>
 
-        {/* Content */}
+        {/* Content — key={tab} forces remount → triggers fade-in on every switch */}
         <div className="flex-1 overflow-y-auto p-6">
+          <div key={tab} className="fade-in">
           {tab === 'Details' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Left col */}
@@ -372,6 +374,7 @@ export default function VideoDetailModal({ video, onClose }: Props) {
               })}
             </div>
           )}
+          </div>{/* end fade-in wrapper */}
         </div>
       </div>
     </div>

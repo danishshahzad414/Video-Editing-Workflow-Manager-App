@@ -6,22 +6,32 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
-  --primary:        #0284C7;
+  --primary:        #0369A1;
+  --primary-bright: #0EA5E9;
   --accent:         #06B6D4;
-  --sidebar-bg:     #0D1117;
-  --page-bg:        #F0F3FA;
+  --sidebar-bg:     #0B1120;
+  --page-bg:        #EEF2F9;
   --card-bg:        #FFFFFF;
-  --border:         rgba(0,0,0,0.06);
-  --text-primary:   #0F172A;
+  --border:         rgba(15,23,42,0.07);
+  --border-strong:  rgba(15,23,42,0.10);
+  --text-primary:   #0B1220;
   --text-secondary: #475569;
   --text-muted:     #94A3B8;
+  --hairline:       rgba(15,23,42,0.06);
 
-  /* Shadows — Soft UI Evolution (skill: softer than flat, clearer than neumorphism) */
-  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.03);
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.7) inset;
-  --shadow-md:  0 2px 6px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
-  --shadow-lg:  0 4px 12px rgba(0,0,0,0.07), 0 20px 40px rgba(0,0,0,0.10), 0 1px 0 rgba(255,255,255,0.5) inset;
-  --shadow-xl:  0 8px 20px rgba(0,0,0,0.08), 0 32px 64px rgba(0,0,0,0.13);
+  /* Shadows — refined high-end depth: cool slate-tinted, layered ambient + key light */
+  --shadow-xs:  0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.03);
+  --shadow-sm:  0 1px 2px rgba(15,23,42,0.04), 0 2px 8px rgba(15,23,42,0.05), 0 1px 0 rgba(255,255,255,0.9) inset;
+  --shadow-md:  0 2px 4px rgba(15,23,42,0.04), 0 8px 22px rgba(15,23,42,0.08), 0 1px 0 rgba(255,255,255,0.85) inset;
+  --shadow-lg:  0 4px 8px rgba(15,23,42,0.05), 0 18px 44px rgba(15,23,42,0.11), 0 1px 0 rgba(255,255,255,0.7) inset;
+  --shadow-xl:  0 8px 16px rgba(15,23,42,0.06), 0 36px 72px rgba(15,23,42,0.15);
+  --shadow-primary: 0 1px 2px rgba(3,105,161,0.22), 0 6px 18px rgba(3,105,161,0.26);
+
+  /* Radii scale */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 24px;
 
   /* Easing */
   --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -38,14 +48,17 @@ body {
   margin: 0;
   background: var(--page-bg);
   background-image:
-    radial-gradient(ellipse 70% 50% at 10% 0%,  rgba(2,132,199,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 40% at 90% 100%, rgba(6,182,212,0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 45% at 0% 0%,   rgba(3,105,161,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(6,182,212,0.045) 0%, transparent 55%),
+    linear-gradient(180deg, #F2F5FB 0%, #EEF2F9 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'ss01';
   font-size: 15px;
   line-height: 1.6;
 }
@@ -57,7 +70,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
+  text-wrap: balance;
 }
 
 button { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; cursor: pointer; border: none; background: none; }
@@ -104,7 +118,7 @@ button:focus-visible, a:focus-visible {
 /* ─── Inputs ────────────────────────────────────────────────── */
 .cd-input {
   background: #FFFFFF;
-  border: 1.5px solid rgba(0,0,0,0.10);
+  border: 1.5px solid var(--border-strong);
   border-radius: 12px;
   color: #0F172A;
   height: 44px;
@@ -127,7 +141,7 @@ button:focus-visible, a:focus-visible {
 
 .cd-textarea {
   background: #FFFFFF;
-  border: 1.5px solid rgba(0,0,0,0.10);
+  border: 1.5px solid var(--border-strong);
   border-radius: 12px;
   color: #0F172A;
   padding: 12px 14px;
@@ -149,7 +163,7 @@ button:focus-visible, a:focus-visible {
 
 .cd-select {
   background: #FFFFFF;
-  border: 1.5px solid rgba(0,0,0,0.10);
+  border: 1.5px solid var(--border-strong);
   border-radius: 12px;
   color: #0F172A;
   height: 44px;
@@ -173,10 +187,10 @@ button:focus-visible, a:focus-visible {
 
 /* ─── Buttons ───────────────────────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(160deg, #0EA5E9 0%, #0284C7 100%);
+  background: linear-gradient(165deg, #0EA5E9 0%, #0369A1 92%);
   color: #fff;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
@@ -188,7 +202,7 @@ button:focus-visible, a:focus-visible {
   gap: 7px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(2,132,199,0.2), 0 4px 12px rgba(2,132,199,0.25);
+  box-shadow: var(--shadow-primary), 0 0 0 1px rgba(3,105,161,0.6) inset, 0 1px 0 rgba(255,255,255,0.25) inset;
   transition: transform 200ms var(--butter), box-shadow 200ms var(--butter), filter 200ms;
   will-change: transform;
 }
@@ -226,7 +240,7 @@ button:focus-visible, a:focus-visible {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
-  border: 1.5px solid rgba(0,0,0,0.10);
+  border: 1.5px solid var(--border-strong);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -279,16 +293,16 @@ button:focus-visible, a:focus-visible {
 
 /* ─── Cards ─────────────────────────────────────────────────── */
 .cd-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 20px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCFDFE 100%);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 220ms var(--butter), border-color 220ms var(--butter), transform 220ms var(--butter);
+  transition: box-shadow 240ms var(--butter), border-color 240ms var(--butter), transform 240ms var(--butter);
   will-change: transform;
 }
 .cd-card:hover {
   box-shadow: var(--shadow-md);
-  border-color: rgba(2,132,199,0.12);
+  border-color: rgba(3,105,161,0.14);
   transform: translateY(-2px);
 }
 
@@ -296,10 +310,10 @@ button:focus-visible, a:focus-visible {
 /* Numbers stay dark. Color only as a left accent stripe.        */
 /* Usage: <div className="kpi-card" style={{'--kc': color}}>    */
 .kpi-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.055);
-  border-radius: 16px;
-  border-left: 3px solid var(--kc, #0284C7);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCFDFE 100%);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  border-left: 3px solid var(--kc, #0369A1);
   box-shadow: var(--shadow-sm);
   padding: 18px 20px;
   position: relative;
@@ -308,10 +322,18 @@ button:focus-visible, a:focus-visible {
   will-change: transform;
   transition: transform 260ms var(--butter), box-shadow 260ms var(--butter), border-color 260ms var(--butter);
 }
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 90px; height: 90px;
+  background: radial-gradient(circle at top right, color-mix(in srgb, var(--kc, #0369A1) 10%, transparent), transparent 70%);
+  pointer-events: none;
+}
 .kpi-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  border-color: rgba(0,0,0,0.08);
+  border-color: rgba(15,23,42,0.10);
 }
 .kpi-card .kpi-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -612,32 +634,32 @@ button:focus-visible, a:focus-visible {
 .section-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   padding: 16px 22px;
-  border-bottom: 1px solid rgba(0,0,0,0.055);
-  background: linear-gradient(180deg, #FAFBFE 0%, #F5F7FC 100%);
+  border-bottom: 1px solid var(--hairline);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBFCFE 100%);
 }
 .section-header-icon {
   width: 30px;
   height: 30px;
-  border-radius: 8px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  box-shadow: 0 1px 3px rgba(15,23,42,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
 }
 
 /* ─── Stats strip ───────────────────────────────────────────── */
 /* ONE unified card housing all KPI metrics, separated by dividers */
 .stats-strip {
-  background: #FFFFFF;
-  border: 1px solid rgba(2,132,199,0.12);
-  border-radius: 18px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBFDFE 100%);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    0 1px 3px rgba(0,0,0,0.04),
-    0 8px 24px rgba(0,0,0,0.07);
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 1px 2px rgba(15,23,42,0.04),
+    0 10px 28px rgba(15,23,42,0.07);
   display: grid;
   overflow: hidden;
   will-change: transform;
@@ -648,7 +670,7 @@ button:focus-visible, a:focus-visible {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #0284C7, #06B6D4, #38BDF8);
+  background: linear-gradient(90deg, #0369A1, #06B6D4, #38BDF8);
   z-index: 1;
 }
 .stats-strip-item {
@@ -665,7 +687,7 @@ button:focus-visible, a:focus-visible {
   top: 18px;
   bottom: 18px;
   width: 1px;
-  background: rgba(0,0,0,0.07);
+  background: linear-gradient(180deg, transparent, var(--hairline) 25%, var(--hairline) 75%, transparent);
 }
 .stat-lbl {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -680,12 +702,12 @@ button:focus-visible, a:focus-visible {
 .stat-num {
   font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
-  font-size: 30px;
-  color: #0F172A;
+  font-size: 31px;
+  color: var(--text-primary);
   line-height: 1;
   margin: 0;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
 }
 .stat-num-sm {
   font-family: 'Plus Jakarta Sans', sans-serif;

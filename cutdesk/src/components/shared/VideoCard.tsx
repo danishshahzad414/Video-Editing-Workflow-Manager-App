@@ -45,14 +45,14 @@ export default function VideoCard({ video, onClick, actionSlot }: Props) {
       {/* Title zone */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
-          <p className="text-slate-800 text-sm truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: 15 }}>
+          <p className="text-slate-800 text-sm truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 15 }}>
             {video.title}
           </p>
           {video.is_urgent && (
             <AlertCircle size={14} className="text-red-500 flex-shrink-0" />
           )}
         </div>
-        <p className="text-slate-500 text-xs mt-0.5" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>
+        <p className="text-slate-500 text-xs mt-0.5" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500 }}>
           {(video.counselor as any)?.full_name || ''} · {video.category}
         </p>
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
@@ -63,10 +63,10 @@ export default function VideoCard({ video, onClick, actionSlot }: Props) {
 
       {/* Right */}
       <div className="flex flex-col items-end gap-1.5 flex-shrink-0 text-right" onClick={e => e.stopPropagation()}>
-        <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
+        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
           {timeAgo(video.created_at)}
         </span>
-        <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
+        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
           Step {stageIdx + 1} of {PIPELINE_STAGES.length}
         </span>
         {actionSlot && <div className="mt-1">{actionSlot}</div>}

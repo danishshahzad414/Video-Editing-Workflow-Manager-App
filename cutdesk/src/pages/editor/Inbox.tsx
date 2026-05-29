@@ -67,11 +67,11 @@ export default function EditorInbox() {
       <div className="max-w-4xl mx-auto fade-in">
         {/* Sort bar */}
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>{rawVideos.length} videos waiting</p>
+          <p className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{rawVideos.length} videos waiting</p>
           <div className="flex gap-2 items-center">
             <span className="section-label">Sort:</span>
             {(['date', 'priority', 'counselor'] as const).map(s => (
-              <button key={s} onClick={() => setSort(s)} className="text-xs px-3 py-1.5 rounded-lg transition-colors capitalize" style={{ background: sort === s ? '#0284C7' : '#F1F5F9', color: sort === s ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #E2E8F0' }}>
+              <button key={s} onClick={() => setSort(s)} className="text-xs px-3 py-1.5 rounded-lg transition-colors capitalize" style={{ background: sort === s ? '#0284C7' : '#F1F5F9', color: sort === s ? '#fff' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, border: '1px solid #E2E8F0' }}>
                 {s === 'date' ? 'Upload Date' : s === 'priority' ? 'Priority' : 'Counselor'}
               </button>
             ))}
@@ -82,7 +82,7 @@ export default function EditorInbox() {
         {rawVideos.length > 0 && (
           <div className="flex items-center gap-3 mb-3">
             <input type="checkbox" checked={selected.length === rawVideos.length && rawVideos.length > 0} onChange={e => e.target.checked ? selectAll() : setSelected([])} className="w-4 h-4 accent-[#0284C7]" />
-            <span className="text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>Select All</span>
+            <span className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>Select All</span>
           </div>
         )}
 
@@ -127,11 +127,11 @@ export default function EditorInbox() {
         {/* Floating action bar */}
         {selected.length > 0 && (
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-3 rounded-xl z-50" style={{ background: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}>
-            <span className="text-white text-sm font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>{selected.length} selected</span>
+            <span className="text-white text-sm font-semibold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>{selected.length} selected</span>
             <div className="w-px h-5 bg-white/20" />
             <button className="btn-primary text-xs py-2 px-3" onClick={bulkAddToQueue}>Add to Queue</button>
-            <button className="text-xs py-2 px-3 rounded-lg" style={{ background: '#EF4444', color: '#fff', fontFamily: 'Poppins', fontWeight: 700 }} onClick={bulkMarkUrgent}>Mark Urgent</button>
-            <button className="text-white/50 hover:text-white text-xs" style={{ fontFamily: 'Poppins' }} onClick={() => setSelected([])}>Clear</button>
+            <button className="text-xs py-2 px-3 rounded-lg" style={{ background: '#EF4444', color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 700 }} onClick={bulkMarkUrgent}>Mark Urgent</button>
+            <button className="text-white/50 hover:text-white text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }} onClick={() => setSelected([])}>Clear</button>
           </div>
         )}
       </div>

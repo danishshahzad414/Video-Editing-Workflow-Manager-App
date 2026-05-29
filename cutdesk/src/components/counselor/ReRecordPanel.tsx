@@ -75,7 +75,7 @@ export default function ReRecordPanel({ video, onDone }: Props) {
       <div>
         <p className="section-label mb-3">Editor's Feedback</p>
         <div className="p-3 rounded-lg mb-3" style={{ background: 'rgba(245,158,11,0.1)', borderLeft: '3px solid #F59E0B' }}>
-          <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: 'rgba(245,248,250,0.8)' }}>
+          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(245,248,250,0.8)' }}>
             {video.notes_for_editor || 'Please re-record with improvements.'}
           </p>
         </div>
@@ -98,10 +98,10 @@ export default function ReRecordPanel({ video, onDone }: Props) {
           {file ? (
             <div className="flex items-center justify-center gap-2 text-[#00A2CF]">
               <Film size={16} />
-              <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12 }}>{file.name}</span>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12 }}>{file.name}</span>
             </div>
           ) : (
-            <p className="text-white/40" style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12 }}>Drop new video here</p>
+            <p className="text-white/40" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12 }}>Drop new video here</p>
           )}
         </div>
         <textarea className="cd-textarea mb-3" rows={2} placeholder="Notes for the editor..." value={notes} onChange={e => setNotes(e.target.value)} style={{ fontSize: 12 }} />

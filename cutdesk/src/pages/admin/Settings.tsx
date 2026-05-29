@@ -26,8 +26,8 @@ export default function AdminSettings() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>Portal Settings</h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>Portal Settings</h1>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
               Configure system-wide preferences and behaviour
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function AdminSettings() {
         {DEMO_MODE && (
           <div className="flex items-start gap-3 p-4 rounded-xl" style={{ background: '#FEF3C7', border: '1px solid #FDE68A' }}>
             <span style={{ fontSize: 14 }}>⚡</span>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#92400E', margin: 0 }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#92400E', margin: 0 }}>
               <strong>Demo Mode:</strong> Settings are shown for preview only and won't persist between sessions. Connect Supabase to enable real configuration storage.
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function AdminSettings() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#EFF6FF' }}>
               <Globe size={15} style={{ color: '#0284C7' }} />
             </div>
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Portal Identity</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Portal Identity</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -85,7 +85,7 @@ export default function AdminSettings() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#F3E8FF' }}>
               <Bell size={15} style={{ color: '#7C3AED' }} />
             </div>
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Notifications</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Notifications</h2>
           </div>
           {[
             { label: 'In-App Notifications', desc: 'Show notification bell alerts inside the portal', value: notifInApp, set: setNotifInApp },
@@ -93,8 +93,8 @@ export default function AdminSettings() {
           ].map(item => (
             <div key={item.label} className="flex items-center justify-between p-3 rounded-xl" style={{ background: '#F8FAFC', border: '1px solid #F1F5F9' }}>
               <div>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{item.label}</p>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{item.desc}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{item.label}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{item.desc}</p>
               </div>
               <button
                 className="w-11 h-6 rounded-full relative flex-shrink-0 transition-all duration-300"
@@ -114,7 +114,7 @@ export default function AdminSettings() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#FEE2E2' }}>
               <Shield size={15} style={{ color: '#EF4444' }} />
             </div>
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Security</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Security</h2>
           </div>
           <div>
             <label className="section-label mb-2 block">Session Timeout</label>
@@ -142,7 +142,7 @@ export default function AdminSettings() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#ECFDF5' }}>
               <Database size={15} style={{ color: '#059669' }} />
             </div>
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>System Information</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>System Information</h2>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {[
@@ -154,8 +154,8 @@ export default function AdminSettings() {
               { label: 'Frontend',       value: 'React + Vite' },
             ].map(item => (
               <div key={item.label} className="p-3 rounded-xl" style={{ background: '#F8FAFC', border: '1px solid #F1F5F9' }}>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 10, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>{item.label}</p>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 13, color: '#0F172A', margin: '2px 0 0' }}>{item.value}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>{item.label}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: '#0F172A', margin: '2px 0 0' }}>{item.value}</p>
               </div>
             ))}
           </div>
@@ -167,11 +167,11 @@ export default function AdminSettings() {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#FEF3C7' }}>
               <Palette size={15} style={{ color: '#B45309' }} />
             </div>
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Branding</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#0F172A' }}>Branding</h2>
           </div>
           <div className="p-4 rounded-xl text-center" style={{ background: '#FFFBEB', border: '1.5px dashed #FDE68A' }}>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#B45309', margin: 0 }}>Logo & Colour Customisation</p>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#D97706', margin: '4px 0 0' }}>Coming in v1.1 — custom logo upload, accent colours and sidebar themes</p>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#B45309', margin: 0 }}>Logo & Colour Customisation</p>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#D97706', margin: '4px 0 0' }}>Coming in v1.1 — custom logo upload, accent colours and sidebar themes</p>
           </div>
         </div>
       </div>

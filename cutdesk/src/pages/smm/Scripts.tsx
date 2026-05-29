@@ -111,7 +111,7 @@ export default function SMMScripts() {
                 key={s}
                 onClick={() => setFilter(s)}
                 className="px-3 py-1.5 rounded-lg text-xs transition-all"
-                style={{ background: filter === s ? '#0284C7' : 'transparent', color: filter === s ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600 }}
+                style={{ background: filter === s ? '#0284C7' : 'transparent', color: filter === s ? '#fff' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}
               >
                 {s}
               </button>
@@ -138,16 +138,16 @@ export default function SMMScripts() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <h3 className="text-sm font-bold" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{script.title}</h3>
+                        <h3 className="text-sm font-bold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, color: '#0F172A' }}>{script.title}</h3>
                         {script.priority !== 'Normal' && (
-                          <span style={{ background: priorityBorderColor(script.priority), color: '#fff', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>
+                          <span style={{ background: priorityBorderColor(script.priority), color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>
                             {script.priority}
                           </span>
                         )}
-                        <span style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>
+                        <span style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>
                           {script.category}
                         </span>
-                        <span style={{ background: style.bg, color: style.color, fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase' }}>
+                        <span style={{ background: style.bg, color: style.color, fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase' }}>
                           {script.status}
                         </span>
                       </div>
@@ -158,11 +158,11 @@ export default function SMMScripts() {
                           ))}
                         </div>
                         {script.deadline && (
-                          <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: isOverdue ? '#EF4444' : isNear ? '#F59E0B' : '#94A3B8' }}>
+                          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: isOverdue ? '#EF4444' : isNear ? '#F59E0B' : '#94A3B8' }}>
                             Due {formatDate(script.deadline)}
                           </span>
                         )}
-                        <span style={{ fontFamily: 'Poppins', fontSize: 11, color: '#94A3B8' }}>
+                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 11, color: '#94A3B8' }}>
                           {scriptAssignments.length > 0
                             ? `Assigned to: ${scriptAssignments.map(a => a.counselor?.full_name || '').filter(Boolean).join(', ')}`
                             : 'Unassigned'}
@@ -172,21 +172,21 @@ export default function SMMScripts() {
                     <div className="flex gap-2 flex-shrink-0 flex-wrap justify-end">
                       <button
                         className="text-xs px-3 py-1.5 rounded-lg flex items-center gap-1"
-                        style={{ background: '#F0FDF4', color: '#065F46', fontFamily: 'Poppins', fontWeight: 700, border: '1px solid #BBF7D0' }}
+                        style={{ background: '#F0FDF4', color: '#065F46', fontFamily: 'Plus Jakarta Sans', fontWeight: 700, border: '1px solid #BBF7D0' }}
                         onClick={() => setAssignScript(script)}
                       >
                         <UserPlus size={12} /> Assign
                       </button>
                       <button
                         className="text-xs px-3 py-1.5 rounded-lg"
-                        style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Poppins', fontWeight: 700, border: '1px solid #BFDBFE' }}
+                        style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Plus Jakarta Sans', fontWeight: 700, border: '1px solid #BFDBFE' }}
                         onClick={() => setDetailScript(script)}
                       >
                         View
                       </button>
                       <button
                         className="text-xs px-3 py-1.5 rounded-lg"
-                        style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Poppins', fontWeight: 700, border: '1px solid #FECACA' }}
+                        style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Plus Jakarta Sans', fontWeight: 700, border: '1px solid #FECACA' }}
                         onClick={() => setArchiveConfirm(script.id)}
                       >
                         Archive
@@ -306,8 +306,8 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
               <UserPlus size={16} />
             </div>
             <div>
-              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, margin: 0 }}>Assign Script</h2>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, opacity: 0.85, margin: 0 }}>{script.title}</p>
+              <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, margin: 0 }}>Assign Script</h2>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, opacity: 0.85, margin: 0 }}>{script.title}</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.15)' }}>
@@ -320,8 +320,8 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
             <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: '#DCFCE7' }}>
               <UserPlus size={28} className="text-emerald-500" />
             </div>
-            <p style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A' }}>Assigned!</p>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#64748B' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: '#0F172A' }}>Assigned!</p>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#64748B' }}>
               Counselors have been notified.
             </p>
           </div>
@@ -338,7 +338,7 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
               <div>
                 <label className="section-label mb-2 block">Select Counselors *</label>
                 {counselors.length === 0 ? (
-                  <p style={{ fontFamily: 'Poppins', fontSize: 12, color: '#94A3B8' }}>No counselors available</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 12, color: '#94A3B8' }}>No counselors available</p>
                 ) : (
                   <div className="space-y-2 max-h-60 overflow-y-auto">
                     {counselors.map(c => {
@@ -358,11 +358,11 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
                             className="accent-[#0284C7]"
                           />
                           <div className="flex-1 min-w-0">
-                            <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{c.full_name}</p>
-                            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{c.email}</p>
+                            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{c.full_name}</p>
+                            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{c.email}</p>
                           </div>
                           {isExisting && (
-                            <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, color: '#10B981', background: '#D1FAE5', padding: '2px 6px', borderRadius: 4 }}>
+                            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: '#10B981', background: '#D1FAE5', padding: '2px 6px', borderRadius: 4 }}>
                               Already Assigned
                             </span>
                           )}
@@ -375,7 +375,7 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
 
               {selected.length > 0 && (
                 <div className="p-3 rounded-xl" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#065F46', margin: 0 }}>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#065F46', margin: 0 }}>
                     ✓ {selected.length} counselor{selected.length > 1 ? 's' : ''} selected · They will receive a notification
                   </p>
                 </div>
@@ -384,7 +384,7 @@ function AssignScriptModal({ script, counselors, existingAssignments, onClose, o
               {DEMO_MODE && (
                 <div className="p-3 rounded-xl flex items-start gap-2" style={{ background: '#EFF6FF', border: '1px solid #BFDBFE' }}>
                   <Bell size={13} className="text-sky-500 mt-0.5 flex-shrink-0" />
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
                     <strong>Demo Mode:</strong> Assignment will be simulated. In production, selected counselors receive in-app notifications.
                   </p>
                 </div>
@@ -464,14 +464,14 @@ function NewScriptModal({ counselors, onClose, onSaved }: { counselors: any[]; o
         onClick={e => e.stopPropagation()}
       >
         <div className="px-6 py-4 flex items-center justify-between flex-shrink-0" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
-          <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>New Script</h2>
+          <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>New Script</h2>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors"><X size={18} /></button>
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {DEMO_MODE && (
             <div className="flex items-start gap-2 px-4 py-3 rounded-xl" style={{ background: '#EFF6FF', border: '1px solid #BFDBFE' }}>
               <Bell size={13} className="text-sky-500 mt-0.5 flex-shrink-0" />
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
                 <strong>Demo Mode:</strong> Script will be simulated and not saved to the database.
               </p>
             </div>
@@ -499,7 +499,7 @@ function NewScriptModal({ counselors, onClose, onSaved }: { counselors: any[]; o
               <label className="section-label mb-2 block">Priority</label>
               <div className="flex gap-2">
                 {['Urgent', 'Normal', 'Low'].map(p => (
-                  <button key={p} onClick={() => setForm(f => ({ ...f, priority: p }))} className="flex-1 py-2 rounded-lg text-xs transition-all" style={{ background: form.priority === p ? '#0284C7' : '#F1F5F9', color: form.priority === p ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 700, border: '1px solid #E2E8F0' }}>{p}</button>
+                  <button key={p} onClick={() => setForm(f => ({ ...f, priority: p }))} className="flex-1 py-2 rounded-lg text-xs transition-all" style={{ background: form.priority === p ? '#0284C7' : '#F1F5F9', color: form.priority === p ? '#fff' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 700, border: '1px solid #E2E8F0' }}>{p}</button>
                 ))}
               </div>
             </div>
@@ -512,7 +512,7 @@ function NewScriptModal({ counselors, onClose, onSaved }: { counselors: any[]; o
             <label className="section-label mb-2 block">Target Platforms</label>
             <div className="flex gap-2 flex-wrap">
               {PLATFORMS.map(p => (
-                <button key={p} onClick={() => setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])} className="px-3 py-1.5 rounded-lg text-xs" style={{ background: platforms.includes(p) ? '#EFF6FF' : '#F8FAFC', color: platforms.includes(p) ? '#0284C7' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: `1.5px solid ${platforms.includes(p) ? '#BFDBFE' : '#E2E8F0'}` }}>{p}</button>
+                <button key={p} onClick={() => setPlatforms(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])} className="px-3 py-1.5 rounded-lg text-xs" style={{ background: platforms.includes(p) ? '#EFF6FF' : '#F8FAFC', color: platforms.includes(p) ? '#0284C7' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, border: `1.5px solid ${platforms.includes(p) ? '#BFDBFE' : '#E2E8F0'}` }}>{p}</button>
               ))}
             </div>
           </div>
@@ -522,7 +522,7 @@ function NewScriptModal({ counselors, onClose, onSaved }: { counselors: any[]; o
               {counselors.map(c => (
                 <label key={c.id} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-slate-50">
                   <input type="checkbox" checked={assignTo.includes(c.id)} onChange={() => setAssignTo(prev => prev.includes(c.id) ? prev.filter(x => x !== c.id) : [...prev, c.id])} className="accent-[#0284C7]" />
-                  <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#0F172A' }}>{c.full_name}</span>
+                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#0F172A' }}>{c.full_name}</span>
                 </label>
               ))}
             </div>
@@ -565,46 +565,46 @@ function ScriptDetailPanel({ script, assignments, onClose }: { script: Script; a
       <div className="relative w-full max-w-[420px] h-full flex flex-col slide-in-right" style={{ background: '#FFFFFF', borderLeft: '1px solid #E2E8F0', boxShadow: '-8px 0 32px rgba(0,0,0,0.08)' }}>
         <div className="px-5 py-4 flex items-center justify-between flex-shrink-0" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
           <div>
-            <h2 className="text-base font-bold" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>{script.title}</h2>
-            <span style={{ background: (STATUS_STYLE[script.status] || STATUS_STYLE['Draft']).bg, color: (STATUS_STYLE[script.status] || STATUS_STYLE['Draft']).color, fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>{script.status}</span>
+            <h2 className="text-base font-bold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>{script.title}</h2>
+            <span style={{ background: (STATUS_STYLE[script.status] || STATUS_STYLE['Draft']).bg, color: (STATUS_STYLE[script.status] || STATUS_STYLE['Draft']).color, fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, padding: '2px 6px', borderRadius: 4 }}>{script.status}</span>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors"><X size={18} /></button>
         </div>
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
           <div className="grid grid-cols-2 gap-3 text-xs">
             {[['Category', script.category], ['Platforms', (script.target_platforms || []).join(', ') || '—'], ['Duration', script.target_duration || '—'], ['Deadline', script.deadline ? formatDate(script.deadline) : '—']].map(([l, v]) => (
-              <div key={l}><p className="section-label mb-1">{l}</p><p style={{ fontFamily: 'Poppins', color: '#475569' }}>{v}</p></div>
+              <div key={l}><p className="section-label mb-1">{l}</p><p style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{v}</p></div>
             ))}
           </div>
           <div>
             <div className="flex items-center justify-between mb-2">
               <p className="section-label">Script Body</p>
-              <button className="text-xs hover:underline" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0284C7' }} onClick={() => navigator.clipboard.writeText(script.body).then(() => toast.success('Copied!'))}>Copy Script</button>
+              <button className="text-xs hover:underline" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#0284C7' }} onClick={() => navigator.clipboard.writeText(script.body).then(() => toast.success('Copied!'))}>Copy Script</button>
             </div>
-            <div className="p-3 rounded-lg text-xs overflow-y-auto max-h-48" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', fontFamily: 'Poppins', fontWeight: 500, color: '#475569', whiteSpace: 'pre-wrap' }}>{script.body}</div>
+            <div className="p-3 rounded-lg text-xs overflow-y-auto max-h-48" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#475569', whiteSpace: 'pre-wrap' }}>{script.body}</div>
           </div>
           {script.recording_notes && (
             <div>
               <p className="section-label mb-2">Recording Notes</p>
               <div className="p-3 rounded-lg" style={{ background: '#FFFBEB', borderLeft: '3px solid #F59E0B' }}>
-                <p className="text-xs" style={{ fontFamily: 'Poppins', color: '#B45309' }}>{script.recording_notes}</p>
+                <p className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#B45309' }}>{script.recording_notes}</p>
               </div>
             </div>
           )}
           <div>
             <p className="section-label mb-2">Assignment Tracker ({assignments.length})</p>
             {assignments.length === 0 ? (
-              <p className="text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No counselors assigned yet</p>
+              <p className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>No counselors assigned yet</p>
             ) : (
               <div className="space-y-2">
                 {assignments.map(a => (
                   <div key={a.id} className="flex items-center justify-between p-2 rounded-lg" style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
                     <div>
-                      <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0F172A', margin: 0 }}>{a.counselor?.full_name}</p>
-                      {a.deadline && <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Due {formatDate(a.deadline)}</p>}
+                      <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0F172A', margin: 0 }}>{a.counselor?.full_name}</p>
+                      {a.deadline && <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Due {formatDate(a.deadline)}</p>}
                     </div>
                     <div className="flex items-center gap-2">
-                      <span style={{ background: statusColor[a.status] || '#94A3B8', color: '#fff', padding: '2px 6px', borderRadius: 4, fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, textTransform: 'uppercase' }}>{a.status}</span>
+                      <span style={{ background: statusColor[a.status] || '#94A3B8', color: '#fff', padding: '2px 6px', borderRadius: 4, fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, textTransform: 'uppercase' }}>{a.status}</span>
                       {!['Submitted', 'Done'].includes(a.status) && (
                         <button onClick={() => sendReminder(a.assigned_to)} title="Send Reminder" className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-sky-50 transition-colors">
                           <Bell size={13} className="text-sky-500" />

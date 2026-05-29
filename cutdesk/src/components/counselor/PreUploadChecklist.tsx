@@ -34,8 +34,8 @@ export default function PreUploadChecklist({ onProceed, onClose }: Props) {
               <CheckSquare size={16} className="text-white" />
             </div>
             <div>
-              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#111827', margin: 0 }}>Before You Upload</h2>
-              <p style={{ fontFamily: 'Poppins', fontSize: 11, color: '#94A3B8', margin: 0 }}>Quick quality checklist</p>
+              <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#111827', margin: 0 }}>Before You Upload</h2>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 11, color: '#94A3B8', margin: 0 }}>Quick quality checklist</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-colors" style={{ color: '#94A3B8', border: '1px solid rgba(0,0,0,0.08)' }}>
@@ -45,7 +45,7 @@ export default function PreUploadChecklist({ onProceed, onClose }: Props) {
 
         {/* Body */}
         <div className="p-6">
-          <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#64748B', margin: '0 0 16px' }}>
+          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#64748B', margin: '0 0 16px' }}>
             Tick any items that apply — then proceed whenever you're ready.
           </p>
           <div className="space-y-2.5">
@@ -63,7 +63,7 @@ export default function PreUploadChecklist({ onProceed, onClose }: Props) {
                   ? <CheckSquare size={18} style={{ color: '#0284C7', flexShrink: 0 }} />
                   : <Square size={18} style={{ color: '#CBD5E1', flexShrink: 0 }} />
                 }
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: checked[i] ? '#0369A1' : '#475569' }}>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: checked[i] ? '#0369A1' : '#475569' }}>
                   {item}
                 </span>
               </button>

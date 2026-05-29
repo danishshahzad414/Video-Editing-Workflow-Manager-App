@@ -68,7 +68,7 @@ function AuthGuard({ children, allowedRoles }: { children: React.ReactNode; allo
       <div className="min-h-screen flex items-center justify-center" style={{ background: '#00293A' }}>
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-[#00A2CF] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-white/40 text-sm" style={{ fontFamily: 'Poppins' }}>Loading...</p>
+          <p className="text-white/40 text-sm" style={{ fontFamily: 'Plus Jakarta Sans' }}>Loading...</p>
         </div>
       </div>
     )
@@ -153,7 +153,7 @@ export default function App() {
                 background: '#003D52',
                 color: '#fff',
                 border: '1px solid rgba(0,162,207,0.3)',
-                fontFamily: 'Poppins',
+                fontFamily: 'Plus Jakarta Sans',
                 fontWeight: 500,
                 fontSize: 13,
               },

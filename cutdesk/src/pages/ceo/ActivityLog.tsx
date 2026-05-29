@@ -29,15 +29,15 @@ export default function CEOActivityLog() {
             </thead>
             <tbody>
               {filtered.length === 0 ? (
-                <tr><td colSpan={6} className="px-4 py-12 text-center" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No activity</td></tr>
+                <tr><td colSpan={6} className="px-4 py-12 text-center" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>No activity</td></tr>
               ) : filtered.map((entry, i) => (
                 <tr key={entry.id} className="table-row-hover" style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
-                  <td className="px-4 py-3 text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{(entry.user as any)?.full_name || '—'}</td>
-                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{entry.action}</td>
-                  <td className="px-4 py-3 text-xs max-w-xs truncate" style={{ fontFamily: 'Poppins', color: '#475569' }}>{(entry.video as any)?.title || '—'}</td>
+                  <td className="px-4 py-3 text-xs font-semibold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#0F172A' }}>{(entry.user as any)?.full_name || '—'}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{entry.action}</td>
+                  <td className="px-4 py-3 text-xs max-w-xs truncate" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{(entry.video as any)?.title || '—'}</td>
                   <td className="px-4 py-3">{entry.from_status && <StatusPill status={entry.from_status} />}</td>
                   <td className="px-4 py-3">{entry.to_status && <StatusPill status={entry.to_status} />}</td>
-                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{formatDateTime(entry.created_at)}</td>
+                  <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{formatDateTime(entry.created_at)}</td>
                 </tr>
               ))}
             </tbody>
@@ -50,7 +50,7 @@ export default function CEOActivityLog() {
 
 function StatusPill({ status }: { status: string }) {
   return (
-    <span style={{ background: stageColor(status), color: '#fff', fontFamily: 'Poppins', fontWeight: 600, fontSize: 9, padding: '2px 5px', borderRadius: 3, textTransform: 'uppercase' }}>
+    <span style={{ background: stageColor(status), color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 9, padding: '2px 5px', borderRadius: 3, textTransform: 'uppercase' }}>
       {status}
     </span>
   )

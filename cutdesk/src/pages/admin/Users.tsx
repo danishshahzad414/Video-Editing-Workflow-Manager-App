@@ -74,8 +74,8 @@ export default function AdminUsers() {
         {/* Header bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>User Management</h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>User Management</h1>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
               {users.length} accounts · {users.filter(u => u.disabled).length} disabled
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function AdminUsers() {
                   onClick={() => setFilterRole(r)}
                   className="px-3 py-1.5 rounded-lg text-xs transition-all duration-200"
                   style={{
-                    fontFamily: 'Poppins', fontWeight: 600,
+                    fontFamily: 'Plus Jakarta Sans', fontWeight: 600,
                     background: filterRole === r ? '#7C3AED' : 'transparent',
                     color: filterRole === r ? '#fff' : '#64748B',
                     boxShadow: filterRole === r ? '0 2px 8px rgba(124,58,237,0.3)' : 'none',
@@ -120,14 +120,14 @@ export default function AdminUsers() {
         {/* Users table */}
         <div className="cd-card overflow-hidden">
           <div className="px-5 py-3" style={{ borderBottom: '1px solid #F1F5F9', background: '#FAFAFA' }}>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#64748B' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#64748B' }}>
               Showing {filtered.length} of {users.length} users
             </p>
           </div>
           {filtered.length === 0 ? (
             <div className="py-16 text-center">
               <Users size={32} className="text-slate-300 mx-auto mb-3" />
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#94A3B8' }}>No users found</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: '#94A3B8' }}>No users found</p>
             </div>
           ) : (
             <div className="divide-y" style={{ borderColor: '#F8FAFC' }}>
@@ -142,22 +142,22 @@ export default function AdminUsers() {
                   >
                     {/* Avatar */}
                     <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-200 hover:scale-110" style={{ background: meta.bg }}>
-                      <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 13, color: meta.color }}>{initials}</span>
+                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 13, color: meta.color }}>{initials}</span>
                     </div>
 
                     {/* Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{user.full_name}</p>
+                        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>{user.full_name}</p>
                         {user.disabled && (
-                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold" style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Poppins' }}>DISABLED</span>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold" style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Plus Jakarta Sans' }}>DISABLED</span>
                         )}
                       </div>
-                      <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{user.email}</p>
+                      <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{user.email}</p>
                     </div>
 
                     {/* Role badge */}
-                    <span className="px-2.5 py-1 rounded-lg text-xs font-semibold flex-shrink-0" style={{ background: meta.bg, color: meta.color, fontFamily: 'Poppins' }}>
+                    <span className="px-2.5 py-1 rounded-lg text-xs font-semibold flex-shrink-0" style={{ background: meta.bg, color: meta.color, fontFamily: 'Plus Jakarta Sans' }}>
                       {meta.label}
                     </span>
 
@@ -214,8 +214,8 @@ export default function AdminUsers() {
               <CheckCircle size={26} style={{ color: '#7C3AED' }} />
             </div>
             <div>
-              <h3 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 17, color: '#0F172A' }}>New Password Generated</h3>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#94A3B8', marginTop: 4 }}>Share this with the user securely</p>
+              <h3 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 17, color: '#0F172A' }}>New Password Generated</h3>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#94A3B8', marginTop: 4 }}>Share this with the user securely</p>
             </div>
             <div className="w-full px-4 py-3 rounded-xl font-mono text-base font-bold" style={{ background: '#F8FAFC', border: '1.5px dashed #CBD5E1', color: '#0F172A', letterSpacing: '0.05em' }}>
               {showPassword}
@@ -238,7 +238,7 @@ function EditUserModal({ user, onSave, onClose }: { user: UserRow; onSave: (u: U
     <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose() }}>
       <div className="scale-in cd-card overflow-hidden w-full" style={{ maxWidth: 440 }} onClick={e => e.stopPropagation()}>
         <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid #F1F5F9', background: '#FAFAFA' }}>
-          <h3 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#0F172A' }}>Edit User</h3>
+          <h3 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#0F172A' }}>Edit User</h3>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-colors">
             <X size={15} className="text-slate-400" />
           </button>
@@ -284,7 +284,7 @@ function CreateUserModal({ onCreate, onClose }: { onCreate: (d: { full_name: str
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.15)' }}>
               <Plus size={15} className="text-white" />
             </div>
-            <h3 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#fff' }}>Add New User</h3>
+            <h3 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#fff' }}>Add New User</h3>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors" style={{ background: 'rgba(255,255,255,0.1)' }}>
             <X size={15} className="text-white" />
@@ -324,7 +324,7 @@ function CreateUserModal({ onCreate, onClose }: { onCreate: (d: { full_name: str
           </div>
           <div className="p-3 rounded-xl flex items-start gap-2" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
             <CheckCircle size={13} className="text-emerald-500 flex-shrink-0 mt-0.5" />
-            <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#065F46', margin: 0 }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: '#065F46', margin: 0 }}>
               In demo mode this adds to the session only. Connect Supabase to persist accounts.
             </p>
           </div>

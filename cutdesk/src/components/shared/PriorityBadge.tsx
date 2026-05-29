@@ -11,7 +11,7 @@ export default function PriorityBadge({ priority }: Props) {
       style={{
         background: color,
         color: '#fff',
-        fontFamily: 'Poppins',
+        fontFamily: 'Plus Jakarta Sans',
         fontWeight: 600,
         fontSize: 10,
         textTransform: 'uppercase',

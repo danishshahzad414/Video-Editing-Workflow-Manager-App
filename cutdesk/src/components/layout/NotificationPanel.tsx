@@ -21,9 +21,9 @@ export default function NotificationPanel({ onClose, onOpenVideo }: Props) {
         <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid #E2E8F0', background: '#FFFFFF' }}>
           <div className="flex items-center gap-3">
             <Bell size={18} className="text-slate-600" />
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#0F172A', margin: 0 }}>Notifications</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#0F172A', margin: 0 }}>Notifications</h2>
             {unread.length > 0 && (
-              <span className="text-white text-xs px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)', fontFamily: 'Poppins', fontWeight: 600 }}>
+              <span className="text-white text-xs px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
                 {unread.length}
               </span>
             )}
@@ -33,7 +33,7 @@ export default function NotificationPanel({ onClose, onOpenVideo }: Props) {
               <button
                 onClick={() => markAll.mutate()}
                 className="text-xs hover:underline"
-                style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0284C7' }}
+                style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#0284C7' }}
               >
                 Mark all read
               </button>
@@ -48,7 +48,7 @@ export default function NotificationPanel({ onClose, onOpenVideo }: Props) {
           {notifications.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full gap-3" style={{ color: '#94A3B8' }}>
               <Bell size={48} />
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 14 }}>You're all caught up</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14 }}>You're all caught up</p>
             </div>
           ) : (
             notifications.map(n => (
@@ -68,9 +68,9 @@ export default function NotificationPanel({ onClose, onOpenVideo }: Props) {
               >
                 <div className="w-1 rounded-full flex-shrink-0 mt-1" style={{ background: '#0284C7', minHeight: 32 }} />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold leading-snug" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{n.title}</p>
-                  <p className="text-xs mt-0.5 leading-relaxed" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{n.body}</p>
-                  <p className="text-xs mt-1" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{timeAgo(n.created_at)}</p>
+                  <p className="text-sm font-semibold leading-snug" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#0F172A' }}>{n.title}</p>
+                  <p className="text-xs mt-0.5 leading-relaxed" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#475569' }}>{n.body}</p>
+                  <p className="text-xs mt-1" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{timeAgo(n.created_at)}</p>
                 </div>
                 {!n.is_read && <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#0284C7' }} />}
               </div>

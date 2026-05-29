@@ -24,7 +24,7 @@ export default function StatusBadge({ status, size = 'md' }: Props) {
       style={{
         background: style.bg,
         color: style.color,
-        fontFamily: 'Poppins',
+        fontFamily: 'Plus Jakarta Sans',
         fontWeight: 600,
         fontSize: size === 'sm' ? 10 : 11,
         textTransform: 'uppercase',

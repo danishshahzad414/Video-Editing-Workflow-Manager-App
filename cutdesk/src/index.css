@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
@@ -16,12 +16,12 @@
   --text-secondary: #475569;
   --text-muted:     #94A3B8;
 
-  /* Shadows — elevation system */
-  --shadow-xs:  0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
-  --shadow-md:  0 4px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.07);
-  --shadow-lg:  0 8px 16px rgba(0,0,0,0.07), 0 24px 48px rgba(0,0,0,0.09);
-  --shadow-xl:  0 16px 32px rgba(0,0,0,0.08), 0 40px 80px rgba(0,0,0,0.12);
+  /* Shadows — Soft UI Evolution (skill: softer than flat, clearer than neumorphism) */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.03);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05), 0 1px 0 rgba(255,255,255,0.7) inset;
+  --shadow-md:  0 2px 6px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
+  --shadow-lg:  0 4px 12px rgba(0,0,0,0.07), 0 20px 40px rgba(0,0,0,0.10), 0 1px 0 rgba(255,255,255,0.5) inset;
+  --shadow-xl:  0 8px 20px rgba(0,0,0,0.08), 0 32px 64px rgba(0,0,0,0.13);
 
   /* Easing */
   --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -42,23 +42,46 @@ body {
     radial-gradient(ellipse 55% 40% at 90% 100%, rgba(6,182,212,0.05) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--text-primary);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 #root { width: 100%; min-height: 100vh; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
+  letter-spacing: -0.3px;
 }
 
-button { font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; border: none; background: none; }
-input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; }
+button { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500; }
+
+/* ─── Focus rings (WCAG AA — skill: focus-states CRITICAL) ─── */
+:focus-visible {
+  outline: 2px solid #0284C7;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #0284C7;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ─── Reduced motion (skill: prefers-reduced-motion HIGH) ──── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -86,7 +109,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   color: #0F172A;
   height: 44px;
   padding: 0 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   font-size: 14px;
   width: 100%;
@@ -108,7 +131,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   border-radius: 12px;
   color: #0F172A;
   padding: 12px 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   font-size: 14px;
   width: 100%;
@@ -131,7 +154,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   color: #0F172A;
   height: 44px;
   padding: 0 36px 0 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   font-size: 14px;
   width: 100%;
@@ -154,7 +177,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   color: #fff;
   padding: 10px 20px;
   border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.01em;
@@ -200,7 +223,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   color: #374151;
   padding: 10px 20px;
   border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
   border: 1.5px solid rgba(0,0,0,0.10);
@@ -226,7 +249,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   color: #fff;
   padding: 10px 20px;
   border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 13px;
   border: none;
@@ -246,7 +269,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 
 /* ─── Section label ─────────────────────────────────────────── */
 .section-label {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 11px;
   text-transform: uppercase;
@@ -259,20 +282,13 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   background: #FFFFFF;
   border: 1px solid rgba(0,0,0,0.07);
   border-radius: 20px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.85),
-    0 1px 3px rgba(0,0,0,0.04),
-    0 6px 20px rgba(0,0,0,0.07);
-  transition: box-shadow 260ms var(--butter), border-color 260ms var(--butter), transform 260ms var(--butter);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 220ms var(--butter), border-color 220ms var(--butter), transform 220ms var(--butter);
   will-change: transform;
 }
 .cd-card:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.85),
-    0 2px 6px rgba(0,0,0,0.05),
-    0 12px 32px rgba(0,0,0,0.09),
-    0 0 0 1px rgba(2,132,199,0.06);
-  border-color: rgba(0,0,0,0.09);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(2,132,199,0.12);
   transform: translateY(-2px);
 }
 
@@ -298,7 +314,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   border-color: rgba(0,0,0,0.08);
 }
 .kpi-card .kpi-label {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 10.5px;
   text-transform: uppercase;
@@ -308,7 +324,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   display: block;
 }
 .kpi-card .kpi-val {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 900;
   font-size: 28px;
   color: #0F172A;
@@ -317,7 +333,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   font-variant-numeric: tabular-nums;
 }
 .kpi-card .kpi-val-sm {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: #0F172A;
@@ -378,12 +394,12 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 
 /* ─── Animations ────────────────────────────────────────────── */
 
-/* Page entrance — clean, no blur (blur feels cheap) */
+/* Page entrance — clean, no blur */
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade-in { animation: page-enter 350ms var(--butter) both; }
+.fade-in { animation: page-enter 280ms var(--butter) both; }
 
 /* Modal — spring scale from slightly below */
 @keyframes scale-in {
@@ -449,8 +465,8 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 }
 .notif-badge { animation: badge-bounce 400ms var(--spring) both; }
 
-/* Stagger children — tighter timing feels more fluid */
-.stagger-children > * { animation: page-enter 380ms var(--butter) both; }
+/* Stagger children — 200ms per skill recommendation */
+.stagger-children > * { animation: page-enter 260ms var(--butter) both; }
 .stagger-children > *:nth-child(1)  { animation-delay:   0ms; }
 .stagger-children > *:nth-child(2)  { animation-delay:  35ms; }
 .stagger-children > *:nth-child(3)  { animation-delay:  70ms; }
@@ -551,7 +567,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   gap: 5px;
   padding: 4px 10px;
   border-radius: 99px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 11px;
 }
@@ -652,7 +668,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   background: rgba(0,0,0,0.07);
 }
 .stat-lbl {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 10px;
   text-transform: uppercase;
@@ -662,7 +678,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   display: block;
 }
 .stat-num {
-  font-family: 'Inter', 'Montserrat', sans-serif;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   font-size: 30px;
   color: #0F172A;
@@ -672,7 +688,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   letter-spacing: -0.5px;
 }
 .stat-num-sm {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: #111827;
@@ -688,7 +704,7 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
 
 /* ─── Page section title ────────────────────────────────────── */
 .page-section-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   font-size: 14px;
   color: #0F172A;
@@ -717,14 +733,14 @@ input, textarea, select { font-family: 'Poppins', sans-serif; font-weight: 500; 
   margin-bottom: 4px;
 }
 .empty-state-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   font-size: 15px;
   color: #374151;
   margin: 0;
 }
 .empty-state-sub {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 400;
   font-size: 13px;
   color: #94A3B8;

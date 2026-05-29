@@ -43,10 +43,10 @@ export default function CounselorDashboard() {
         {/* ── Page header ── */}
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
               My Videos
             </h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
               {totalUploaded} uploaded · {inEditing} in editing · {completed} completed
             </p>
           </div>
@@ -78,15 +78,15 @@ export default function CounselorDashboard() {
             <div className="flex items-center gap-2.5 px-5 py-2.5" style={{ background: '#FFFBEB', borderBottom: '1px solid #FDE68A' }}>
               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 pulse-dot" style={{ background: '#F59E0B' }} />
               <AlertCircle size={13} style={{ color: '#B45309' }} />
-              <span style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 11, color: '#B45309', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: '#B45309', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
                 Revision Requested
               </span>
             </div>
             <div className="px-5 py-4 flex items-center justify-between gap-4" style={{ background: '#FFFFF8' }}>
               <div className="min-w-0">
-                <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 14, color: '#111827', margin: 0 }}>{video.title}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14, color: '#111827', margin: 0 }}>{video.title}</p>
                 {video.notes_for_editor && (
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#6B7280', marginTop: 2 }}>{video.notes_for_editor}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#6B7280', marginTop: 2 }}>{video.notes_for_editor}</p>
                 )}
               </div>
               <button className="btn-primary flex-shrink-0" style={{ fontSize: 12, padding: '8px 16px' }} onClick={() => setSelectedVideo(video)}>
@@ -104,13 +104,13 @@ export default function CounselorDashboard() {
             </div>
             <span className="page-section-title flex-1">Recent Videos</span>
             {videos.length > 0 && (
-              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#94A3B8' }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#94A3B8' }}>
                 {videos.length} total
               </span>
             )}
             <a href="/counselor/videos"
               className="flex items-center gap-1"
-              style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0284C7', textDecoration: 'none' }}>
+              style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0284C7', textDecoration: 'none' }}>
               All <ArrowRight size={11} />
             </a>
           </div>

@@ -45,10 +45,10 @@ export default function Published() {
                   const pub = pubDetails[v.id]
                   return (
                     <tr key={v.id} style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
-                      <td className="px-4 py-3 text-sm max-w-xs truncate" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{v.title}</td>
-                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{pub?.platforms?.join(', ') || '—'}</td>
-                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{pub?.published_at ? formatDate(pub.published_at) : formatDate(v.updated_at)}</td>
-                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins' }}>
+                      <td className="px-4 py-3 text-sm max-w-xs truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#0F172A' }}>{v.title}</td>
+                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{pub?.platforms?.join(', ') || '—'}</td>
+                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{pub?.published_at ? formatDate(pub.published_at) : formatDate(v.updated_at)}</td>
+                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }}>
                         {pub?.post_urls ? Object.values(pub.post_urls).slice(0, 1).map((url, j) => (
                           <a key={j} href={url as string} target="_blank" rel="noreferrer" className="hover:underline truncate block max-w-32" style={{ color: '#0284C7' }}>View post</a>
                         )) : <span style={{ color: '#94A3B8' }}>—</span>}

@@ -58,17 +58,17 @@ export default function AdminDashboard() {
         {/* ── Page header ── */}
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
               Super Admin Console
             </h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
               {ALL_USERS.length} accounts · {totalRoles} roles · portal management
             </p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl flex-shrink-0"
             style={{ background: DEMO_MODE ? '#FFFBEB' : '#ECFDF5', border: `1px solid ${DEMO_MODE ? '#FDE68A' : '#BBF7D0'}` }}>
             <div className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: DEMO_MODE ? '#F59E0B' : '#10B981' }} />
-            <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: DEMO_MODE ? '#B45309' : '#059669' }}>
+            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: DEMO_MODE ? '#B45309' : '#059669' }}>
               {DEMO_MODE ? 'Demo Mode' : 'Live System'}
             </span>
           </div>
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
 
         {/* ── Quick actions ── */}
         <div>
-          <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 14, color: '#111827', marginBottom: 12 }}>Quick Actions</h2>
+          <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 14, color: '#111827', marginBottom: 12 }}>Quick Actions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
             {QUICK_ACTIONS.map((a, i) => (
               <a key={a.label} href={a.href}
@@ -102,11 +102,11 @@ export default function AdminDashboard() {
                   <a.icon size={17} style={{ color: a.color }} />
                 </div>
                 <div>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 13, color: '#111827', margin: 0 }}>{a.label}</p>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: '2px 0 0' }}>{a.desc}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: '#111827', margin: 0 }}>{a.label}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: '2px 0 0' }}>{a.desc}</p>
                 </div>
                 <div className="mt-auto flex items-center gap-1 transition-all duration-150 group-hover:gap-2" style={{ color: a.color }}>
-                  <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11 }}>Open</span>
+                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11 }}>Open</span>
                   <ArrowRight size={11} />
                 </div>
               </a>
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
                 <Shield size={13} style={{ color: '#7C3AED' }} />
               </div>
               <span className="page-section-title flex-1">Accounts by Role</span>
-              <span style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>{ALL_USERS.length} total</span>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>{ALL_USERS.length} total</span>
             </div>
             <div className="p-5 space-y-3">
               {Object.entries(usersByRole).map(([role, count]) => {
@@ -134,10 +134,10 @@ export default function AdminDashboard() {
                   <div key={role} className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="px-2.5 py-0.5 rounded-lg text-xs font-semibold"
-                        style={{ background: meta.bg, color: meta.color, fontFamily: 'Poppins' }}>
+                        style={{ background: meta.bg, color: meta.color, fontFamily: 'Plus Jakarta Sans' }}>
                         {meta.label}
                       </span>
-                      <span style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: 13, color: '#111827' }}>
+                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 13, color: '#111827' }}>
                         {count} user{count > 1 ? 's' : ''}
                       </span>
                     </div>
@@ -162,7 +162,7 @@ export default function AdminDashboard() {
                 {DEMO_MODE
                   ? <AlertTriangle size={10} style={{ color: '#B45309' }} />
                   : <CheckCircle size={10} style={{ color: '#15803D' }} />}
-                <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, color: DEMO_MODE ? '#B45309' : '#15803D' }}>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: DEMO_MODE ? '#B45309' : '#15803D' }}>
                   {DEMO_MODE ? 'Demo' : 'All Operational'}
                 </span>
               </span>
@@ -174,13 +174,13 @@ export default function AdminDashboard() {
                   style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.04)', animationDelay: `${i * 40}ms` }}>
                   <div className="flex items-center gap-2.5">
                     <s.icon size={13} style={{ color: '#9CA3AF' }} />
-                    <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#475569' }}>{s.label}</span>
+                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: '#475569' }}>{s.label}</span>
                   </div>
                   <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-md"
                     style={{ background: s.status === 'demo' ? '#FEF3C7' : '#DCFCE7' }}>
                     <div className="w-1.5 h-1.5 rounded-full pulse-dot"
                       style={{ background: s.status === 'demo' ? '#F59E0B' : '#22C55E' }} />
-                    <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 10, color: s.status === 'demo' ? '#B45309' : '#15803D', textTransform: 'capitalize' }}>
+                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 10, color: s.status === 'demo' ? '#B45309' : '#15803D', textTransform: 'capitalize' }}>
                       {s.status === 'demo' ? 'Demo' : 'Online'}
                     </span>
                   </span>

@@ -50,24 +50,24 @@ export default function Capacity() {
         <div className="cd-card p-4 flex items-center gap-6 flex-wrap">
           <div className="flex items-center gap-2">
             <CalendarDays size={18} className="text-sky-500" />
-            <span className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>This week:</span>
-            <span className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>{queueVideos.length} videos in queue</span>
+            <span className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#0F172A' }}>This week:</span>
+            <span className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{queueVideos.length} videos in queue</span>
           </div>
           <div className="h-4 w-px" style={{ background: '#E2E8F0' }} />
-          <span className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>Est. time: {estTotalHours}h</span>
+          <span className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>Est. time: {estTotalHours}h</span>
           <div className="h-4 w-px" style={{ background: '#E2E8F0' }} />
           <div className="flex items-center gap-2">
-            <span className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>Available:</span>
+            <span className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>Available:</span>
             <input
               type="number" min={1} max={168} value={availHours}
               onChange={e => handleAvailChange(Number(e.target.value))}
               className="w-16 text-center text-sm rounded-lg"
-              style={{ background: '#F1F5F9', border: '1.5px solid #E2E8F0', color: '#0F172A', height: 32, fontFamily: 'Poppins', fontWeight: 600 }}
+              style={{ background: '#F1F5F9', border: '1.5px solid #E2E8F0', color: '#0F172A', height: 32, fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}
             />
-            <span className="text-sm" style={{ fontFamily: 'Poppins', color: '#475569' }}>h</span>
+            <span className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>h</span>
           </div>
           <div className="h-4 w-px" style={{ background: '#E2E8F0' }} />
-          <span className={`text-sm font-semibold flex items-center gap-1.5 ${isOverloaded ? 'text-amber-500' : 'text-emerald-600'}`} style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+          <span className={`text-sm font-semibold flex items-center gap-1.5 ${isOverloaded ? 'text-amber-500' : 'text-emerald-600'}`} style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
             {isOverloaded ? '⚠ Overloaded' : '✓ On Track'}
           </span>
         </div>
@@ -82,14 +82,14 @@ export default function Capacity() {
             return (
               <div key={i} className="cd-card overflow-hidden">
                 <div className="px-3 py-2" style={{ borderBottom: '1px solid #F1F5F9', background: isHeavy ? '#FFFBEB' : '#F8FAFC' }}>
-                  <p className="text-xs font-bold" style={{ fontFamily: 'Poppins', fontWeight: 700, color: isHeavy ? '#B45309' : '#475569' }}>
+                  <p className="text-xs font-bold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, color: isHeavy ? '#B45309' : '#475569' }}>
                     {DAYS[i]} {isHeavy && '⚠'}
                   </p>
-                  <p className="text-[10px]" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{format(day, 'MM/dd')}</p>
+                  <p className="text-[10px]" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{format(day, 'MM/dd')}</p>
                 </div>
                 <div className="p-2 space-y-1.5">
                   {dayVideos.map(v => (
-                    <div key={v.id} className="px-2 py-1 rounded text-xs truncate" style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Poppins', fontWeight: 500 }}>
+                    <div key={v.id} className="px-2 py-1 rounded text-xs truncate" style={{ background: '#EFF6FF', color: '#0284C7', fontFamily: 'Plus Jakarta Sans', fontWeight: 500 }}>
                       {v.title.slice(0, 18)}{v.title.length > 18 ? '…' : ''}
                     </div>
                   ))}
@@ -103,12 +103,12 @@ export default function Capacity() {
         {unscheduled.length > 0 && (
           <div className="cd-card overflow-hidden">
             <div className="px-5 py-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
-              <h2 className="text-sm" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Unscheduled Videos ({unscheduled.length})</h2>
+              <h2 className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>Unscheduled Videos ({unscheduled.length})</h2>
             </div>
             <div className="p-4 space-y-2">
               {unscheduled.map(v => (
                 <div key={v.id} className="flex items-center gap-4">
-                  <p className="flex-1 text-sm truncate" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{v.title}</p>
+                  <p className="flex-1 text-sm truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#0F172A' }}>{v.title}</p>
                   <div className="flex items-center gap-2">
                     <input
                       type="date"

@@ -147,8 +147,8 @@ export default function VideoUploadModal({ onClose }: Props) {
             <CheckCircle size={32} className="text-emerald-500" />
           </div>
           <div className="text-center">
-            <h3 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 20, color: '#0F172A' }}>Video Submitted!</h3>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 14, color: '#64748B', marginTop: 6 }}>
+            <h3 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 20, color: '#0F172A' }}>Video Submitted!</h3>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 14, color: '#64748B', marginTop: 6 }}>
               <strong style={{ color: '#0F172A' }}>{form.title}</strong> is now in the editor queue.
             </p>
           </div>
@@ -168,8 +168,8 @@ export default function VideoUploadModal({ onClose }: Props) {
               <Upload size={16} className="text-white" />
             </div>
             <div>
-              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 17, color: '#0F172A', margin: 0 }}>Upload Video</h2>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Fill details then attach your video file</p>
+              <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 17, color: '#0F172A', margin: 0 }}>Upload Video</h2>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Fill details then attach your video file</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:bg-slate-100" style={{ color: '#94A3B8' }}>
@@ -181,7 +181,7 @@ export default function VideoUploadModal({ onClose }: Props) {
         {DEMO_MODE && (
           <div className="mx-6 mt-4 flex items-start gap-2 px-4 py-3 rounded-xl" style={{ background: '#EFF6FF', border: '1px solid #BFDBFE' }}>
             <AlertCircle size={15} className="text-sky-500 flex-shrink-0 mt-0.5" />
-            <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#1D4ED8', margin: 0 }}>
               <strong>Demo Mode:</strong> Upload will be simulated. Connect Google Drive credentials (VITE_GOOGLE_CLIENT_ID etc.) for real file storage.
             </p>
           </div>
@@ -224,8 +224,8 @@ export default function VideoUploadModal({ onClose }: Props) {
               <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all duration-200 shadow-sm" style={{ left: form.is_urgent ? 26 : 4 }} />
             </div>
             <div>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>Mark as Urgent</p>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Moves to top of editor queue</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#0F172A', margin: 0 }}>Mark as Urgent</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>Moves to top of editor queue</p>
             </div>
           </label>
 
@@ -246,16 +246,16 @@ export default function VideoUploadModal({ onClose }: Props) {
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#DCFCE7' }}>
                     <Film size={20} className="text-emerald-500" />
                   </div>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#065F46' }}>{videoFile.name}</p>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>{(videoFile.size / (1024 * 1024)).toFixed(1)} MB · Click to change</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#065F46' }}>{videoFile.name}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>{(videoFile.size / (1024 * 1024)).toFixed(1)} MB · Click to change</p>
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#F1F5F9' }}>
                     <Film size={20} className="text-slate-400" />
                   </div>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#475569' }}>Drag & drop or click to select</p>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>MP4, MOV, AVI up to 500 MB</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#475569' }}>Drag & drop or click to select</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>MP4, MOV, AVI up to 500 MB</p>
                 </div>
               )}
             </div>
@@ -276,10 +276,10 @@ export default function VideoUploadModal({ onClose }: Props) {
               {scriptFile ? (
                 <div className="flex items-center justify-center gap-2">
                   <File size={15} className="text-emerald-500" />
-                  <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#065F46' }}>{scriptFile.name}</span>
+                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#065F46' }}>{scriptFile.name}</span>
                 </div>
               ) : (
-                <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>Attach script or outline (optional)</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>Attach script or outline (optional)</p>
               )}
             </div>
           </div>
@@ -288,10 +288,10 @@ export default function VideoUploadModal({ onClose }: Props) {
           {uploading && (
             <div>
               <div className="flex justify-between mb-2">
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#475569' }}>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#475569' }}>
                   {DEMO_MODE ? 'Simulating upload...' : 'Uploading to Google Drive...'}
                 </span>
-                <span style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 12, color: '#0284C7' }}>{progress}%</span>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: '#0284C7' }}>{progress}%</span>
               </div>
               <div className="h-2 rounded-full overflow-hidden" style={{ background: '#E2E8F0' }}>
                 <div className="h-full rounded-full transition-all duration-300" style={{ width: `${progress}%`, background: 'linear-gradient(90deg, #0284C7, #06B6D4)' }} />

@@ -83,15 +83,15 @@ export default function InProgress() {
               <div key={video.id} className="cd-card p-4" style={{ borderLeft: `4px solid ${stageColor(video.status)}` }}>
                 <div className="flex items-center gap-4">
                   <div className="flex-1 min-w-0 cursor-pointer" onClick={() => setDetailVideo(video)}>
-                    <p className="font-bold text-sm truncate" style={{ fontFamily: 'Montserrat', fontWeight: 700, color: '#0F172A' }}>{video.title}</p>
-                    <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{(video.counselor as any)?.full_name} · {timeAgo(video.created_at)}</p>
+                    <p className="font-bold text-sm truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, color: '#0F172A' }}>{video.title}</p>
+                    <p className="text-xs mt-0.5" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{(video.counselor as any)?.full_name} · {timeAgo(video.created_at)}</p>
                   </div>
                   <EditTimer
                     videoId={video.id}
                     onStop={minutes => setLogConfirm({ videoId: video.id, minutes })}
                   />
                   {video.actual_edit_time_minutes && (
-                    <span className="text-xs px-2 py-1 rounded-lg" style={{ background: '#D1FAE5', color: '#065F46', fontFamily: 'Poppins', fontWeight: 600 }}>
+                    <span className="text-xs px-2 py-1 rounded-lg" style={{ background: '#D1FAE5', color: '#065F46', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
                       Logged: {Math.floor(video.actual_edit_time_minutes / 60)}h {video.actual_edit_time_minutes % 60}m
                     </span>
                   )}
@@ -122,8 +122,8 @@ export default function InProgress() {
         <div className="modal-overlay" onClick={() => setCompleteVideo(null)}>
           <div className="rounded-2xl overflow-hidden w-full max-w-lg scale-in" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }} onClick={e => e.stopPropagation()}>
             <div className="px-6 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
-              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>Mark Editing Complete</h2>
-              <p className="text-xs mt-0.5" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{completeVideo.title}</p>
+              <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>Mark Editing Complete</h2>
+              <p className="text-xs mt-0.5" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{completeVideo.title}</p>
             </div>
             <div className="p-6 space-y-4">
               <div>
@@ -131,11 +131,11 @@ export default function InProgress() {
                 <div {...getRootProps()} className="rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition-colors" style={{ borderColor: isDragActive ? '#0284C7' : '#E2E8F0', background: isDragActive ? '#EFF6FF' : '#F8FAFC' }}>
                   <input {...getInputProps()} />
                   {editedFile ? (
-                    <p className="text-sm font-semibold" style={{ fontFamily: 'Poppins', color: '#0284C7' }}>{editedFile.name}</p>
+                    <p className="text-sm font-semibold" style={{ fontFamily: 'Plus Jakarta Sans', color: '#0284C7' }}>{editedFile.name}</p>
                   ) : (
                     <div>
                       <Upload size={24} className="mx-auto mb-2 text-slate-300" />
-                      <p className="text-sm" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Drop edited video here (optional)</p>
+                      <p className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>Drop edited video here (optional)</p>
                     </div>
                   )}
                 </div>

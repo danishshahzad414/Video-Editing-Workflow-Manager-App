@@ -23,10 +23,10 @@ export default function UploadPage() {
             </div>
 
             <div>
-              <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 24, color: '#111827', margin: 0 }}>
+              <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 24, color: '#111827', margin: 0 }}>
                 Upload a New Video
               </h1>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 14, color: '#94A3B8', marginTop: 6 }}>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 14, color: '#94A3B8', marginTop: 6 }}>
                 Fill in your video details and attach your file to submit it to the editor queue.
               </p>
             </div>
@@ -45,8 +45,8 @@ export default function UploadPage() {
             ].map((t, i) => (
               <div key={i} className="flex flex-col items-center gap-1.5 py-5 px-4 text-center">
                 <t.icon size={16} style={{ color: '#0284C7' }} />
-                <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#374151', margin: 0 }}>{t.title}</p>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{t.sub}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#374151', margin: 0 }}>{t.title}</p>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{t.sub}</p>
               </div>
             ))}
           </div>

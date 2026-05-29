@@ -15,8 +15,8 @@ export default function EmptyState({ icon: Icon, title, description, action }: P
         <Icon size={32} className="text-slate-300" />
       </div>
       <div>
-        <p className="text-base mb-1" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#475569' }}>{title}</p>
-        {description && <p className="text-sm" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#94A3B8' }}>{description}</p>}
+        <p className="text-base mb-1" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#475569' }}>{title}</p>
+        {description && <p className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#94A3B8' }}>{description}</p>}
       </div>
       {action}
     </div>

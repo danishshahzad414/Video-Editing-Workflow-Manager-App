@@ -79,10 +79,10 @@ export default function EditorDashboard() {
         {/* ── Page header ── */}
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
               Edit Suite
             </h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
               {totalActive > 0
                 ? `${totalActive} video${totalActive > 1 ? 's' : ''} active · ${completedThisWeek} done this week`
                 : `Queue clear · ${completedThisWeek} completed this week`}
@@ -92,7 +92,7 @@ export default function EditorDashboard() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl flex-shrink-0"
               style={{ background: '#FFFBEB', border: '1px solid #FDE68A' }}>
               <div className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: '#F59E0B' }} />
-              <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#B45309' }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#B45309' }}>
                 {totalActive} Active
               </span>
             </div>
@@ -139,7 +139,7 @@ export default function EditorDashboard() {
                     onClick={() => setTab(t.key)}
                     className="flex-1 flex items-center justify-center gap-1.5 py-3 relative transition-colors duration-150"
                     style={{
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Plus Jakarta Sans',
                       fontWeight: active ? 700 : 500,
                       fontSize: 12,
                       color: active ? '#0284C7' : '#9CA3AF',
@@ -155,7 +155,7 @@ export default function EditorDashboard() {
                         style={{
                           background: active ? '#EFF6FF' : '#F1F5F9',
                           color: active ? '#0284C7' : '#9CA3AF',
-                          fontFamily: 'Poppins', fontWeight: 700, fontSize: 9,
+                          fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 9,
                         }}>
                         {t.videos.length}
                       </span>
@@ -197,10 +197,10 @@ export default function EditorDashboard() {
               <div className="p-4">
                 <ResponsiveContainer width="100%" height={130}>
                   <BarChart data={weeklyData} barSize={11}>
-                    <XAxis dataKey="week" stroke="transparent" tick={{ fontFamily: 'Poppins', fontSize: 9, fill: '#9CA3AF' }} />
+                    <XAxis dataKey="week" stroke="transparent" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 9, fill: '#9CA3AF' }} />
                     <YAxis hide allowDecimals={false} />
                     <Tooltip
-                      contentStyle={{ background: '#111827', border: 'none', borderRadius: 8, fontFamily: 'Poppins', fontSize: 11, boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }}
+                      contentStyle={{ background: '#111827', border: 'none', borderRadius: 8, fontFamily: 'Plus Jakarta Sans', fontSize: 11, boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }}
                       labelStyle={{ color: '#9CA3AF', marginBottom: 3 }}
                       itemStyle={{ color: '#fff' }}
                       cursor={{ fill: 'rgba(2,132,199,0.06)' }}
@@ -220,17 +220,17 @@ export default function EditorDashboard() {
                 <span className="page-section-title">Recent Activity</span>
               </div>
               {activityLog.length === 0 ? (
-                <p className="p-5 text-center" style={{ fontFamily: 'Poppins', fontSize: 12, color: '#9CA3AF' }}>No recent activity</p>
+                <p className="p-5 text-center" style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 12, color: '#9CA3AF' }}>No recent activity</p>
               ) : (
                 <div className="divide-y" style={{ borderColor: 'rgba(0,0,0,0.04)' }}>
                   {activityLog.slice(0, 5).map((entry, i) => (
                     <div key={entry.id}
                       className="flex items-center justify-between gap-3 px-4 py-3 hover:bg-slate-50 transition-colors fade-in"
                       style={{ animationDelay: `${i * 30}ms` }}>
-                      <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#374151', margin: 0 }} className="truncate">
+                      <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#374151', margin: 0 }} className="truncate">
                         {entry.action}
                       </p>
-                      <p style={{ fontFamily: 'Poppins', fontSize: 10, color: '#9CA3AF', flexShrink: 0, margin: 0 }}>
+                      <p style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, color: '#9CA3AF', flexShrink: 0, margin: 0 }}>
                         {timeAgo(entry.created_at)}
                       </p>
                     </div>

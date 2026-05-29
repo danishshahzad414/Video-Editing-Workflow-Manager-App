@@ -48,8 +48,8 @@ export default function AdminAuditLog() {
 
         {/* Header */}
         <div>
-          <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>Audit Log</h1>
-          <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
+          <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>Audit Log</h1>
+          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', marginTop: 2 }}>
             All account-level events — logins, role changes, password resets, and more
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function AdminAuditLog() {
             return (
               <div key={type} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl" style={{ background: meta.bg, border: `1px solid ${meta.color}22` }}>
                 <meta.icon size={11} style={{ color: meta.color }} />
-                <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11, color: meta.color }}>{meta.label}: {count}</span>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: meta.color }}>{meta.label}: {count}</span>
               </div>
             )
           })}
@@ -72,7 +72,7 @@ export default function AdminAuditLog() {
         <div className="cd-card overflow-hidden">
           <div className="px-5 py-3 flex items-center gap-2" style={{ borderBottom: '1px solid #F1F5F9', background: '#FAFAFA' }}>
             <ScrollText size={14} className="text-slate-400" />
-            <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#64748B' }}>{MOCK_AUDIT.length} events</span>
+            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#64748B' }}>{MOCK_AUDIT.length} events</span>
           </div>
 
           <div className="divide-y" style={{ borderColor: '#F8FAFC' }}>
@@ -88,21 +88,21 @@ export default function AdminAuditLog() {
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold" style={{ background: meta.bg, color: meta.color, fontFamily: 'Poppins' }}>
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold" style={{ background: meta.bg, color: meta.color, fontFamily: 'Plus Jakarta Sans' }}>
                         {meta.label}
                       </span>
-                      <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0F172A' }}>
+                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0F172A' }}>
                         {event.actor}
                         {event.target && <span style={{ color: '#94A3B8', fontWeight: 400 }}> → {event.target}</span>}
                       </span>
                     </div>
-                    <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#64748B', margin: '2px 0 0' }}>{event.detail}</p>
+                    <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#64748B', margin: '2px 0 0' }}>{event.detail}</p>
                   </div>
 
                   {/* Time */}
                   <div className="text-right flex-shrink-0">
-                    <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11, color: '#94A3B8', margin: 0 }}>{relativeTime(event.timestamp)}</p>
-                    <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 10, color: '#CBD5E1', margin: '1px 0 0' }}>
+                    <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: '#94A3B8', margin: 0 }}>{relativeTime(event.timestamp)}</p>
+                    <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 10, color: '#CBD5E1', margin: '1px 0 0' }}>
                       {new Date(event.timestamp).toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>

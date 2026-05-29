@@ -123,10 +123,10 @@ export default function Sidebar({ onClose }: Props) {
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <p style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 16, color: '#FFFFFF', margin: 0, letterSpacing: '-0.3px', whiteSpace: 'nowrap' }}>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 16, color: '#FFFFFF', margin: 0, letterSpacing: '-0.3px', whiteSpace: 'nowrap' }}>
                 CutDesk
               </p>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.28)', margin: 0, whiteSpace: 'nowrap' }}>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 10, color: 'rgba(255,255,255,0.28)', margin: 0, whiteSpace: 'nowrap' }}>
                 Video Workflow OS
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function Sidebar({ onClose }: Props) {
                     </div>
                     {!collapsed && (
                       <span style={{
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Plus Jakarta Sans',
                         fontWeight: isActive ? 600 : 500,
                         fontSize: 13,
                         whiteSpace: 'nowrap',
@@ -215,16 +215,16 @@ export default function Sidebar({ onClose }: Props) {
                 border: `1.5px solid ${roleMeta.color}35`,
               }}
             >
-              <span style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 11, color: roleMeta.color }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 11, color: roleMeta.color }}>
                 {initials}
               </span>
             </div>
             {!collapsed && (
               <div className="min-w-0 flex-1">
-                <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12.5, color: '#FFFFFF', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12.5, color: '#FFFFFF', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {profile?.full_name}
                 </p>
-                <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10.5, color: roleMeta.color, margin: 0, whiteSpace: 'nowrap', opacity: 0.85 }}>
+                <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 10.5, color: roleMeta.color, margin: 0, whiteSpace: 'nowrap', opacity: 0.85 }}>
                   {roleMeta.label}
                 </p>
               </div>
@@ -246,7 +246,7 @@ export default function Sidebar({ onClose }: Props) {
           >
             <LogOut size={15} className="flex-shrink-0 group-hover:text-red-400 transition-colors" style={{ transition: 'color 150ms' }} />
             {!collapsed && (
-              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12.5 }}
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12.5 }}
                 className="group-hover:text-red-400 transition-colors">
                 Log out
               </span>

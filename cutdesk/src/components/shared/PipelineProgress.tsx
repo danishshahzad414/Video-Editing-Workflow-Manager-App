@@ -11,7 +11,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
 
   if (compact) {
     return (
-      <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
+      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: '#94A3B8' }}>
         Step {currentIdx + 1} of {PIPELINE_STAGES.length}
       </span>
     )
@@ -34,7 +34,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
               >
                 {isDone
                   ? <Check size={12} className="text-white" />
-                  : <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 9, color: isUpcoming ? '#94A3B8' : '#fff' }}>{idx + 1}</span>
+                  : <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 9, color: isUpcoming ? '#94A3B8' : '#fff' }}>{idx + 1}</span>
                 }
               </div>
               {idx < PIPELINE_STAGES.length - 1 && (
@@ -43,7 +43,7 @@ export default function PipelineProgress({ currentStatus, compact }: Props) {
             </div>
             <div className="pb-5 pt-0.5">
               <p style={{
-                fontFamily: 'Poppins',
+                fontFamily: 'Plus Jakarta Sans',
                 fontWeight: isCurrent ? 600 : 500,
                 fontSize: 12,
                 color: isUpcoming ? '#94A3B8' : isCurrent ? stageColor(stage) : '#475569',

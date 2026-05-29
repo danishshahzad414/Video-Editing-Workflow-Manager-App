@@ -37,7 +37,7 @@ export default function MyVideos() {
               style={{
                 background: filter === f ? '#0284C7' : 'transparent',
                 color: filter === f ? '#fff' : '#475569',
-                fontFamily: 'Poppins', fontWeight: 600,
+                fontFamily: 'Plus Jakarta Sans', fontWeight: 600,
               }}
             >
               {f}
@@ -46,7 +46,7 @@ export default function MyVideos() {
         </div>
 
         {isLoading ? (
-          <div className="text-sm text-center py-12" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Loading...</div>
+          <div className="text-sm text-center py-12" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>Loading...</div>
         ) : filtered.length === 0 ? (
           <EmptyState icon={Video} title="No videos here" description="Videos will appear here once you upload them" />
         ) : (

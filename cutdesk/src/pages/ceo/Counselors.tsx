@@ -38,7 +38,7 @@ export default function CEOCounselors() {
         {/* List */}
         <div className="cd-card overflow-hidden">
           <div className="px-4 py-3" style={{ borderBottom: '1px solid #E2E8F0' }}>
-            <h2 className="text-sm" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>All Counselors ({counselors.length})</h2>
+            <h2 className="text-sm" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>All Counselors ({counselors.length})</h2>
           </div>
           <div style={{ borderTop: '1px solid #F1F5F9' }}>
             {counselors.map(c => {
@@ -46,11 +46,11 @@ export default function CEOCounselors() {
               return (
                 <button key={c.id} onClick={() => setSelected(c.id)} className="w-full flex items-center gap-3 px-4 py-3 text-left transition-colors" style={{ background: selected === c.id ? '#EFF6FF' : 'transparent', borderBottom: '1px solid #F1F5F9' }}>
                   <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #0284C7, #06B6D4)' }}>
-                    <span style={{ fontFamily: 'Montserrat', fontWeight: 700, fontSize: 12, color: '#fff' }}>{c.full_name?.charAt(0)}</span>
+                    <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 12, color: '#fff' }}>{c.full_name?.charAt(0)}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold truncate" style={{ fontFamily: 'Poppins', fontWeight: 600, color: '#0F172A' }}>{c.full_name}</p>
-                    <p className="text-[10px]" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{s.total} videos · {s.revisionRate}% revision rate</p>
+                    <p className="text-xs font-semibold truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, color: '#0F172A' }}>{c.full_name}</p>
+                    <p className="text-[10px]" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{s.total} videos · {s.revisionRate}% revision rate</p>
                   </div>
                 </button>
               )
@@ -61,25 +61,25 @@ export default function CEOCounselors() {
         {/* Detail */}
         <div className="lg:col-span-2">
           {!sel ? (
-            <div className="cd-card p-8 flex items-center justify-center h-full" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>Select a counselor to view details</div>
+            <div className="cd-card p-8 flex items-center justify-center h-full" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>Select a counselor to view details</div>
           ) : (
             <div className="space-y-4">
               <div className="cd-card p-5">
-                <h2 className="text-base mb-4" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>{sel.full_name}</h2>
+                <h2 className="text-base mb-4" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>{sel.full_name}</h2>
                 <div className="grid grid-cols-3 gap-3 mb-5">
                   {[['Videos', stats!.total], ['In Progress', stats!.inProgress], ['Revision Rate', `${stats!.revisionRate}%`]].map(([l, v]) => (
                     <div key={l as string} className="stat-card text-center p-3">
-                      <p style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 22, color: '#0284C7', marginBottom: 4 }}>{v}</p>
-                      <p className="text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{l}</p>
+                      <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 22, color: '#0284C7', marginBottom: 4 }}>{v}</p>
+                      <p className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{l}</p>
                     </div>
                   ))}
                 </div>
-                <h3 className="text-sm mb-3" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Monthly Uploads</h3>
+                <h3 className="text-sm mb-3" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>Monthly Uploads</h3>
                 <ResponsiveContainer width="100%" height={150}>
                   <BarChart data={stats!.monthlyData}>
-                    <XAxis dataKey="month" stroke="transparent" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} />
+                    <XAxis dataKey="month" stroke="transparent" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, fill: '#94A3B8' }} />
                     <YAxis hide allowDecimals={false} />
-                    <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Poppins' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
+                    <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Plus Jakarta Sans' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
                     <Bar dataKey="count" fill="#0284C7" radius={[3, 3, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>

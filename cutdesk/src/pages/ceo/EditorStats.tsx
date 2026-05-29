@@ -39,19 +39,19 @@ export default function CEOEditorStats() {
             { label: 'Revision Request Rate', value: `${revisionRate}%` },
           ].map(k => (
             <div key={k.label} className="stat-card p-4 text-center fade-in">
-              <p style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 28, color: '#0284C7', marginBottom: 4 }}>{k.value}</p>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#475569' }}>{k.label}</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 28, color: '#0284C7', marginBottom: 4 }}>{k.value}</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#475569' }}>{k.label}</p>
             </div>
           ))}
         </div>
 
         <div className="cd-card p-5">
-          <h2 className="text-sm mb-4" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Queue Depth Over Time (8 Weeks)</h2>
+          <h2 className="text-sm mb-4" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>Queue Depth Over Time (8 Weeks)</h2>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={weeklyQueue}>
-              <XAxis dataKey="week" stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} />
-              <YAxis stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} allowDecimals={false} />
-              <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Poppins' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
+              <XAxis dataKey="week" stroke="#E2E8F0" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, fill: '#94A3B8' }} />
+              <YAxis stroke="#E2E8F0" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, fill: '#94A3B8' }} allowDecimals={false} />
+              <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Plus Jakarta Sans' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
               <Bar dataKey="count" fill="#0284C7" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

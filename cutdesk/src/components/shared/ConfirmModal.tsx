@@ -26,9 +26,9 @@ export default function ConfirmModal({
           <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: danger ? '#FEE2E2' : '#EFF6FF' }}>
             <AlertTriangle size={20} style={{ color: danger ? '#EF4444' : '#0284C7' }} />
           </div>
-          <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>{title}</h2>
+          <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: '#0F172A', margin: 0 }}>{title}</h2>
         </div>
-        <p className="mb-6" style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 14, color: '#475569' }}>{message}</p>
+        <p className="mb-6" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: '#475569' }}>{message}</p>
         <div className="flex justify-end gap-3">
           <button className="btn-secondary" onClick={onCancel} disabled={loading}>{cancelLabel}</button>
           <button
@@ -37,7 +37,7 @@ export default function ConfirmModal({
             style={{
               background: danger ? 'linear-gradient(135deg, #EF4444, #F87171)' : 'linear-gradient(135deg, #0284C7, #0EA5E9)',
               color: '#fff', padding: '11px 20px', borderRadius: 10,
-              fontFamily: 'Poppins', fontWeight: 600, fontSize: 14,
+              fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 14,
               border: 'none', cursor: 'pointer', opacity: loading ? 0.5 : 1,
               boxShadow: danger ? '0 2px 8px rgba(239,68,68,0.25)' : '0 2px 8px rgba(2,132,199,0.3)',
             }}

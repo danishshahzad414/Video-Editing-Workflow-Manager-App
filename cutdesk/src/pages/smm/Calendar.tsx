@@ -27,12 +27,12 @@ export default function SMMCalendar() {
           return (
             <div key={str} className="cd-card min-h-32">
               <div className="px-2 py-1.5" style={{ borderBottom: '1px solid #E2E8F0' }}>
-                <p className="text-xs font-semibold" style={{ fontFamily: 'Poppins', fontWeight: 700, color: '#475569' }}>{format(day, 'EEE')}</p>
-                <p className="text-[10px]" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{format(day, 'MM/dd')}</p>
+                <p className="text-xs font-semibold" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, color: '#475569' }}>{format(day, 'EEE')}</p>
+                <p className="text-[10px]" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{format(day, 'MM/dd')}</p>
               </div>
               <div className="p-1.5 space-y-1">
                 {vids.map(v => (
-                  <div key={v.id} className="px-2 py-1 rounded text-[10px] truncate" style={{ background: stageColor(v.status), color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>
+                  <div key={v.id} className="px-2 py-1 rounded text-[10px] truncate" style={{ background: stageColor(v.status), color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
                     {v.title.slice(0, 14)}
                   </div>
                 ))}
@@ -59,9 +59,9 @@ export default function SMMCalendar() {
           const vids = videosForDay(str)
           return (
             <div key={str} className="cd-card p-1.5 min-h-16">
-              <p className="text-[10px] mb-1" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>{format(day, 'd')}</p>
+              <p className="text-[10px] mb-1" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>{format(day, 'd')}</p>
               {vids.map(v => (
-                <div key={v.id} className="px-1.5 py-0.5 rounded text-[9px] mb-0.5 truncate" style={{ background: stageColor(v.status), color: '#fff', fontFamily: 'Poppins' }}>{v.title.slice(0, 12)}</div>
+                <div key={v.id} className="px-1.5 py-0.5 rounded text-[9px] mb-0.5 truncate" style={{ background: stageColor(v.status), color: '#fff', fontFamily: 'Plus Jakarta Sans' }}>{v.title.slice(0, 12)}</div>
               ))}
             </div>
           )
@@ -75,7 +75,7 @@ export default function SMMCalendar() {
       <div className="fade-in space-y-4">
         <div className="flex gap-2">
           {(['weekly', 'monthly'] as View[]).map(v => (
-            <button key={v} onClick={() => setView(v)} className="px-4 py-2 rounded-lg text-xs capitalize transition-all" style={{ background: view === v ? '#0284C7' : '#F1F5F9', color: view === v ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #E2E8F0' }}>{v}</button>
+            <button key={v} onClick={() => setView(v)} className="px-4 py-2 rounded-lg text-xs capitalize transition-all" style={{ background: view === v ? '#0284C7' : '#F1F5F9', color: view === v ? '#fff' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, border: '1px solid #E2E8F0' }}>{v}</button>
           ))}
         </div>
         {view === 'weekly' ? renderWeekly() : renderMonthly()}

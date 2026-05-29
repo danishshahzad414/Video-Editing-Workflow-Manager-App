@@ -97,10 +97,10 @@ export default function PublishingModal({ video, onClose }: Props) {
       <div className="rounded-xl overflow-hidden w-full flex flex-col" style={{ maxWidth: 680, maxHeight: '90vh', background: '#003D52', border: '1px solid rgba(0,162,207,0.15)' }} onClick={e => e.stopPropagation()}>
         <div className="px-6 py-4 flex-shrink-0" style={{ background: '#006386' }}>
           <div className="flex items-center justify-between">
-            <h2 className="text-white text-lg" style={{ fontFamily: 'Montserrat', fontWeight: 800 }}>Publish / Schedule</h2>
+            <h2 className="text-white text-lg" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800 }}>Publish / Schedule</h2>
             <button onClick={onClose} className="text-white/60 hover:text-white"><X size={18} /></button>
           </div>
-          <p className="text-white/60 text-xs mt-0.5" style={{ fontFamily: 'Poppins' }}>{video.title}</p>
+          <p className="text-white/60 text-xs mt-0.5" style={{ fontFamily: 'Plus Jakarta Sans' }}>{video.title}</p>
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
@@ -116,7 +116,7 @@ export default function PublishingModal({ video, onClose }: Props) {
                   style={{
                     background: selectedPlatforms.includes(p) ? 'rgba(0,162,207,0.15)' : 'rgba(255,255,255,0.05)',
                     border: `2px solid ${selectedPlatforms.includes(p) ? '#00A2CF' : 'rgba(255,255,255,0.1)'}`,
-                    color: '#fff', fontFamily: 'Poppins', fontWeight: 600,
+                    color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 600,
                   }}
                 >
                   <span className="w-2 h-2 rounded-full inline-block mr-2" style={{ background: PLATFORM_COLORS[p] }} />
@@ -132,7 +132,7 @@ export default function PublishingModal({ video, onClose }: Props) {
               <p className="section-label mb-3">Caption & Hashtags</p>
               <div className="flex gap-1 mb-3">
                 {selectedPlatforms.map(p => (
-                  <button key={p} onClick={() => setActivePlatform(p)} className="px-3 py-1.5 rounded-lg text-xs transition-all" style={{ background: activePlatform === p ? '#00A2CF' : 'rgba(255,255,255,0.08)', color: '#fff', fontFamily: 'Poppins', fontWeight: 600 }}>{p}</button>
+                  <button key={p} onClick={() => setActivePlatform(p)} className="px-3 py-1.5 rounded-lg text-xs transition-all" style={{ background: activePlatform === p ? '#00A2CF' : 'rgba(255,255,255,0.08)', color: '#fff', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>{p}</button>
                 ))}
               </div>
               {activePlatform && (
@@ -146,7 +146,7 @@ export default function PublishingModal({ video, onClose }: Props) {
                       onChange={e => setCaptions(prev => ({ ...prev, [activePlatform]: e.target.value }))}
                     />
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-xs" style={{ fontFamily: 'Poppins', color: charCount > charLimit ? '#EF4444' : 'rgba(245,248,250,0.4)' }}>{charCount} / {charLimit}</span>
+                      <span className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: charCount > charLimit ? '#EF4444' : 'rgba(245,248,250,0.4)' }}>{charCount} / {charLimit}</span>
                       <button
                         onClick={() => genCaption(activePlatform)}
                         disabled={!!generatingFor}
@@ -172,7 +172,7 @@ export default function PublishingModal({ video, onClose }: Props) {
                     </div>
                     <div className="flex gap-1.5 flex-wrap">
                       {hashtags.map(tag => (
-                        <span key={tag} className="flex items-center gap-1 px-2 py-1 rounded-full text-xs" style={{ background: 'rgba(0,162,207,0.2)', color: '#00A2CF', fontFamily: 'Poppins', fontWeight: 600 }}>
+                        <span key={tag} className="flex items-center gap-1 px-2 py-1 rounded-full text-xs" style={{ background: 'rgba(0,162,207,0.2)', color: '#00A2CF', fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
                           #{tag} <button onClick={() => setHashtags(prev => prev.filter(t => t !== tag))} className="text-white/60 hover:text-white ml-0.5">×</button>
                         </span>
                       ))}
@@ -190,12 +190,12 @@ export default function PublishingModal({ video, onClose }: Props) {
               {(['now', 'later'] as const).map(t => (
                 <label key={t} className="flex items-center gap-2 cursor-pointer">
                   <input type="radio" name="timing" value={t} checked={timing === t} onChange={() => setTiming(t)} className="accent-[#00A2CF]" />
-                  <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 14, color: '#fff' }}>{t === 'now' ? 'Publish Now' : 'Schedule for Later'}</span>
+                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 14, color: '#fff' }}>{t === 'now' ? 'Publish Now' : 'Schedule for Later'}</span>
                 </label>
               ))}
             </div>
             {timing === 'now' && (
-              <p className="text-amber-400 text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500 }}>This will be marked as published immediately</p>
+              <p className="text-amber-400 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500 }}>This will be marked as published immediately</p>
             )}
             {timing === 'later' && (
               <div className="flex gap-3">
@@ -207,7 +207,7 @@ export default function PublishingModal({ video, onClose }: Props) {
 
           {/* Section 4: Best times (collapsible) */}
           <div>
-            <button onClick={() => setShowBestTimes(!showBestTimes)} className="flex items-center gap-1 text-white/50 hover:text-white/80 text-sm" style={{ fontFamily: 'Poppins', fontWeight: 600 }}>
+            <button onClick={() => setShowBestTimes(!showBestTimes)} className="flex items-center gap-1 text-white/50 hover:text-white/80 text-sm" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600 }}>
               {showBestTimes ? <ChevronDown size={14} /> : <ChevronRight size={14} />} Best times to post
             </button>
             {showBestTimes && selectedPlatforms.length > 0 && (
@@ -219,9 +219,9 @@ export default function PublishingModal({ video, onClose }: Props) {
                   <tbody>
                     {selectedPlatforms.map(p => (
                       <tr key={p} style={{ borderTop: '1px solid rgba(0,162,207,0.06)' }}>
-                        <td className="px-4 py-2 text-white text-xs font-semibold" style={{ fontFamily: 'Poppins' }}>{p}</td>
-                        <td className="px-4 py-2 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{BEST_TIMES[p]?.days}</td>
-                        <td className="px-4 py-2 text-white/60 text-xs" style={{ fontFamily: 'Poppins' }}>{BEST_TIMES[p]?.times}</td>
+                        <td className="px-4 py-2 text-white text-xs font-semibold" style={{ fontFamily: 'Plus Jakarta Sans' }}>{p}</td>
+                        <td className="px-4 py-2 text-white/60 text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }}>{BEST_TIMES[p]?.days}</td>
+                        <td className="px-4 py-2 text-white/60 text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }}>{BEST_TIMES[p]?.times}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -234,15 +234,15 @@ export default function PublishingModal({ video, onClose }: Props) {
           {selectedPlatforms.length > 0 && (
             <div className="p-4 rounded-xl" style={{ background: 'rgba(0,162,207,0.06)', border: '1px solid rgba(0,162,207,0.15)' }}>
               <p className="section-label mb-2">Review Summary</p>
-              <p className="text-white/70 text-xs mb-1" style={{ fontFamily: 'Poppins' }}>Publishing to: <strong className="text-white">{selectedPlatforms.join(', ')}</strong></p>
-              <p className="text-white/70 text-xs mb-1" style={{ fontFamily: 'Poppins' }}>Timing: <strong className="text-white">{timing === 'now' ? 'Immediately' : scheduleDate ? `${scheduleDate} ${scheduleTime}` : 'TBD'}</strong></p>
+              <p className="text-white/70 text-xs mb-1" style={{ fontFamily: 'Plus Jakarta Sans' }}>Publishing to: <strong className="text-white">{selectedPlatforms.join(', ')}</strong></p>
+              <p className="text-white/70 text-xs mb-1" style={{ fontFamily: 'Plus Jakarta Sans' }}>Timing: <strong className="text-white">{timing === 'now' ? 'Immediately' : scheduleDate ? `${scheduleDate} ${scheduleTime}` : 'TBD'}</strong></p>
               {activePlatform && captions[activePlatform] && (
-                <p className="text-white/70 text-xs" style={{ fontFamily: 'Poppins' }}>Caption: <span className="text-white/60">{captions[activePlatform].slice(0, 80)}{captions[activePlatform].length > 80 ? '…' : ''}</span></p>
+                <p className="text-white/70 text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }}>Caption: <span className="text-white/60">{captions[activePlatform].slice(0, 80)}{captions[activePlatform].length > 80 ? '…' : ''}</span></p>
               )}
             </div>
           )}
 
-          <p className="text-white/30 text-xs" style={{ fontFamily: 'Poppins' }}>Direct API publishing to platforms coming soon</p>
+          <p className="text-white/30 text-xs" style={{ fontFamily: 'Plus Jakarta Sans' }}>Direct API publishing to platforms coming soon</p>
         </div>
 
         <div className="flex justify-end gap-3 px-6 py-4 border-t border-[rgba(0,162,207,0.15)] flex-shrink-0">

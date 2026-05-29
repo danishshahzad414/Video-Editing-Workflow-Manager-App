@@ -64,7 +64,7 @@ export default function SettingsModal({ onClose }: Props) {
         <div className="flex items-center justify-between px-6 py-4" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
           <div className="flex items-center gap-2">
             <Settings size={18} className="text-slate-600" />
-            <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#0F172A', margin: 0 }}>Notification Preferences</h2>
+            <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#0F172A', margin: 0 }}>Notification Preferences</h2>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition-colors"><X size={18} /></button>
         </div>
@@ -89,7 +89,7 @@ export default function SettingsModal({ onClose }: Props) {
                 >
                   <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all shadow-sm" style={{ left: (prefs as any)[key] ? 22 : 4 }} />
                 </div>
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#475569' }}>{label}</span>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: '#475569' }}>{label}</span>
               </label>
             ))}
           </div>
@@ -103,7 +103,7 @@ export default function SettingsModal({ onClose }: Props) {
               >
                 <div className="w-4 h-4 bg-white rounded-full absolute top-1 transition-all shadow-sm" style={{ left: prefs.whatsapp_revision ? 22 : 4 }} />
               </div>
-              <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: '#475569' }}>Revision requested</span>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: '#475569' }}>Revision requested</span>
             </label>
           </div>
         </div>

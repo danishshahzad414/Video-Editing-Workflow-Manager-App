@@ -68,10 +68,10 @@ export default function SMMDashboard() {
         {/* ── Page header ── */}
         <div className="flex items-center justify-between gap-4">
           <div>
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 22, color: '#111827', margin: 0 }}>
               Command Centre
             </h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#94A3B8', margin: '3px 0 0' }}>
               {readyToPublish > 0
                 ? `${readyToPublish} ready to publish · ${scheduledThisWeek} scheduled this week`
                 : `${scheduledThisWeek} scheduled · ${publishedThisMonth} published this month`}
@@ -81,7 +81,7 @@ export default function SMMDashboard() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl flex-shrink-0"
               style={{ background: '#EFF6FF', border: '1px solid #BAE6FD' }}>
               <div className="w-1.5 h-1.5 rounded-full pulse-dot" style={{ background: '#0284C7' }} />
-              <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0369A1' }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0369A1' }}>
                 {readyToPublish} awaiting review
               </span>
             </div>
@@ -111,7 +111,7 @@ export default function SMMDashboard() {
             </div>
             <span className="page-section-title flex-1">Assign Videos to Editor</span>
             {assignableVideos.length > 0 && (
-              <span style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 11, color: '#0284C7', background: '#EFF6FF', padding: '3px 10px', borderRadius: 20 }}>
+              <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: '#0284C7', background: '#EFF6FF', padding: '3px 10px', borderRadius: 20 }}>
                 {assignableVideos.length} pending
               </span>
             )}
@@ -132,25 +132,25 @@ export default function SMMDashboard() {
                     className="px-5 py-3.5 flex items-center justify-between gap-3 hover:bg-slate-50 transition-colors duration-150">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
-                        <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }} className="truncate">{video.title}</p>
+                        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }} className="truncate">{video.title}</p>
                         {video.is_urgent && (
-                          <span style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Poppins', fontWeight: 700, fontSize: 9, padding: '2px 6px', borderRadius: 5, letterSpacing: '0.05em' }}>URGENT</span>
+                          <span style={{ background: '#FEE2E2', color: '#EF4444', fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 9, padding: '2px 6px', borderRadius: 5, letterSpacing: '0.05em' }}>URGENT</span>
                         )}
                         <span className="text-[10px] px-2 py-0.5 rounded-md font-semibold text-white"
-                          style={{ background: stageColor(video.status), fontFamily: 'Poppins' }}>
+                          style={{ background: stageColor(video.status), fontFamily: 'Plus Jakarta Sans' }}>
                           {video.status}
                         </span>
                       </div>
                       <div className="flex items-center gap-3 flex-wrap">
-                        <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>
+                        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>
                           By {video.counselor?.full_name} · {video.category}
                         </p>
                         {assignment ? (
-                          <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 11, color: '#10B981' }}>
+                          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 11, color: '#10B981' }}>
                             ✓ {assignment.editor?.full_name}{assignment.deadline ? ` · Due ${formatDate(assignment.deadline)}` : ''}
                           </span>
                         ) : (
-                          <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 11, color: '#F59E0B' }}>⚠ No editor assigned</span>
+                          <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 11, color: '#F59E0B' }}>⚠ No editor assigned</span>
                         )}
                       </div>
                     </div>
@@ -160,7 +160,7 @@ export default function SMMDashboard() {
                       style={{
                         background: assignment ? '#F0FDF4' : 'linear-gradient(135deg, #0284C7, #06B6D4)',
                         color: assignment ? '#065F46' : '#fff',
-                        fontFamily: 'Poppins', fontWeight: 700,
+                        fontFamily: 'Plus Jakarta Sans', fontWeight: 700,
                         border: assignment ? '1px solid #BBF7D0' : 'none',
                         boxShadow: assignment ? 'none' : '0 3px 10px rgba(2,132,199,0.35)',
                         cursor: 'pointer',
@@ -182,7 +182,7 @@ export default function SMMDashboard() {
               <CalendarDays size={13} style={{ color: '#6366F1' }} />
             </div>
             <span className="page-section-title">Publishing Calendar</span>
-            <span style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>This week's scheduled content</span>
+            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: '#94A3B8' }}>This week's scheduled content</span>
           </div>
           <div className="p-4 grid grid-cols-7 gap-2 overflow-x-auto">
             {weekDays.map((day, i) => {
@@ -193,12 +193,12 @@ export default function SMMDashboard() {
                 <div key={i} className="min-h-[90px]">
                   <div className="text-center mb-2 py-1.5 rounded-lg"
                     style={{ background: isToday ? '#EEF2FF' : 'transparent' }}>
-                    <p style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 11, color: isToday ? '#6366F1' : '#475569', margin: 0 }}>{DAYS[i]}</p>
-                    <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 10, color: isToday ? '#818CF8' : '#94A3B8', margin: '1px 0 0' }}>{format(day, 'd')}</p>
+                    <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 11, color: isToday ? '#6366F1' : '#475569', margin: 0 }}>{DAYS[i]}</p>
+                    <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 10, color: isToday ? '#818CF8' : '#94A3B8', margin: '1px 0 0' }}>{format(day, 'd')}</p>
                   </div>
                   {dayVideos.map(v => (
                     <div key={v.id} className="px-1.5 py-1 rounded-lg text-[9px] mb-1 truncate"
-                      style={{ background: '#EEF2FF', color: '#4338CA', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #C7D2FE' }}>
+                      style={{ background: '#EEF2FF', color: '#4338CA', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, border: '1px solid #C7D2FE' }}>
                       {v.title.slice(0, 14)}
                     </div>
                   ))}
@@ -301,10 +301,10 @@ function AssignVideoModal({ video, existingAssignment, onClose, onAssigned }: {
               <UserCheck size={13} style={{ color: '#0284C7' }} />
             </div>
             <div>
-              <h2 style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 16, color: '#111827', margin: 0 }}>
+              <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 16, color: '#111827', margin: 0 }}>
                 {existingAssignment ? 'Reassign Video' : 'Assign to Editor'}
               </h2>
-              <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }} className="truncate max-w-[260px]">{video.title}</p>
+              <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }} className="truncate max-w-[260px]">{video.title}</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-100 transition-colors"
@@ -318,8 +318,8 @@ function AssignVideoModal({ video, existingAssignment, onClose, onAssigned }: {
             <div className="w-16 h-16 rounded-full flex items-center justify-center pop-in" style={{ background: '#DCFCE7' }}>
               <CheckCircle size={30} style={{ color: '#10B981' }} />
             </div>
-            <p style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 18, color: '#111827' }}>Video Assigned!</p>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 13, color: '#64748B' }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 18, color: '#111827' }}>Video Assigned!</p>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 13, color: '#64748B' }}>
               {chosenEditor?.full_name} will be notified to start editing.
             </p>
           </div>
@@ -331,8 +331,8 @@ function AssignVideoModal({ video, existingAssignment, onClose, onAssigned }: {
                   <Film size={13} style={{ color: '#6366F1' }} />
                 </div>
                 <div className="min-w-0">
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }} className="truncate">{video.title}</p>
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{video.counselor?.full_name} · {video.category}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }} className="truncate">{video.title}</p>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{video.counselor?.full_name} · {video.category}</p>
                 </div>
               </div>
 
@@ -345,11 +345,11 @@ function AssignVideoModal({ video, existingAssignment, onClose, onAssigned }: {
                       style={{ border: `1.5px solid ${selectedEditor === editor.id ? '#0284C7' : 'rgba(0,0,0,0.08)'}`, background: selectedEditor === editor.id ? '#EFF6FF' : '#FAFBFD' }}>
                       <input type="radio" name="editor" value={editor.id} checked={selectedEditor === editor.id} onChange={() => setSelectedEditor(editor.id)} className="accent-sky-500" />
                       <div className="flex-1 min-w-0">
-                        <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }}>{editor.full_name}</p>
-                        <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{editor.email}</p>
+                        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#111827', margin: 0 }}>{editor.full_name}</p>
+                        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8', margin: 0 }}>{editor.email}</p>
                       </div>
                       {selectedEditor === editor.id && (
-                        <span style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 10, color: '#0284C7', background: '#DBEAFE', padding: '2px 7px', borderRadius: 5 }}>Selected</span>
+                        <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 700, fontSize: 10, color: '#0284C7', background: '#DBEAFE', padding: '2px 7px', borderRadius: 5 }}>Selected</span>
                       )}
                     </label>
                   ))}
@@ -369,7 +369,7 @@ function AssignVideoModal({ video, existingAssignment, onClose, onAssigned }: {
               {DEMO_MODE && (
                 <div className="p-3 rounded-xl flex items-start gap-2" style={{ background: '#EFF6FF', border: '1px solid #BAE6FD' }}>
                   <Bell size={13} style={{ color: '#0284C7', marginTop: 2, flexShrink: 0 }} />
-                  <p style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 12, color: '#0369A1', margin: 0 }}>
+                  <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 12, color: '#0369A1', margin: 0 }}>
                     <strong>Demo Mode:</strong> Assignment simulated. In production the editor receives an in-app notification.
                   </p>
                 </div>

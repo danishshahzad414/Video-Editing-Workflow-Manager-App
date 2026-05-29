@@ -87,14 +87,14 @@ export default function Login() {
             <div className="w-11 h-11 rounded-2xl flex items-center justify-center float" style={{ background: '#1a1a2e', boxShadow: '0 8px 24px rgba(189,52,254,0.45)' }}>
               <ViteLogo size={26} />
             </div>
-            <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 22, color: '#FFFFFF', letterSpacing: '-0.5px' }}>CutDesk</span>
+            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 22, color: '#FFFFFF', letterSpacing: '-0.5px' }}>CutDesk</span>
           </div>
 
-          <h2 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 36, color: '#FFFFFF', lineHeight: 1.15, letterSpacing: '-1px' }}>
+          <h2 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 36, color: '#FFFFFF', lineHeight: 1.15, letterSpacing: '-1px' }}>
             Your Video<br />
             <span className="gradient-text">Workflow OS</span>
           </h2>
-          <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 15, color: 'rgba(255,255,255,0.45)', marginTop: 16, lineHeight: 1.7 }}>
+          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 15, color: 'rgba(255,255,255,0.45)', marginTop: 16, lineHeight: 1.7 }}>
             From raw footage to published content — every step, tracked and streamlined.
           </p>
 
@@ -104,13 +104,13 @@ export default function Login() {
                 <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(2,132,199,0.2)', border: '1px solid rgba(2,132,199,0.4)' }}>
                   <div className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                 </div>
-                <span style={{ fontFamily: 'Poppins', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{f}</span>
+                <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{f}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: 'rgba(255,255,255,0.25)', position: 'relative' }}>
+        <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 12, color: 'rgba(255,255,255,0.25)', position: 'relative' }}>
           © 2025 The Migration, Melbourne AU · Internal Tool
         </p>
       </div>
@@ -123,12 +123,12 @@ export default function Login() {
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: '#1a1a2e', boxShadow: '0 4px 12px rgba(189,52,254,0.35)' }}>
               <ViteLogo size={22} />
             </div>
-            <span style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>CutDesk</span>
+            <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 20, color: '#0F172A' }}>CutDesk</span>
           </div>
 
           <div className="fade-in">
-            <h1 style={{ fontFamily: 'Montserrat', fontWeight: 900, fontSize: 28, color: '#0F172A', letterSpacing: '-0.5px', marginBottom: 6 }}>Sign in</h1>
-            <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 14, color: '#64748B', marginBottom: 32 }}>Welcome back! Enter your credentials to continue.</p>
+            <h1 style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 900, fontSize: 28, color: '#0F172A', letterSpacing: '-0.5px', marginBottom: 6 }}>Sign in</h1>
+            <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 14, color: '#64748B', marginBottom: 32 }}>Welcome back! Enter your credentials to continue.</p>
 
             {/* Card */}
             <div className="rounded-2xl p-8" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
@@ -165,7 +165,7 @@ export default function Login() {
               >
                 <div className="flex items-center gap-2">
                   <Zap size={14} className="text-sky-500" />
-                  <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 13, color: '#475569' }}>Try Demo Accounts</span>
+                  <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 13, color: '#475569' }}>Try Demo Accounts</span>
                 </div>
                 {showDemo ? <ChevronUp size={15} className="text-slate-400" /> : <ChevronDown size={15} className="text-slate-400" />}
               </button>
@@ -176,11 +176,11 @@ export default function Login() {
                       <div className="flex items-center gap-3">
                         <span className="text-lg">{acc.icon}</span>
                         <div className="text-left">
-                          <p style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0F172A' }}>{acc.role}</p>
-                          <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>{acc.email}</p>
+                          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0F172A' }}>{acc.role}</p>
+                          <p style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 400, fontSize: 11, color: '#94A3B8' }}>{acc.email}</p>
                         </div>
                       </div>
-                      <span style={{ fontFamily: 'Poppins', fontWeight: 600, fontSize: 12, color: '#0284C7' }}>Use →</span>
+                      <span style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 600, fontSize: 12, color: '#0284C7' }}>Use →</span>
                     </button>
                   ))}
                 </div>

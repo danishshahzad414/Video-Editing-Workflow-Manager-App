@@ -81,11 +81,11 @@ export default function Performance() {
         <div className="cd-card p-4 flex gap-4 flex-wrap items-center">
           <div className="flex gap-1.5 flex-wrap">
             {PLATFORMS.map(p => (
-              <button key={p} onClick={() => setPlatFilter(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])} className="px-3 py-1 rounded-full text-xs transition-all" style={{ background: platFilter.includes(p) ? PLATFORM_COLORS[p] : '#F1F5F9', color: platFilter.includes(p) ? '#fff' : '#475569', fontFamily: 'Poppins', fontWeight: 600, border: '1px solid #E2E8F0' }}>{p}</button>
+              <button key={p} onClick={() => setPlatFilter(prev => prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p])} className="px-3 py-1 rounded-full text-xs transition-all" style={{ background: platFilter.includes(p) ? PLATFORM_COLORS[p] : '#F1F5F9', color: platFilter.includes(p) ? '#fff' : '#475569', fontFamily: 'Plus Jakarta Sans', fontWeight: 600, border: '1px solid #E2E8F0' }}>{p}</button>
             ))}
           </div>
           <input type="date" className="cd-input" style={{ height: 36, width: 150, fontSize: 12 }} value={dateFrom} onChange={e => setDateFrom(e.target.value)} />
-          <span className="text-xs" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>to</span>
+          <span className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>to</span>
           <input type="date" className="cd-input" style={{ height: 36, width: 150, fontSize: 12 }} value={dateTo} onChange={e => setDateTo(e.target.value)} />
         </div>
 
@@ -98,8 +98,8 @@ export default function Performance() {
             { label: 'Best Performing', value: bestPerf ? (bestPerf.video as any)?.title?.slice(0, 20) + '…' : '—', color: '#F59E0B' },
           ].map(k => (
             <div key={k.label} className="stat-card p-4 text-center fade-in">
-              <p className="font-bold mb-1 truncate" style={{ fontFamily: 'Montserrat', fontWeight: 800, fontSize: 20, color: k.color }}>{k.value}</p>
-              <p className="text-xs" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#475569' }}>{k.label}</p>
+              <p className="font-bold mb-1 truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, fontSize: 20, color: k.color }}>{k.value}</p>
+              <p className="text-xs" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#475569' }}>{k.label}</p>
             </div>
           ))}
         </div>
@@ -107,12 +107,12 @@ export default function Performance() {
         {/* Line chart */}
         {chartData.length > 0 && (
           <div className="cd-card p-5">
-            <h2 className="text-base mb-4" style={{ fontFamily: 'Montserrat', fontWeight: 800, color: '#0F172A' }}>Views Over Time</h2>
+            <h2 className="text-base mb-4" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: '#0F172A' }}>Views Over Time</h2>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={chartData}>
-                <XAxis dataKey="date" stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} />
-                <YAxis stroke="#E2E8F0" tick={{ fontFamily: 'Poppins', fontSize: 10, fill: '#94A3B8' }} />
-                <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Poppins' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
+                <XAxis dataKey="date" stroke="#E2E8F0" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, fill: '#94A3B8' }} />
+                <YAxis stroke="#E2E8F0" tick={{ fontFamily: 'Plus Jakarta Sans', fontSize: 10, fill: '#94A3B8' }} />
+                <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 8, fontFamily: 'Plus Jakarta Sans' }} labelStyle={{ color: '#0F172A' }} itemStyle={{ color: '#0F172A' }} />
                 <Legend />
                 {PLATFORMS.filter(p => platFilter.length === 0 || platFilter.includes(p)).map(p => (
                   <Line key={p} type="monotone" dataKey={p} stroke={PLATFORM_COLORS[p]} strokeWidth={2} dot={false} />
@@ -135,7 +135,7 @@ export default function Performance() {
               </thead>
               <tbody>
                 {filtered.length === 0 ? (
-                  <tr><td colSpan={8} className="px-4 py-12 text-center" style={{ fontFamily: 'Poppins', color: '#94A3B8' }}>No performance data yet</td></tr>
+                  <tr><td colSpan={8} className="px-4 py-12 text-center" style={{ fontFamily: 'Plus Jakarta Sans', color: '#94A3B8' }}>No performance data yet</td></tr>
                 ) : filtered.map((p, i) => {
                   const ed = editing[p.id] || {}
                   const views = ed.views ?? p.views
@@ -146,9 +146,9 @@ export default function Performance() {
 
                   return (
                     <tr key={p.id} className="table-row-hover" style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? 'transparent' : '#FAFAFA' }}>
-                      <td className="px-4 py-3 text-xs max-w-36 truncate" style={{ fontFamily: 'Poppins', fontWeight: 500, color: '#0F172A' }}>{(p.video as any)?.title || '—'}</td>
-                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{p.platform}</td>
-                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Poppins', color: '#475569' }}>{formatDate(p.published_date)}</td>
+                      <td className="px-4 py-3 text-xs max-w-36 truncate" style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 500, color: '#0F172A' }}>{(p.video as any)?.title || '—'}</td>
+                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{p.platform}</td>
+                      <td className="px-4 py-3 text-xs" style={{ fontFamily: 'Plus Jakarta Sans', color: '#475569' }}>{formatDate(p.published_date)}</td>
                       {['views', 'likes', 'comments'].map(field => (
                         <td key={field} className="px-4 py-3">
                           <input
@@ -157,11 +157,11 @@ export default function Performance() {
                             onChange={e => startEdit(p, field, Number(e.target.value))}
                             onBlur={() => { if (editing[p.id]) saveEdit(p.id) }}
                             className="w-20 text-center text-xs rounded px-1"
-                            style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', color: '#0F172A', height: 28, fontFamily: 'Poppins', fontWeight: 500, outline: 'none' }}
+                            style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', color: '#0F172A', height: 28, fontFamily: 'Plus Jakarta Sans', fontWeight: 500, outline: 'none' }}
                           />
                         </td>
                       ))}
-                      <td className="px-4 py-3 text-xs font-semibold" style={{ color: engColor(eng), fontFamily: 'Poppins' }}>{eng}</td>
+                      <td className="px-4 py-3 text-xs font-semibold" style={{ color: engColor(eng), fontFamily: 'Plus Jakarta Sans' }}>{eng}</td>
                       <td className="px-4 py-3">
                         <input
                           value={notes}
@@ -169,7 +169,7 @@ export default function Performance() {
                           onBlur={() => { if (editing[p.id]) saveEdit(p.id) }}
                           placeholder="Notes..."
                           className="w-full text-xs px-2 rounded"
-                          style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', height: 28, fontFamily: 'Poppins', outline: 'none' }}
+                          style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', color: '#475569', height: 28, fontFamily: 'Plus Jakarta Sans', outline: 'none' }}
                         />
                       </td>
                     </tr>

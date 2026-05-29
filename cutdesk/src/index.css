@@ -48,11 +48,9 @@ body {
   margin: 0;
   background: var(--page-bg);
   background-image:
-    radial-gradient(ellipse 55% 45% at 8% -5%,   rgba(14,165,233,0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 45% at 95% 8%,   rgba(124,58,237,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 100% 105%, rgba(6,182,212,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 0% 100%,  rgba(3,105,161,0.10) 0%, transparent 55%),
-    linear-gradient(180deg, #EDF1F9 0%, #E7ECF6 100%);
+    radial-gradient(ellipse 60% 45% at 0% 0%,   rgba(3,105,161,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(6,182,212,0.045) 0%, transparent 55%),
+    linear-gradient(180deg, #F2F5FB 0%, #EEF2F9 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -204,12 +202,7 @@ button:focus-visible, a:focus-visible {
   gap: 7px;
   position: relative;
   overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(3,105,161,0.6) inset,
-    0 1px 0 rgba(255,255,255,0.3) inset,
-    0 2px 6px rgba(3,105,161,0.3),
-    0 8px 22px rgba(14,165,233,0.38),
-    0 0 22px rgba(14,165,233,0.28);
+  box-shadow: var(--shadow-primary), 0 0 0 1px rgba(3,105,161,0.6) inset, 0 1px 0 rgba(255,255,255,0.25) inset;
   transition: transform 200ms var(--butter), box-shadow 200ms var(--butter), filter 200ms;
   will-change: transform;
 }
@@ -222,13 +215,8 @@ button:focus-visible, a:focus-visible {
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow:
-    0 0 0 1px rgba(3,105,161,0.6) inset,
-    0 1px 0 rgba(255,255,255,0.35) inset,
-    0 4px 10px rgba(3,105,161,0.32),
-    0 12px 30px rgba(14,165,233,0.5),
-    0 0 34px rgba(14,165,233,0.45);
-  filter: brightness(1.07);
+  box-shadow: 0 2px 4px rgba(2,132,199,0.2), 0 8px 20px rgba(2,132,199,0.35);
+  filter: brightness(1.06);
 }
 .btn-primary:active {
   transform: translateY(0) scale(0.97);
@@ -305,25 +293,17 @@ button:focus-visible, a:focus-visible {
 
 /* ─── Cards ─────────────────────────────────────────────────── */
 .cd-card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FBFCFE 100%);
-  border: 1px solid rgba(255,255,255,0.9);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCFDFE 100%);
+  border: 1px solid var(--hairline);
   border-radius: var(--r-lg);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.9) inset,
-    0 1px 2px rgba(15,23,42,0.05),
-    0 6px 18px rgba(15,23,42,0.07),
-    0 18px 40px rgba(15,23,42,0.06);
-  transition: box-shadow 300ms var(--butter), border-color 300ms var(--butter), transform 300ms var(--butter);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 240ms var(--butter), border-color 240ms var(--butter), transform 240ms var(--butter);
   will-change: transform;
 }
 .cd-card:hover {
-  border-color: rgba(14,165,233,0.30);
-  transform: translateY(-3px);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.9) inset,
-    0 2px 6px rgba(15,23,42,0.06),
-    0 14px 32px rgba(15,23,42,0.10),
-    0 28px 60px rgba(14,165,233,0.16);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(3,105,161,0.14);
+  transform: translateY(-2px);
 }
 
 /* ─── KPI card — premium left-accent design ─────────────────── */
@@ -351,12 +331,9 @@ button:focus-visible, a:focus-visible {
   pointer-events: none;
 }
 .kpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.9) inset,
-    0 10px 26px rgba(15,23,42,0.10),
-    0 18px 44px color-mix(in srgb, var(--kc, #0369A1) 22%, transparent);
-  border-color: color-mix(in srgb, var(--kc, #0369A1) 28%, transparent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(15,23,42,0.10);
 }
 .kpi-card .kpi-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -670,23 +647,19 @@ button:focus-visible, a:focus-visible {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow:
-    0 2px 6px rgba(15,23,42,0.12),
-    0 0 14px rgba(14,165,233,0.18),
-    0 1px 0 rgba(255,255,255,0.7) inset;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
 }
 
 /* ─── Stats strip ───────────────────────────────────────────── */
 /* ONE unified card housing all KPI metrics, separated by dividers */
 .stats-strip {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
-  border: 1px solid rgba(255,255,255,0.9);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBFDFE 100%);
+  border: 1px solid var(--hairline);
   border-radius: var(--r-lg);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.95),
-    0 1px 2px rgba(15,23,42,0.05),
-    0 10px 28px rgba(15,23,42,0.09),
-    0 24px 56px rgba(14,165,233,0.12);
+    0 1px 2px rgba(15,23,42,0.04),
+    0 10px 28px rgba(15,23,42,0.07);
   display: grid;
   overflow: hidden;
   will-change: transform;
@@ -697,8 +670,7 @@ button:focus-visible, a:focus-visible {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #0369A1, #06B6D4, #38BDF8, #06B6D4, #0369A1);
-  box-shadow: 0 0 16px rgba(14,165,233,0.6), 0 1px 6px rgba(6,182,212,0.5);
+  background: linear-gradient(90deg, #0369A1, #06B6D4, #38BDF8);
   z-index: 1;
 }
 .stats-strip-item {
